@@ -1,0 +1,3328 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="refresh" content="0;url=/">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+<meta name="viewport" content="width=device-width,maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="/skin/css/plantrip.css">
+	<script type="text/javascript" src="/skin/js/plantrip.js"></script>
+<title>最晚上车时间|上海地铁</title>
+<link rel="stylesheet" type="text/css" href="/skin/css/tickets_ride.css">
+</link>
+<link href="/skin/css/pca.css" type="text/css" rel="stylesheet">
+</link>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=1.3"></script>
+<script type="text/javascript" src="/skin/js/public/jquery.js"></script>
+<script type="text/javascript" src="/skin/js/public/plugin/my.jquery.plugin.js"></script>
+<script type="text/javascript" src="/skin/js/common.js"></script>
+<script type="text/javascript" src="/skin/js/happy_metro.js"></script>
+<link href="/skin/css/rpresult.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/skin/js/public/jquery.js"></script>
+<script type="text/javascript" src="/skin/js/public/plugin/my.jquery.plugin.js"></script>
+<script type="text/javascript" src="/skin/js/public/plugin/jcarousellite_1.0.1.modify.js"></script>
+<script type="text/javascript" src="/skin/js/public/plugin/jquery.marquee.min.js"></script>
+<script type="text/javascript" src="/skin/js/common.js"></script>
+<script type="text/javascript" src="/skin/js/index.js"></script>
+<script type="text/javascript" src="/skin/js/pca.js"></script>
+<script type="text/javascript" src="/skin/js/waypoints.js"></script>
+<script type="text/javascript" src="/skin/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/skin/js/waypoints-sticky.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js"></script>
+<meta http-equiv="content-language" content="zh-cn" />
+<meta http-equiv="Access-Control-Allow-Origin" content="https://m.shmetro.com">
+
+<style>
+.linelu {
+	float: left;
+	width: 80px;
+	text-align: center;
+	margin-right: 40px;
+	font-size: 14px;
+	font-weight: bold;
+	height: 60px;
+	vertical-align: text-top;
+	color: #676767
+}
+.rightline {
+	float: left;
+	width: 100%;
+	background: url(../images/temp/bg-huanline2.jpg) no-repeat left top;
+}
+.linecheng {
+	border-bottom: 1px solid #d0d0d0;
+	padding-bottom: 5px;
+}
+.index_routeprice_content .item1 {
+	width: 49%;
+	float: left
+}
+.index_routeprice_content .item2 {
+	height: 50px;
+	width: 49%;
+	float: left;
+	border-bottom: none
+}
+.ride_search {
+	width: 790px;
+	float: left;
+	margin-left: 31px;
+	padding-left: 20px;
+	background: #f8f8f8;
+	margin-top: 20px;
+}
+.jiantou2 {
+	float: left;
+	margin-top: 3px;
+}
+.left-daodatime, .index_routeprice_content .item .label {
+	font-weight: bold;
+	color: #666;
+	font-size: 14px;
+}
+.index_routeprice_content .item .value {
+	position: relative;
+	margin-right: 15px;
+}
+select.ddlstation {
+	border: 1px solid #ddd;
+	float: left;
+	background: none;
+	margin-top: 3px;
+}
+select.ddlline {
+	border: 1px solid #ddd;
+	float: left;
+	background: none;
+	margin-right: 5px;
+	margin-top: 3px;
+}
+.index_routeprice_content .dotbtn {
+	position: absolute;
+	right: 7%;
+	top: 33px;
+	z-index: 9;
+}
+.ddlstation {
+	width: 50%;
+}
+.ride_search1 .from_con .select_item input {
+	width: 303px;
+	padding-left: 0px;
+	border: 1px solid #DDD;
+	line-height: 35px;
+	margin-top: 7px;
+	margin-bottom: 25px;
+}
+.ride_search1 .from_con .select_item {
+	width: 100%
+}
+ride_search1 .from_con {
+	width: 800px;
+	border: 1px solid #ddd;
+	padding-top: 10px;
+	float: left;
+}
+.index_routeprice_content .item .value input {
+	width: 295px;
+	line-height: 40px
+}
+.qidian {
+	float: left;
+	padding-top: 15px;
+	margin-right: 5px;
+	width: 60px;
+	font-weight: bold;
+	font-size: 14px;
+	color: #666;
+	margin-left: 20px;
+}
+.qidian2 {
+	float: left;
+	padding-top: 20px;
+	margin-right: 5px;
+	width: 60px;
+	font-weight: bold;
+	font-size: 14px;
+	color: #666;
+	margin-left: 20px;
+}
+.qidian3 {
+	float: left;
+	padding-top: 10px;
+	margin-right: 5px;
+	width: 110px;
+	font-weight: bold;
+	font-size: 14px;
+	color: #666;
+}
+.tbstbg {
+	height: 58px;
+	left: auto;
+	right: 51%;
+	visibility: visible;
+	margin-top: 0px;
+	margin-right: 62px;
+}
+input.tbstation {
+	border: 1px solid #ddd
+}
+.tbstbg span {
+	color: #fff
+}
+.tbstbg b {
+	color: #999;
+	display: block;
+	font-size: 12px;
+	font-weight: 100;
+	line-height: 46px;
+	margin-left: 146px;
+}
+.index_routeprice_content .ddllay {
+	background: none;
+	display: none;
+	height: 46px;
+	line-height: 46px;
+	margin-left: 65px;
+	padding: 0;
+	position: absolute;
+	top: 0px;
+	width: 70%;
+	padding-right: 23px;
+	padding-left: 10px;
+	z-index: 0;
+	border: 1px solid #ddd;
+}
+.select_itemfind {
+	position: absolute;
+	margin-left: 500px;
+	margin-top: -30px
+}
+.slleu {
+	position: absolute;
+	margin-left: 500px;
+	margin-top: -70px
+}
+.ride_search1 .ride_search_form {
+	width: 786px;
+	height: 230px;
+	border: 1px solid #ddd;
+	padding-left: 10px;
+}
+.ride_search_form_sub {
+	background: url(/skin/images/chaxun.png) no-repeat;
+	border: none
+}
+.jhshijian {
+	position: absolute;
+	margin-left: 430px;
+	margin-top: -130px;
+}
+.jhshijian select {
+	border: 1px solid #ddd;
+	line-height: 35px;
+	height: 35px;
+	width: 60px;
+	margin-right: 5px;
+}
+.line_select_list li.cur a {
+	background: #c9103a
+}
+.line_select_list li a {
+	background: #999;
+	height: auto
+}
+.line_select_list li {
+	height: auto
+}
+</style>
+</head>
+<body class="body_style">
+<div id="accessNull"></div>
+
+<div id="container">
+<!-- header start --> 
+﻿<!-- head_top start -->
+<style>
+.pdang{ position:fixed;width:100px;left:0px; top:30%;z-index:999;}
+.biaochuang{  width:100px;margin-top:35%; }
+.biaochuang22{  width:100px;margin-top:35%; }
+.biaochuang33{  width:100px;margin-top:20%; }
+.biaochuang1{ width:100px;  margin-bottom:5%; } 
+.lqysclose1{ display:block}
+span.featuresww{ display:none}
+.subNav ul{ border:none}
+
+</style>
+
+<div class="pdang">
+
+<div class="biaochuang22" id="biaochuang22" style="display:none;margin-bottom:10px;" >
+ 
+<img src="/skin/images/gbx.png" onclick="lqysclose22()" alt="关闭" style=" cursor:pointer;position:fixed;left:90px; width:20px;height:20px;" /> 
+
+<p><a href="https://ccs.shmetro.com/register?chatId=SCE00271036&source=site&lineId=通用码" target="_blank" > <img src="/skin/images/kefuimg.png" width ="80"/></a></p>
+
+
+
+
+</div>
+
+
+
+<div class="biaochuang44" id="biaochuang44" style="display:none;" >
+ 
+<img src="/skin/images/gbx.png" onclick="lqysclose44()" style=" cursor:pointer;position:fixed;left:90px; width:20px;height:20px;" /> 
+
+
+<p><a href="/skin/images/ppla.jpg" target="_blank" > <img src="/skin/images/pcla.jpg" width ="80"/></a></p>
+
+
+
+</div>
+
+<div class="biaochuang33" id="biaochuang33" style="display:none;" >
+ 
+ 
+<img src="/skin/images/gbx.png" onclick="lqysclose33()" style=" cursor:pointer;position:fixed;left:90px; width:20px;height:20px;" /> 
+
+
+<!--<p><a href="https://m.weibo.cn/1742987497/4463266845465536" target="_blank" > <img src="/skin/images/jkfhu.jpg" width ="80"/></a></p>-->
+<p><a href="/skin/ciie/ciie-2023-cn.png" target="_blank" > <img src="/skin/ciie/ciie-pc-cn.png" width ="80"/></a></p>
+
+
+</div>
+
+
+
+ 
+<div class="biaochuang" id="biaochuang" style="display:none;" >
+ 
+ 
+<img src="/skin/images/gbx.png" onclick="lqysclose1x()" style=" cursor:pointer;position:fixed;left:90px; width:20px;height:20px;" /> 
+
+
+<p><a href="/yygg/5313.htm" target="_blank"> <img src="/skin/images/piaoc/p20260206.png" width="80" /></a></p>
+<!--https://cschat.antcloud.com.cn/index.htm?tntInstId=STYYMCCN&scene=SCE00006312-->
+</div>
+
+
+</div>
+
+ <script>
+function lqysclose1()
+{ 
+	 document.getElementById("biaochuang").style.cssText = "display:none";
+	
+	}
+</script>
+
+ <script>
+ function lqysclose1x2()
+{ 
+	 document.getElementById("biaochuang1").style.cssText = "display:none";
+	
+	}
+</script>
+
+﻿<div style="float:left; width:100%; background:#fff;margin-top:-17px; " class="topindex">
+ <div style="margin:auto; width:1100px">
+	<div style="float:left; width:100%" class="header" id="header">
+           <!-- <div id="skip">
+                                <a id="accesshelp" title="新窗口打开无障碍操作说明页面" href="https://www.shanghai.gov.cn/shanghai/shuoming/shuoming.html#div0" target="_blank">无障碍操作说明</a>
+                                <a href="javascript:createNodeDiv(" mainnav',="" '已定位到网站导航');'="" title="跳转到网站导航区">跳转到网站导航区</a>
+                                <a href="javascript:createNodeDiv(" main',="" '已定位到主要内容区域');'="" title="跳转到主要内容区域">跳转到主要内容区域</a>
+            </div>-->
+            <div class="head-foot ">
+                <div class="left-logo1">
+                    <div class="head-foot">
+                        <div class="left-logo" id="topbgx">
+                            <a target="_blank" href="/" title="上海地铁运营主页"><img src="/skin/images/logo.png" height="90" alt=""></a> 
+                            <!--<img src="http://m.shmetro.com/resource/webspace/90a88432-601a-43bc-88a2-07bff66d2be9/20221008-top-banner.jpg" style="width:350px;margin-top:10px;" align="right"/>-->
+                        </div>
+                        <div class="left-rights" style="width:400px">
+                            <div class="language1">
+                                <a style="line-height:23px; margin-left:20px;color:#fff;" href="https://service.shmetro.com/en/" target="_blank" title="English">English</a>
+                                <span>|</span>
+                                <a style="line-height:23px; color:#fff;" href="http://www.shmetro.com/" title="官网首页">官网首页</a>
+                                <a style="line-height:23px; color:#fff;" href="javascript:;" onclick="toggleToolBar()" title="无障碍浏览工具">无障碍</a>
+                            </div>
+                            <div class="wather">
+                                <table width="100%" cellspacing="0" cellpadding="0" border="0" align="right">
+                                    <tbody>
+                                    <tr>
+                                        <td align="right" style="padding-right:4px;"> <span id="wather"></span></td>
+                                        <td align="right" style="width:0px;"><!--<iframe sandbox="allow-scripts allow-forms allow-same-origin" allowtransparency="true" frameborder="0" width="180" height="36" scrolling="no" src="//tianqi.2345.com/plugin/widget/index.htm?s=3&amp;z=3&amp;t=0&amp;v=0&amp;d=1&amp;bd=0&amp;k=000000&amp;f=000000&amp;ltf=000000&amp;htf=000000&amp;q=0&amp;e=0&amp;a=0&amp;c=58362&amp;w=180&amp;h=36&amp;align=center" title="今日上海天气"></iframe>--> </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+	<script type="text/javascript">
+	var info;
+
+				var today=new Date();
+
+				var y=today.getFullYear();
+
+				var mo=today.getMonth();
+
+				var da=today.getDate();
+
+				var weekString="日一二三四五六";
+
+				var timeme = y+'年'+(mo+1)+'月'+da+'日 '+' 星期'+weekString.charAt(today.getDay());
+
+				console.log(timeme);
+				 $("#wather").append(timeme);
+				
+
+
+
+	
+	</script>
+	</div>
+ 
+
+    <div class="serch-metro"> 
+      <!-- search start --> 
+      ﻿								<div class="search" id="search">
+									<div class="search_from">
+                                        <form action="/search.jspx" method="get">
+                                            <input type="text" class="search_text" name="q" title="站内搜索" value="站内搜索" onfocus="if (value =='站内搜索'){value =''}" onblur="if (value ==''){value='站内搜索'}">
+                                            <input type="submit" value="&nbsp;" class="search_sub" alt="查询" title="查询">
+                                        </form>
+                                    </div>
+                                </div>      <!-- search end --> 
+    </div>
+  </div>
+</div>
+</div></div>
+
+</div></div>
+
+
+<div class="right-listmenu" style="width:100%;float:left">
+
+
+<script type="text/javascript" src="/skin/js/public/plugin/jquery.marquee.min.js"></script> 
+<script>      
+$.ajax({
+        url:'/i/tos?ty=tip',timeout:15000,
+        success: function(xml){
+          if($(xml).find("info").length>0){
+            $(xml).find("info").each(function(){
+              var line = $(this).children("lilne").text();
+              var bs = $(this).children("bs").text();
+              var es = $(this).children("es").text();
+              var type = $(this).children("cType").text();
+              var memo = $(this).children("memo").text();
+
+              var color = "0";
+              if(type=="1"){color="green";}else if(type=="2"){color="#f4b51c";}else if(type=="3"){color="red";}else{color="#000";}
+              //$("#marquee").append('<span style="color:#00b800;padding-left:100px">'+memo+'</span>');
+              $("#marquee").append('<span style="color:'+color+';padding-left:100px">'+memo+'</span>');
+            });
+          }else {
+            $("#marquee").append('<span style="padding-left:100px">上海地铁提示信息：请乘客们持票进出站、文明乘车、冒用免费乘车证件、使用假证、逃票等违规者的信息，将被纳入个人信用信息系统。</span>');
+          }
+          
+          $("#marquee").marquee({showSpeed: 0});
+        }
+      });
+    </script> 
+<!-- head_top end -->
+<style>
+  #navEZPagesTop {
+    float: left;
+    width: 100%;
+    background: #036;
+    position: absolute;
+    left: 0px;}
+  .features a {
+    color: #fff;
+    width: 100%;
+    line-height: 30px;
+    float: left;
+}
+  </style>
+<div class="weather"> 
+  <!-- <script type="text/javascript" src="http://ext.weather.com.cn/61310.js"></script> --> 
+<!--<link rel="stylesheet" href="http://www.shanghai.gov.cn/jhelper_V2.0/jhelper_tool_style.css" />-->
+
+</div>
+<style>
+/*.menu4:hover{ background:#035898 url(/skin/images/zhiqianxinpic.png) right center no-repeat;background-position:155px}*/
+ .navbar-nav{
+                position: relative;
+            }
+            .dropdown-menu{
+                display: none;
+                position: absolute;
+                width: 100%;
+                height: 330px;
+                background: rgb(3, 83, 152);
+                z-index: 999;
+                top: 45px;
+            }
+            .dropdown-menu li{
+                display: block;
+            }
+            .dropdown-menu li a{
+                display: block;
+                border: none;
+                height: auto;
+                width: 95%;
+                text-align: left;
+                float: none;
+                padding-left: 30px;
+                 color: #fff;  
+            }
+            .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{
+                background-color: transparent;
+            }
+</style>
+<!-- 代码部分begin -->
+<div class="wrapper">
+ <div class="head">
+                <div class="topNav mainNav" id="mainNav">
+                    <ul class="nav navbar-nav">
+
+                        <li class="dropdown" onmouseover="displaySubMenu(this,1)" onmouseout="hideSubMenu(this,1)">
+                            <a class="menu1 menu" onfocus="displaySubMenuNew(this,1);" style="border-left:1px solid #bbddf6" target="_blank" href="/cphc/index.htm" title="路径与票价查询">路径与票价查询</a>
+                            <ul class="dropdown-menu" role="_menu">
+                                <li><a target="_blank" href="/cphc/index.htm" title="路径与票价查询">路径与票价查询</a></li>
+                                <li> <a href="/hcskb/index.htm" title="时刻表查询">时刻表查询</a></li>
+                                <!--
+								<li><a href="/jhndcx/index.htm" title="预计下车时间查询">预计下车时间查询</a></li>
+                                <li> <a target="_blank" href="/zuiwantime/index.htm" title="最晚上车时间查询">最晚上车时间查询</a></li>
+								-->
+							</ul>
+
+                        </li>
+                        <li class="dropdown"  onmouseover="displaySubMenu(this,2)" onmouseout="hideSubMenu(this,2)">
+                            <a class="menu2 menu" onfocus="displaySubMenuNew(this,2);" href="/czxx/index.htm" title="线路与车站信息">线路与车站信息</a>
+                            <ul class="dropdown-menu" role="_menu">
+                                <li> <a target="_blank" href="/yxxlt/index.htm" title="网络示意图">网络示意图</a></li>
+                                <li> <a target="_blank" href="/czxx/index.htm" title="车站信息">车站信息</a></li>
+                                <li> <a target="_blank" href="/cw/index.htm" title="卫生间">卫生间</a></li>
+                                <li> <a target="_blank" href="/wzai/index.htm" title="无障碍设施">无障碍设施</a></li>
+<!--<li> <a target="_blank" href="https://xncx-pro.metro.sh.cn/metro/#/bld" title="便利店">便利店</a></li>-->
+                            </ul>
+                        </li>
+                        <li class="dropdown"  onmouseover="displaySubMenu(this,3)" onmouseout="hideSubMenu(this,3)">
+                            <a class="menu3 menu" onfocus="displaySubMenuNew(this,3);" target="_blank" href="/gxyxqk/index.htm" title="实时运营信息">实时运营信息</a>
+                            <ul class="dropdown-menu" role="_menu">
+                                <li><a target="_blank" href="/gxyxqk/index.htm" title="各线运行情况">各线运行情况</a></li>
+                                <li>  <!--<a href="/klssxx/index.htm" title="客流实时信息" target="_blank">客流实时信息</a>-->
+                                       <a href="/shMetro2/metro.jsp" title="客流实时信息" target="_blank">客流实时信息</a>
+                                </li>
+                                <li> <a target="_blank" href="/yygg/index.htm" title="运营公告及相关信息">运营公告</a></li>
+
+                            </ul>
+
+                        </li>
+                        <li class="dropdown"  onmouseover="displaySubMenu(this,4)" onmouseout="hideSubMenu(this,4)">
+                    
+							<div class="delaymenu"><a id="menu4id" onfocus="displaySubMenuNew(this,4);" class="menu4" target="_blank" href="/lcywgz/index.htm" title="" style="background-color: transparent;">延误证明</a></div>
+                        </li>
+                        <li class="dropdown"  onmouseover="displaySubMenu(this,5)" onmouseout="hideSubMenu(this,5)">
+                            <a class="menu5 menu" onfocus="displaySubMenuNew(this,5);" href="/cczn/index.htm" title="车票与乘车指南">车票与乘车指南</a>
+                            <ul class="dropdown-menu" role="_menu">
+                                <li><a href="/cpxz/index.htm" title="车票信息"> 车票信息</a></li>
+                                <li><a href="/cczn/index.htm" title="乘车指南">乘车指南</a></li>
+                                <li><a href="/ckxz/index.htm" title="乘客守则">乘客守则</a></li>
+                                <li> <a href="/aqwmcc/index.htm" title="安全文明乘车">安全文明乘车</a></li>
+                                <li><a href="/flfg/index.htm" title="法律法规">法律法规 </a></li>
+                                <!--<li><a href="/gltl/4954.htm" title="服务承诺公示">服务承诺公示 </a></li>-->
+                             </ul>
+
+                        </li>
+                        <li class="dropdown"  onmouseover="displaySubMenu(this,6)" onmouseout="hideSubMenu(this,6)">
+                            <a class="menu6 menu"  onfocus="displaySubMenuNew(this,6);" style=" width:185px;" target="_blank" href="/yygg/index.htm" title="新闻与互动"> 新闻与互动</a>
+                            <ul class="dropdown-menu" role="_menu">
+                                <!--<li> <a href="/dtxw/index.htm" title="地铁新闻">地铁新闻 </a></li>-->
+<li> <a href="https://www.shmetro.com" title="地铁新闻">地铁新闻 </a></li>
+                                <!--<li> <a href="/hdxx/index.htm" title="活动信息">活动信息</a></li>-->
+                                <li> <a target="_blank" href="/hldt/index.htm" title="搭地铁游上海">搭地铁游上海</a></li>
+                                <li> <a target="_blank" href="/zxjl/index.htm" title="咨询交流">咨询交流</a></li>
+                                <li> <a target="_blank" href="/zhaoling/index.htm" title="失物招领">失物招领</a></li>
+                                <li> <a target="_blank" href="/aixinyue/index.htm" title="爱心预约">爱心预约</a></li>
+                                <li> <a target="_blank" href="/jcdsp/index.htm" title="精彩短视频">精彩短视频</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <div class="topNavList">
+                    </div>
+                </div>
+    <div class="subNavWrapper">
+      <div class="subNavSet">
+        <div class="subNav sub0"> <span><i class="subBgTopLeft"></i><i class="subBgBotLeft"></i></span>
+          <ul style="width:230px">
+            <li> <a target="_blank"  href="/cphc/index.htm">路径与票价查询</a> <a  href="/hcskb/index.htm">时刻表查询</a> <a  href="/jhndcx/index.htm" title="预计下车时间查询">预计下车时间查询</a> <a target="_blank"  href="/zuiwantime/index.htm" title="最晚上车时间查询" >最晚上车时间查询</a> </li>
+          </ul>
+          <span class="featuresww"> 
+           <a href="http://service.shmetro.com/hldt/index.htm" title="想知道上海地铁沿线有哪些好吃好玩的？" >想知道上海地铁沿线有哪些好吃好玩的？</a>  <a href="http://service.shmetro.com/hdxx/index.htm" title="想知道各线路正在举行的活动？" >想知道各线路正在举行的活动？</a>  <a href="http://service.shmetro.com/cczn/index.htm" title="无法正常出站了该怎么办？" >无法正常出站了该怎么办？</a>  <a href="http://service.shmetro.com/cczn/index.htm" title=" 第一次乘坐上海地铁，该如何乘坐？" > 第一次乘坐上海地铁，该如何乘坐？</a>  <a href="http://service.shmetro.com/cpxz/index.htm" title="想要了解上海地铁的车票类型？" >想要了解上海地铁的车票类型？</a>  <a href="http://service.shmetro.com/wzai/index.htm" title="想要知道车站是否有自助式无障碍电梯？" >想要知道车站是否有自助式无障碍电梯？</a>  <a href="http://service.shmetro.com/cw/index.htm" title="想要了解卫生间在费区内还是费区外？" >想要了解卫生间在费区内还是费区外？</a>  <a href="http://service.shmetro.com/czxx/index.htm" title="想要了解车站出入口、街区图信息？" >想要了解车站出入口、街区图信息？</a> 
+           </span> <span class="features1"  > 
+          <!-- <a href="/klssxx/index.htm"><img  src="/skin/images/shishikeliu.jpg" width="223" height="217"></a> 	
+           <a href="/aqwmcc/index.htm"><img  src="/skin/images/anquancxing.jpg" width="223" height="217"></a>  --> 
+
+           </span> </div>
+        <div class="subNav sub1"> <span><i class="subBgTopLeft"></i><i class="subBgBotLeft"></i></span>
+          <ul style="width:230px">
+            <li> <a target="_blank"  href="/yxxlt/index.htm" title="网络示意图" >网络示意图</a> <a target="_blank"  href="/czxx/index.htm" title="车站信息" >车站信息</a> <a target="_blank"  href="/cw/index.htm" title="卫生间" >卫生间</a> <a target="_blank"  href="/wzai/index.htm" title="无障碍设施" >无障碍设施</a> </li>
+          </ul>
+          <span class="featuresww"> 
+           <a href="http://service.shmetro.com/cphc/index.htm" title="如何使用路径与票价查询功能？" >如何使用路径与票价查询功能？</a>  <a href="http://service.shmetro.com/zuiwantime/index.htm" title="想知道能否赶上末班车？" >想知道能否赶上末班车？</a> 
+           </span> <span class="features1"  > 
+
+           </span> </div>
+        <div class="subNav sub2" style="float:left; width:100%;background:#035398; "> <span><i class="subBgTopLeft"></i><i class="subBgBotLeft"></i></span>
+          <ul style="width:230px">
+            <li><a target="_blank"  href="/gxyxqk/index.htm" title="各线运行情况" >各线运行情况</a> <a href="/klssxx/index.htm" title="客流实时信息" target="_blank">客流实时信息</a> <a target="_blank"  href="/yygg/index.htm" title="运营公告及相关信息" >运营公告</a> </li>
+          </ul>
+          <span class="featuresww" > 
+           <a href="http://service.shmetro.com/wzai/index.htm" title="想要知道车站是否有自助式无障碍电梯？">想要知道车站是否有自助式无障碍电梯？</a>  <a href="http://service.shmetro.com/cw/index.htm" title="想要了解卫生间在费区内还是费区外？">想要了解卫生间在费区内还是费区外？</a>  <a href="http://service.shmetro.com/czxx/index.htm" title="想要了解车站出入口、街区图信息？">想要了解车站出入口、街区图信息？</a> 
+           </span> <span class="features1" style="display:none"> 
+          
+           </span> </div>
+        <div class=""></div>
+        <div class="subNav sub4" style="float:left; width:100%;background:#035398;"> <span><i class="subBgTopLeft"></i> <i class="subBgBotLeft"></i></span>
+          <ul style="width:230px">
+            <li> <a href="/cpxz/index.htm" title="车票信息" > 车票信息</a>  <a href="/cczn/index.htm" title="乘车指南" >乘车指南</a> <a href="/ckxz/index.htm" title="乘客守则" >乘客守则</a> <a href="/aqwmcc/index.htm" title="安全文明乘车" >安全文明乘车</a> <a href="/flfg/index.htm" title="法律法规" >法律法规 </a></li>
+          </ul>
+          <span class="featuresww"> 
+          
+           </span> <span class="features1"> 
+          
+           </span> 
+          <!--<span class="features1"> 
+		  
+	 
+		    <a href="/cczn/index.htm"><img  src="/skin/images/chengtpeitu.jpg" width="223" height="217"></a>    
+       
+		    <a href="/cpxz/20.htm"><img  src="/skin/images/32.png" width="223" height="217"></a>   
+		  </span>--> 
+          
+        </div>
+        <div class="subNav sub5"> <span><i class="subBgTopLeft"></i><i class="subBgBotLeft"></i></span>
+          <ul style="width:230px">
+            <li> <a href="/dtxw/index.htm">地铁新闻 </a> <a href="/hdxx/index.htm">活动信息</a> <a target="_blank"  href="/hldt/index.htm" title="搭地铁游上海" >搭地铁游上海</a> <a target="_blank"  href="/zxjl/index.htm" title="咨询交流" >咨询交流</a> <a target="_blank"  href="/zhaoling/index.htm" title="失物招领" >失物招领</a> <a target="_blank"  href="/dtyzb/index.htm" title="地铁一周报" >地铁一周报</a> </li>
+          </ul>
+          <span class="featuresww"> 
+           <a href="http://service.shmetro.com/cczn/index.htm" title="无法正常出站了该怎么办？">无法正常出站了该怎么办？</a>  <a href="http://service.shmetro.com/cczn/index.htm" title=" 第一次乘坐上海地铁，该如何乘坐？"> 第一次乘坐上海地铁，该如何乘坐？</a>  <a href="http://service.shmetro.com/cpxz/index.htm" title="想要了解上海地铁的车票类型？">想要了解上海地铁的车票类型？</a> 
+           </span> <span class="features1"> 
+          
+          <!--
+          <img  src="/skin/images/16hx.jpg" width="223" height="217">
+       
+		  <img  src="/skin/images/dongzhi.jpg" width="223" height="217">    --> 
+          
+          </span> </div>
+      </div>
+    </div>
+  </div>
+  <script >
+    $('.navbar-nav li').focus(function () {
+        $(this).find('.dropdown-menu').show();
+    })
+    $('.navbar-nav li').hover(function () {
+        $(this).find('.dropdown-menu').show();
+
+    },function () {
+        $(this).find('.dropdown-menu').hide();
+    })
+    function displaySubMenuNew(a,data) {
+        var li = $(a).parent()[0];
+        //hideSubMenuNew($("ul.mid li")[0]);
+
+        hideSubMenu(li,data);
+        displaySubMenu(li);
+
+    }
+    //导航下拉显示
+    function displaySubMenu(li,data) {
+        hideSubMenu(li,data);
+        if((li.getElementsByTagName("ul")[0])!=null){
+            var subMenu = li.getElementsByTagName("ul")[0];
+            subMenu.style.display = "block";
+        }
+        $(li).find('.menu').css({'backgroundColor':'#035898'});
+        $(li).css({'backgroundColor':'#fff'});
+
+        $('#mid_'+data).attr('class','off');
+
+    }
+    //导航下拉隐藏
+    function hideSubMenu(li,data) {
+
+        $(".navbar-nav>li>a").css({'backgroundColor':'transparent'});
+
+        $(".navbar-nav li .dropdown-menu").hide();
+
+    }
+</script>
+    <!-- <script >
+                $('.navbar-nav li').focus(function () {
+                    $(this).find('.dropdown-menu').show();
+                })
+                $('.navbar-nav li').hover(function () {
+                    $(this).find('.dropdown-menu').show();
+
+                },function () {
+                    $(this).find('.dropdown-menu').hide();
+                })
+                function displaySubMenuNew(a,data) {
+                    var li = $(a).parent()[0];
+                    //hideSubMenuNew($("ul.mid li")[0]);
+
+                    hideSubMenu(li,data);
+                    displaySubMenu(li);
+
+                }
+                //导航下拉显示
+                function displaySubMenu(li,data) {
+                    hideSubMenu(li,data);
+                    if((li.getElementsByTagName("ul")[0])!=null){
+                        var subMenu = li.getElementsByTagName("ul")[0];
+                        subMenu.style.display = "block";
+                    }
+                    $(li).find('.menu').css({'backgroundColor':'#035898'});
+                    $(li).css({'backgroundColor':'#fff'});
+                    $(li).children("a").css({'color':'#fff'});
+                    $('#mid_'+data).attr('class','off');
+
+                }
+                //导航下拉隐藏
+                function hideSubMenu(li,data) {
+                    $(".navbar-nav li").css({'color':'#fff'});
+                    $(".navbar-nav>li>a").css({'backgroundColor':'transparent'});
+                    $(".navbar-nav li").find("a").css({'color':'#fff'});
+                    $(".navbar-nav li .dropdown-menu").hide();
+
+                }
+            </script> --> 
+  <script src="/skin/js/lanren.js"></script> 
+  
+  <!-- 代码部分end --> 
+  
+</div>
+<div class="xinshou">
+<div class="tongzhi1">
+  <div class="nrquyu"  >
+    <div class="zilist" >
+      <div class="tongzhi">
+        <marquee id="marquee">
+       <!-- 上海地铁提示信息：请乘客们持票进出站，文明乘车，冒用免费乘车证件、使用假证、逃票等违规者的信息，将被纳入个人信用信息系统，交通运输服务监督电话：12328。-->
+	   上海地铁提示信息：请乘客们配合安检、不越黄线、嘀声勿闯、先下后上、有序上车，共同营造上海地铁文明安全的乘车环境，交通运输服务监督电话：12328。
+        </marquee>
+      </div>
+    </div>
+  </div>
+</div></div>
+<!-- head_bottom start --> 
+<!-- head_bottom end --> 
+<script type="text/javascript" src="/skin/js/traindelaynotice.js"></script>
+<script type="text/javascript"> 
+var lineDN;		//延误证明对象
+
+//初始化延误证明
+document.addEventListener("DOMContentLoaded", (event) => {
+	//初始化延误证明
+	lineDN = new lineDelayNotice();
+	lineDN.webtype="pc";
+});
+
+document.addEventListener("linesReady",function(event){
+	lineDN.initTodayLinesState();
+});
+	
+document.addEventListener("delayTodayReady",function(event){
+	
+	lineList = lineDN.getLineListJson();
+	lineDelayJson = lineDN.getLineDelayJson();
+	
+	lineDN.showMenuIcon("menu4id",lineDelayJson);		//主菜单用
+
+});	
+
+
+
+
+
+
+
+<!-- 
+var timeout         = 500;
+var closetimer		= 0;
+var ddmenuitem      = 0;
+// open hidden layer
+function mopen(id)
+{	
+	// cancel close timer
+	mcancelclosetime();
+	// close old layer
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+	// get new layer and show it
+	ddmenuitem = document.getElementById(id);
+	ddmenuitem.style.visibility = 'visible';
+}
+// close showed layer
+function mclose()
+{
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+}
+// go close timer
+function mclosetime()
+{
+	closetimer = window.setTimeout(mclose, timeout);
+}
+// cancel close timer
+function mcancelclosetime()
+{
+	if(closetimer)
+	{
+		window.clearTimeout(closetimer);
+		closetimer = null;
+	}
+}
+// close layer when click-out
+document.onclick = mclose; 
+// -->
+</script>
+<style>
+.fudong{  position:fixed;width:112px;  left:0; top:250px;}
+#kefu {
+	float: left;
+	width: 112px;
+}
+#kefu {
+	float: left;
+	width: 112px;
+}
+#kefu1 {
+	margin-bottom:5px;
+	float: left;
+	width: 112px;
+}
+
+</style>
+<script>
+
+ 
+function kfu(){
+	$("#kefu").hide(); 
+}
+
+function kfu1(){
+	$("#kefu1").hide(); 
+}
+</script>
+<style>
+.sel{ position:fixed; left:0px; top:200px;}
+ 
+</style>
+<script>
+function yx()
+{  
+ $(".sel").css("display","none");
+}
+
+</script>
+
+<script>
+function lqysclose1x()
+{  
+ $(".biaochuang").css("display","none");
+}
+
+</script>
+<script>
+function lqysclose22()
+{  
+ $(".biaochuang22").css("display","none");
+}
+
+</script>
+<script>
+function lqysclose33()
+{  
+ $(".biaochuang33").css("display","none");
+}
+
+</script>
+<script>
+function lqysclose44()
+{  
+ $(".biaochuang44").css("display","none");
+}
+
+</script><!-- header end --> 
+<!-- content start -->
+<div id="content"> 
+  <!-- left start -->
+  <div class="left">
+    <div class="left_top"> 
+      <!-- nav start --> 
+<div class="location">
+	<a target="_blank" href="/" title="首页"><div style=" float:left; padding-top:6px;"><img src="/skin/images/homeico.png" /></div></a>
+    <span style="padding-left:10px; padding-right:10px;">&gt;</span><a target="_blank" href="/cphc/index.htm" title="路径与票价查询">路径与票价查询</a><span style="padding-left:10px; padding-right:10px;">&gt;</span><a target="_blank" href="/zuiwantime/index.htm" title="最晚上车时间查询">最晚上车时间查询</a>
+</div>      <!-- nav end -->
+      <div class="left_title"><span>最晚上车时间查询</span></div>
+    </div>
+    <div class="left_area" style="padding-bottom:80px"> 
+      
+      <!-- 内容 start -->
+      
+      <div class="happy_metro">
+
+
+		<p style="display:block;">
+
+              <p>&nbsp;</p>
+<div style="text-align:left;">
+	<p>&nbsp;</p>
+	<p><strong style="color: rgb(255, 0, 0);">友情提示：</strong></p>
+	<p><span style="color:#ff0000;">※&nbsp;请留意您需要换乘线路的首末班车时间，以免耽误您的出行。末班车进站前三分钟停售该末班车车票。</span></p>
+	<p><span style="color:#ff0000;">※&nbsp;上海地铁部分线路实行多点首班车，请乘客出行及换乘时，关注所乘各线路的起始站和终到站首班车时间。如需帮助，请咨询上海轨道交通网络服务监督热线021-64370000。</span></p>
+	<p><span style="color:#ff0000;">※&nbsp;自2023年4月28日起，1、7、8、9、10、13号线共计6条线路，逢周末（周五、周六）实施延时运营。</span></p>
+	<p>&nbsp;</p>
+</div>
+
+
+
+                </p>
+<!--		
+		<p style="display:block;">
+
+<a href="https://service.shmetro.com/yygg/3655.htm" target="_blank" > 
+    <img src="https://m.shmetro.com/resource/webspace/90a88432-601a-43bc-88a2-07bff66d2be9/20220214-innner-pc-notice.png" width ="100%"/>
+</a>
+
+                </p>
+-->
+
+        <div class="metro_app">
+          <div class="app_type_select" style="display:none"> <a href="ipone" class="ipone cur" style="width:315px;">
+            <div class="leftmo"><img id="leftmo1" src="/skin/images/temp/endcar.png"/></div>
+            <div class="rightmo">可达查询</div>
+            </a> <a href="ipad" class="ipad" style="width:311px; border-right:none;">
+            <div class="leftmo1">最晚出发</div>
+            <div class="rightmo1"><img id="leftmo2" src="/skin/images/temp/timeend.png" /></div>
+            <div class="rightmoo">查询</div>
+            </a> </div>
+          <div class="app_detial"> 
+            
+            <!--最晚出发时间 start-->
+            <div class="ipone_app" style="background:#fff;">
+              <div class="ride_search1" >
+                <div class="ride_search_form">
+                  <div id="hidContent" style="display:none;"></div>
+                  <div class="index_routeprice_title" > <a href="javascript:void(0);"><img src="https://m.shmetro.com/workspace/shmetrotest/images/index/routeprice_h.jpg" alt="" border="0" /></a> </div>
+                  <div style=" float:left; width:42%;margin-left:2%">
+                    <div class="item item2">
+                      <div id="jh" class="daodtime" style=" margin-top:28px;">
+                        <div class="left-daodatime" style="width:76px;color:#666; font-weight:bold; font-size:14px">选择日期：</div>
+                        <div class="center-daodatime" style="margin-left:0px;padding-left:0px"><span class="value">
+                          <select class="station_name zd" style="width:100px;margin-left:0px" station="t" title="选择日期，一周中周几">
+                          </select>
+                          </span> </div>
+                      </div>
+                      <div class="daodtime" style=" margin-top:0px;">
+                        <div class="left-daodatime" style="width:120px; color:#666; font-weight:bold; font-size:14px"></div>
+                        <div class="center-daodatime"  ></div>
+                      </div>
+                      <div class="daodtime" style="margin-top:5px; ">
+                        <div class="left-daodatime">下车时间:</div>
+                        <div class="center-daodatime"  >
+                          <div id="tm1" class="select_item"  >
+                            <select class="line_select hour" title="选择小时">
+                            </select>
+                            <span class="fen">&nbsp;时&nbsp;</span>
+                            <select class="station_name min" title="选择分钟">
+                            </select>
+                            <span class="fen">&nbsp;分&nbsp;</span> </div>
+                        </div>
+                      </div>
+                     <div style="position:absolute; width:100%;   margin-top:130px;margin-left:-10px;  ">
+                <div class="item item2" style="float:left; width:auto; border-bottom:none"> <span class="label" style="padding-left:12px;width:84px;color:#666; font-weight:bold; font-size:14px">选择票卡的种类：</span> <span class="value">
+                  <select name="ctl_shmetro_shmetroroutepriceform1$ddltt" id="ctl_shmetro_shmetroroutepriceform1_ddltt" style="height:35px; font-size:15px; color:#999" title="票卡类型选择">
+                    <option value="0">Metro大都会二维码/交通卡</option>
+                    <option value="1">单程票</option>
+                  </select>
+                  </span> </div>
+                 <!-- <div class="item item2" style="float:left; width:auto;border-bottom:none"> <span class="label" style="padding-left:25px;width:84px;color:#666; font-weight:bold; font-size:14px">换乘方式：</span> <span class="value">
+                  <select name="ctl_shmetro_shmetroroutepriceform1$ddlrt" id="ctl_shmetro_shmetroroutepriceform1_ddlrt" style="height:35px;font-size:15px; color:#999">
+                    <option value="0">换乘次数最少</option>
+                    <option value="1">所需时间最短</option>
+                  </select>
+                  </span> </div>-->
+                 
+                </div>
+                      
+                      
+                      
+                      
+                      
+                      <div class="item item3" style="margin-top:60px; margin-bottom:20px;float:left;width:600px  "> <a onclick="return chkrpform(this);" id="mbc_search" href="javascript:;" style="float:left; text-align:center; background:none;margin-right:10px; margin-top:3px; cursor:pointer" title="最晚上车时间查询"><img src="/skin/images/chaxun.png"/></a> <a href="/hcskb/index.htm" target="_blank" title="单线首末班车查询"><img src="/skin/images/temp/danxiansearch.jpg" /></a> </div>
+                    </div>
+                    
+                    
+                  </div>
+                  <div class="index_routeprice_content"  style="float:right; width:420px;">
+                    <div class="item item1" style="height:50px;">
+                      <div class="value"><span style="float:left;padding-top:14px; margin-right:5px;font-weight:bold; color:#666">起始站：</span>
+                        <input type="hidden" name="ctl_shmetro_shmetroroutepriceform1$hdf_ss" id="ctl_shmetro_shmetroroutepriceform1_hdf_ss" />
+                        <input name="ctl_shmetro_shmetroroutepriceform1$tb_ss" style="margin-top:-25px;margin-left:65px;" type="text" id="ctl_shmetro_shmetroroutepriceform1_tb_ss" class="tbstation" title="请输入拼音或点击右侧选择起始车站"/>
+                        <div class="tbstbg" id="divbg_ss"><b class="tips" style="margin-top:5px">请输入拼音或点击右侧选择车站</b></div>
+                      </div>
+                      <div class="dotbtn"  style="right:11%; top: 15px; "> <a href="javascript:void(0);" id="dotbtn_ss" title="起始车站选择"><img src="/skin/images/jsde.png" alt="" border="0" /></a> </div>
+                      <div class="serlay"  style="width:339px;margin-left:15%">
+                        <div class="serlaywrap" style="border-left:1px solid #ddd;"> </div>
+                        <div class="serlayclose"> <a href="javascript:void(0);" onclick="">关　闭</a> </div>
+                      </div>
+                      <div class="ddllay" style="width:307px;padding-top:0px; padding-left:5px;height: 40px;margin-top: 6px; ">
+                        <select name="ctl_shmetro_shmetroroutepriceform1$ddl_sl" id="ctl_shmetro_shmetroroutepriceform1_ddl_sl" class="ddlline" title="线路选择">
+                          <option value="">请选择</option>
+                          <option value="1">1号线</option>
+                          <option value="2">2号线</option>
+                          <option value="3">3号线</option>
+                          <option value="4">4号线</option>
+                          <option value="5">5号线</option>
+                          <option value="6">6号线</option>
+                          <option value="7">7号线</option>
+                          <option value="8">8号线</option>
+                          <option value="9">9号线</option>
+                          <option value="10">10号线</option>
+                          <option value="11">11号线</option>
+                          <option value="12">12号线</option>
+                          <option value="13">13号线</option>
+						  <option value="14">14号线</option>
+						  <option value="15">15号线</option>
+                          <option value="16">16号线</option>
+                          <option value="17">17号线</option>
+						  <option value="18">18号线</option>
+                          <option value="41">浦江线</option>
+						  <option value="51">市域机场线</option>
+                        </select>
+                        <select name="ctl_shmetro_shmetroroutepriceform1$ddl_ss" style=" width:160px" id="ctl_shmetro_shmetroroutepriceform1_ddl_ss" class="ddlstation" title="车站选择">
+                          <option value="">请选择</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="item item1" style="height:50px;">
+                      <div class="value"><span style="float:left;padding-top:14px;font-weight:bold; margin-right:5px;color:#666">终点站：</span>
+                        <input type="hidden" name="ctl_shmetro_shmetroroutepriceform1$hdf_ds" id="ctl_shmetro_shmetroroutepriceform1_hdf_ds" />
+                        <input name="ctl_shmetro_shmetroroutepriceform1$tb_ds" type="text" id="ctl_shmetro_shmetroroutepriceform1_tb_ds" class="tbstation" style="margin-top:-25px;margin-left:65px;" title="请输入拼音或点击右侧选择终点车站"/>
+                        <div class="tbstbg" id="divbg_ds"><b class="tips" style="margin-top:5px">请输入拼音或点击右侧选择车站</b></div>
+                      </div>
+                      <div class="dotbtn" style="right:11%; top: 15px; "> <a href="javascript:void(0);" id="dotbtn_ds"><img src="/skin/images/jsde.png" alt="" border="0" /></a> </div>
+                      <div class="serlay" style="width:339px;margin-left:15%">
+                        <div class="serlaywrap" style="border-left:1px solid #ddd;"> </div>
+                        <div class="serlayclose"> <a href="javascript:void(0);" onclick="">关　闭</a> </div>
+                      </div>
+                      <div class="ddllay"  style="width:307px;padding-top:0px; padding-left:5px;height: 40px;margin-top: 6px; ">
+                        <select name="ctl_shmetro_shmetroroutepriceform1$ddl_dl" id="ctl_shmetro_shmetroroutepriceform1_ddl_dl" class="ddlline">
+                          <option value="">请选择</option>
+                          <option value="1">1号线</option>
+                          <option value="2">2号线</option>
+                          <option value="3">3号线</option>
+                          <option value="4">4号线</option>
+                          <option value="5">5号线</option>
+                          <option value="6">6号线</option>
+                          <option value="7">7号线</option>
+                          <option value="8">8号线</option>
+                          <option value="9">9号线</option>
+                          <option value="10">10号线</option>
+                          <option value="11">11号线</option>
+                          <option value="12">12号线</option>
+                          <option value="13">13号线</option>
+						  <option value="14">14号线</option>
+						  <option value="15">15号线</option>
+                          <option value="16">16号线</option>
+                          <option value="17">17号线</option>
+						  <option value="18">18号线</option>
+                          <option value="41">浦江线</option>
+						  <option value="51">市域机场线</option>
+                        </select>
+                        <select name="ctl_shmetro_shmetroroutepriceform1$ddl_ds" id="ctl_shmetro_shmetroroutepriceform1_ddl_ds" class="ddlstation" style="max-width:160px">
+                          <option value="">请选择</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--最晚出发时间 end--> 
+                
+              </div>
+      
+              <div style="padding:8px 15px; width:94%;  line-height:25px; color:#f00; float:left;display:none">
+        ※ 2018年12月30日起，<a href="/hcskb/index.htm?line=4"> 5号线南延伸段</a>、<a href="/hcskb/index.htm?line=12">13号线二、三期</a>开通试运营，目前相关数据正在更新中，敬请留意最新的首末班车时刻表，以免耽误出行。 </div>
+            <!-- Result start -->
+            <div id="search_result" class="search_result">
+              <div class="search_result_top"  id="search_result_top" style="margin-top:10px">查询结果</div>
+			  <div style="border:1px grey solid;margin:1%;padding:1%;overflow-x:hidden;">
+
+
+	
+
+              <p><span style="color:#f00;line-height:30px">友情提示：</span></p>
+<p>单程票和异地交通卡/乘车码不支持虚拟换乘，虚拟换乘时需重新购票进站。上海轨道交通虚拟换乘车站为：</p>
+<p>1. 上海火车站站（1号线、3/4号线）</p>
+<p>2. 南京西路站（2号线、12号线、13号线）</p>
+<p>3. 长清路站（7号线、13号线）</p>
+<p>4. 虹桥2号航站楼站（2号线、10号线，往市区方向可站内换乘）</p>
+<p>5. 曹杨路（14号线、3/4号线、11号线）</p>
+                </p><span style="color:#f00">※ 本查询结果仅供参考，车程及票价请以实际发生为准。</span></p>
+              <div id="access_result" class="change_result search_result_detial divmain">
+			  
+			  
+
+			  
+			  
+			  </div>
+			  </div>
+            </div>
+			
+            <!-- Result end --> 
+            
+          </div>
+        </div>
+        <div class="hand-sm" style="margin-top:15px">
+<div style="padding:2%;"> 
+    <p><a href="/cpxz/index.htm" target="_blank">点击查看上海轨道交通车票处理规定</a></p>
+</div>
+          <div class="mztitle"> 使用说明</div>
+          <div class="msdesc">
+            <p>“最晚上车时间查询”使用说明：<br />
+              1、输入您的“起始站”线路及站点、“终点站”线路及站点；<br />
+              2、输入您的“下车时间”；<br />
+              3、点击“查询”，即可知晓您从起始站出发的最晚时间。<br />
+              4、若想查看各条单线的首末班车时间，请点击“单线首末班车查询”。<br />
+              5、查询时间在不同的日期会有所不同，请点击选择框选择。选择项目中带有 “*”的日期会有不同的时刻。<br />
+              6、 <img src="/skin/images/time-sort.png" />时间最短 <img src="/skin/images/huancheng-shao.png" />换乘最少 路径字体灰色表示：您查询条件超出运营时间。</br>
+              <style>
+.mbstyele{ color:#f61a26}
+              .nering{ float:left; width:100%;}
+		 .left-mbstyle{ float:left; width:32px }
+			  .right-mbstyle{ float:left; width:568px;}
+              </style>
+          </div>
+        </div>
+      </div>
+      <div class="hand" style="padding-left:30px;width:93%">
+        <div class="mztitle"> 免责声明</div>
+        <div class="msdesc">
+          <p>1、由于部分信息会根据实际情况有所变化，“计划您的出行”查询出的任何结果无法确保信息的完全准确，只作为乘客出行的参考，实际请以现场真实情况为准，本网不承担因此而可能产生的任何法律责任。</p>
+          <p>2、未经许可，任何人都不得将本栏目功能转载、或另作他用。若发现违规行为，上海地铁将述诸法律。</p>
+          <p>3、上海地铁对“计划您的出行”这一栏目的查询功能拥有最终解释权。</p>
+        </div>
+      </div>      </div>
+      <!-- 内容 end --> 
+      
+      <!-- bottom start --> 
+﻿ 
+      
+      
+    <div> 
+         <div>      <!-- bottom end --> 
+    </div>
+  </div>
+  <!-- left end --> 
+  
+  <!-- right start --> 
+</div></div>
+<div class="xinright">
+<div class="right">
+
+  <div class="right_nav">
+    <div class="father_nav">
+ 
+      <span>
+      	          路径与票价查询
+</span>
+    </div>
+    <div class="sub_nav">
+      <ul class="sub_nav_list">
+        
+        <li ><a  href="/cphc/index.htm" title="路径与票价查询" >路径与票价查询</a></li>
+        <li ><a  href="/hcskb/index.htm" title="时刻表查询" >时刻表查询</a></li>
+        
+      </ul>
+    </div>
+  </div>
+
+  <!-- right_normal start -->
+<script type="text/javascript" src="/skin/js/waypoints.js"></script>
+<script type="text/javascript" src="/skin/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/skin/js/waypoints-sticky.js"></script>
+<script type="text/javascript" src="/skin/js/jquery.xdomainrequest.min.js"></script>
+<!--<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js"></script>-->
+<meta http-equiv="content-language" content="zh-cn" />
+<meta http-equiv="Access-Control-Allow-Origin" content="https://m.shmetro.com">
+<meta http-equiv="Access-Control-Allow-Origin" content="https://marketing.semcenter.cn">
+<link href="/skin/css/rpresult.css" rel="stylesheet" type="text/css" />
+
+<style>
+input.tbstation1{ border:1px solid #ddd;width:160px; line-height:30px;height:30px;  }
+.tbstbg1{ margin-top:-25px; color:#999}
+.itemm1{}
+.dotbtn1 {
+    position: absolute;
+    right: 9px;
+    text-align: right;
+    margin-top: -19px;
+}
+ .ddllay2{ margin-top:-32px; display:none; line-height:30px;  width:160px; border:1px solid #ddd; float:right; margin-right:1px;}
+
+.ddllay1{ margin-top:-30px; display:none; line-height:30px; height:30px;  width:160px; border:1px solid #ddd; float:right; margin-left:21%;  position: absolute;
+  z-index: 9999;}
+.ddlline1{ float:left; width:39%; margin:5px; margin-right:2px; color:#999}
+
+.ddlstation1{float:left; width:39%;margin:5px; margin-right:2px;color:#999}
+.chgbtn1{ position:absolute; margin-top:3px; margin-left:175px;}
+.serlayclose1{ display:block;background:#ddd;}
+.caxwu a {
+    float: right;
+	margin-bottom:5px;
+    background-color: #1689e2;
+    color: White;
+    display: block;
+    font-size: 12px;
+	margin-top:5px;
+    height:25px;
+	line-height:25px;
+    text-align: center;
+    text-decoration: none;
+    width:70px;
+}
+
+</style>
+  <div class="right_ride_search">
+  <script type="text/javascript">
+$(document).ready(function(){
+  $(".serach_top").click(function(){
+<!--  $(".right_ride_search_form").toggle();-->
+if($(".right_ride_search_form").css("display")=="block"){
+
+$(".right_ride_search_form").hide();
+this.className='menu_title';
+
+}else{
+
+$(".right_ride_search_form").show();
+this.className='serach_top';
+}
+
+  });
+});
+ 
+</script>
+<script>
+
+$(document).ready(function(){
+  $(".schedule_top").click(function(){
+<!--  $(".right_ride_search_form").toggle();-->
+if($(".schedule_con").css("display")=="block"){
+
+$(".schedule_con").hide();
+this.className='schedule_tophover';
+
+}else{
+
+$(".schedule_con").show();
+this.className='schedule_top';
+}
+
+  });
+});
+
+</script>
+    <div class="serach_top"> 
+      <span> </span>
+    </div>
+
+    <div id="price" class="right_ride_search_form">
+      
+	  
+	   <div class="index_routeprice_content" style="padding:5px; width:auto;" >
+                <div class="itemm itemm1"> 
+                  <div class="value"><span style="float:left;padding-top:5px; margin-right:0px;font-size:12px;">起始站：</span>
+                    <input type="hidden" name="ctl_shmetro_shmetroroutepriceform_rightnormal$hdf_ss" id="ctl_shmetro_shmetroroutepriceform_rightnormal_hdf_ss" />
+                    <input name="ctl_shmetro_shmetroroutepriceform_rightnormal$tb_ss" type="text" id="ctl_shmetro_shmetroroutepriceform_rightnormal_tb_ss" class="tbstation1" style="  width:153px;" title="拼音或点击右侧选择起始车站"/>
+                   <!-- <div class="tbstbg1" id="divbg_ss">拼音或点击右侧选择车站</div>-->
+                  </div>
+                
+                  <div class="serlay" style="overflow:visible">
+                    <div class="serlaywrap" style="margin-left:0%"> </div>
+                    <div class="serlayclose1"> <a href="javascript:void(0);" onclick="">关　闭</a> </div>
+                  </div>
+                  <div class="ddllay1">
+                    <select name="ctl_shmetro_shmetroroutepriceform_rightnormal$ddl_sl" id="ctl_shmetro_shmetroroutepriceform_rightnormal_ddl_sl" class="ddlline1" title="线路选择">
+                      <option value="">请选择</option>
+                      <option value="1">1号线</option>
+                      <option value="2">2号线</option>
+                      <option value="3">3号线</option>
+                      <option value="4">4号线</option>
+                      <option value="5">5号线</option>
+                      <option value="6">6号线</option>
+                      <option value="7">7号线</option>
+                      <option value="8">8号线</option>
+                      <option value="9">9号线</option>
+                      <option value="10">10号线</option>
+                      <option value="11">11号线</option>
+                      <option value="12">12号线</option>
+                      <option value="13">13号线</option>
+					  <option value="14">14号线</option>
+					  <option value="15">15号线</option>
+                      <option value="16">16号线</option>
+					  <option value="17">17号线</option>
+					  <option value="18">18号线</option>
+                       <option value="41">浦江线</option>
+					   <option value="51">市域机场线</option>
+                    </select>
+                    <select name="ctl_shmetro_shmetroroutepriceform_rightnormal$ddl_ss" id="ctl_shmetro_shmetroroutepriceform_rightnormal_ddl_ss" class="ddlstation1" title="车站选择">
+                      <option value="">请选择</option>
+                    </select>
+                  </div>  <div class="dotbtn1"> <a href="javascript:void(0);" id="dotbtn1_ss" title="点击选择起始站"><img src="/skin/images/dxuan.jpg" alt="" border="0" /></a> </div>
+                </div>
+                <div class="chgbtn1"> <a href="javascript:void(0);" title=""><img src="/skin/images/zhuanicon.jpg"   border="0" alt="" /></a> </div>
+                <div class="itemm itemm1" style=" margin-top:30px;">
+            
+                  <div class="value"><span style="float:left;padding-top:5px; margin-right:0px;font-size:12px;">终点站：</span>
+                    <input type="hidden" name="ctl_shmetro_shmetroroutepriceform_rightnormal$hdf_ds" id="ctl_shmetro_shmetroroutepriceform_rightnormal_hdf_ds" />
+                    <input name="ctl_shmetro_shmetroroutepriceform_rightnormal$tb_ds" type="text" id="ctl_shmetro_shmetroroutepriceform_rightnormal_tb_ds" class="tbstation1" style="width:153px;" title="请输入拼音或点击右侧选择终点车站"/>
+                    <!--<div class="tbstbg1" id="divbg_ds">请输入拼音或点击右侧选择车站</div>-->
+                  </div>
+                  <div class="dotbtn1"> <a href="javascript:void(0);" id="dotbtn1_ds" title="点击选择终点站"><img src="/skin/images/dxuan.jpg" alt="" border="0" /></a> </div>
+                  <div class="serlay" style="overflow:visible">
+                    <div class="serlaywrap" style="margin-left:0%"> </div>
+                    <div class="serlayclose1"> <a href="javascript:void(0);" onclick="">关　闭</a> </div>
+                  </div>
+                  <div class="ddllay1">
+                    <select name="ctl_shmetro_shmetroroutepriceform_rightnormal$ddl_dl" id="ctl_shmetro_shmetroroutepriceform_rightnormal_ddl_dl" class="ddlline1" title="选择线路">
+                      <option value="">请选择</option>
+                      <option value="1">1号线</option>
+                      <option value="2">2号线</option>
+                      <option value="3">3号线</option>
+                      <option value="4">4号线</option>
+                      <option value="5">5号线</option>
+                      <option value="6">6号线</option>
+                      <option value="7">7号线</option>
+                      <option value="8">8号线</option>
+                      <option value="9">9号线</option>
+                      <option value="10">10号线</option>
+                      <option value="11">11号线</option>
+                      <option value="12">12号线</option>
+                      <option value="13">13号线</option>
+					   <option value="14">14号线</option>
+					  <option value="15">15号线</option>
+                      <option value="16">16号线</option>
+					  <option value="17">17号线</option>
+					   <option value="18">18号线</option>
+                      <option value="41">浦江线</option>
+					  <option value="51">市域机场线</option>
+                    </select>
+                    <select name="ctl_shmetro_shmetroroutepriceform_rightnormal$ddl_ds" id="ctl_shmetro_shmetroroutepriceform_rightnormal_ddl_ds" class="ddlstation1" title="站点选择">
+                      <option value="">请选择</option>
+                    </select>
+                  </div>
+                </div>
+                <!--<div class="item item2" style="display:none"> <span class="label">选择票的种类：</span> <span class="value">
+                  <select name="ctl_shmetro_shmetroroutepriceform_rightnormal$ddltt" id="ctl_shmetro_shmetroroutepriceform_rightnormal_ddltt">
+                    <option value="0">交通卡</option>
+                    <option value="1">单程票</option>
+                  </select>
+                  </span> </div>
+                <div class="item item2" style="display:none"> <span class="label">换乘方式：</span> <span class="value">
+                  <select name="ctl_shmetro_shmetroroutepriceform_rightnormal$ddlrt" id="ctl_shmetro_shmetroroutepriceform_rightnormal_ddlrt">
+                    <option value="0">换乘次数最少</option>
+                    <option value="1">所需时间最短</option>
+                  </select>
+                  </span> </div> -->                                 
+                                  
+                <div class="caxwu" style="margin-top:15px"> 
+					<!--<<a onclick="return chkrpform(this);" id="ctl_shmetro_shmetroroutepriceform_rightnormal_btnDoSearch" >查　询</a>
+					input id="path_change" type="button" class="ride_search_form_sub" value="查　&nbsp; 询"/>-->
+					<a onclick="return chkrpform_rightnormal(this);" id="ctl_shmetro_shmetroroutepriceform_rightnormal_btnDoSearch" href="javascript:__doPostBackRightNormal('ctl_shmetro_shmetroroutepriceform_rightnormal$btnDoSearch','')" title="路径查询">查&#12288;询</a>
+              </div>
+ 
+    <script type="text/javascript" src="/skin/js/pca.js"></script>
+    </div>
+  </div></div>
+  <div class="schedule" style="margin-top:0px">
+    <div class="schedule_top">
+       <!--
+      <span class="area_map">搭地铁游上海</span>-->
+ 
+    <!--<script>
+    $(document).ready(function() {
+		$(".schedule_top").click(function(){
+			$(".schedule_con").toggle();
+			});
+        
+    });
+    </script>-->
+   	 
+    <div class="schedule_con">
+      <div class="first_time_area" style="background:#fff">
+        <ul class="first_time_list">
+		<!--
+                    
+          <li style=" background:url(/skin/images/right1lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=0" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="1号线"   ><div id="ss1"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right2lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=1" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="2号线"   ><div id="ss2"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right3lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=2" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="3号线"   ><div id="ss3"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right4lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=3" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="4号线"   ><div id="ss4"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right5lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=4" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="5号线"   ><div id="ss5"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right6lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=5" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="6号线"   ><div id="ss6"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right7lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=6" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="7号线"   ><div id="ss7"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right8lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=7" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="8号线"   ><div id="ss8"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right9lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=8" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="9号线"   ><div id="ss9"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right10lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=9" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="10号线"   ><div id="ss10"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right11lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=10" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="11号线"   ><div id="ss11"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right12lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=11" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="12号线"   ><div id="ss12"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right13lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=12" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="13号线"   ><div id="ss13"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right14lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=13" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="14号线"   ><div id="ss14"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right15lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=14" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="15号线"   ><div id="ss15"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right16lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=15" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="16号线"   ><div id="ss16"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right17lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=16" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="18号线"   ><div id="ss17"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right18lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=17" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="浦江线"   ><div id="ss18"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right19lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=18" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"   title="磁悬浮"  ><div id="ss19"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right20lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=19" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="金山铁路"   ><div id="ss20"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right21lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=20" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="17号线"   ><div id="ss21"></div></a></li>
+          
+		 
+          
+          <li style=" background:url(/skin/images/right22lineicon.png) center center no-repeat; float:left; width:55px; padding:0px;background-size:50px;  color:#fff;text-align:center"><a target="_blank" href="../hcskb/index.htm?line=21" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;"    title="市域线机场线"   ><div id="ss22"></div></a></li>
+          
+		 
+          -->
+<!--<li style=" background:url(/skin/images/15line.png) center center no-repeat; float:left; width:45px; padding:0px;  color:#fff;text-align:center"><a target="_blank" href="/index.htm?line=17" style="color:#fff; font-weight:bold; width:45px; text-align:center;line-height:23px;" title="17号线"><div id="ss14">17</div></a></li>-->
+
+        </ul>
+
+<script type="text/javascript" src="/skin/js/stationchoice.js"></script>		
+<script>
+
+$(document).ready(function(){
+	var olc = new lineChoice(0,"线路选择：",[{"name":"磁浮","value":"42_ext","code":"cf","lineid":"cxf"},{"name":"金山铁路","value":"43_ext","code":"jstl","lineid":"jstl"}]);
+		
+	//线路列表
+	var linelist =olc.renderList('first_time_list','cn');
+});
+</script>		
+		
+        <script>
+document.getElementById("ss14").innerHTML=""; 
+</script> 
+ <script>
+document.getElementById("ss15").innerHTML=""; 
+</script> 
+ <script>
+document.getElementById("ss16").innerHTML=""; 
+</script> 
+      </div></div>  
+      <div class="area_map_area">
+      <!--  <ul class="area_map_list">
+
+          <li><a href="/hldt/index.htm" title="最新消息">最新消息</a><span class="color_1">&nbsp;</span></li>
+
+          <li><a href="/hldt/index.htm" title="精华帖">精华帖</a><span class="color_2">&nbsp;</span></li>
+        </ul>
+		-->
+			<style>
+		.imgcheng{ float:left; text-align:center; width:100%;}
+		.imgcheng img{ text-align:center; margin-top:3px; margin-bottom:3px;}
+		.keliu{ background:url(/skin/images/shihkeliu.png) no-repeat left; width:217px; height:44px;margin-top:5px;}
+		.keliu:hover{ background:url(/skin/images/shishibg.gif) no-repeat left; width:217px; height:44px}
+		.yunxintu{ background:url(/skin/images/xunxinlintu.png) no-repeat left; width:217px; height:44px; margin-top:6px; margin-bottom:6px;}
+		.yunxintu:hover{ background:url(/skin/images/yxtu.gif) no-repeat ; width:217px; height:44px}
+		.czxin{ background:url(/skin/images/chezhang.png) no-repeat ; width:217px; height:44px}
+		.czxin:hover{ background:url(/skin/images/chezhaninfoicon.gif) no-repeat ; width:217px; height:44px}
+		
+		</style>
+		     <div class="imgcheng">
+		
+      <a href="http://service.shmetro.com/shMetro2/metro.jsp" title="实时客流信息"><div class="keliu"> </div></a> 
+<a href="/yxxlt/index.htm" title="网络示意图"><div class="yunxintu"> </div></a>
+<a href="/czxx/index.htm" title="车站信息"><div class="czxin"> </div> </a>
+        </div>
+		
+		
+ 		
+     
+    </div>
+  </div>
+  <div class="24hours_hot_line">
+    <img src="/skin/images/24H_hot_line.jpg" title="" alt="上海地铁服务热线021-64370000" style="width:100%;"/>
+  </div>
+  <div class="f_link">
+      <select onchange="javascript:if(this.selectedIndex !=0){window.open(this.options[this.selectedIndex].value)}" title="友情链接">
+      <option selected="selected">友情链接</option>
+      <option value="http://www.mtr.com.hk/chi/homepage/cust_index.html">香港地铁</option>
+      <option value="http://www.bjsubway.com/">北京地铁</option>
+      <option value="http://www.gzmtr.com/">广州地铁</option>
+      <option value="http://www.szmc.net/">深圳地铁</option>
+      <option value="https://www.njmetro.com.cn/">南京地铁</option>
+      <option value="http://www.cdmetro.cn/">成都地铁</option>
+      <option value="http://www.tokyometro.jp/index.html">东京地铁</option>
+    </select>
+  </div>
+  <script type="text/javascript">
+        function __doPostBackRightNormal(eventTarget, eventArgument) {
+//window.location = "https://metro.tenchii.com/metroH5/";
+		
+var o = $("#ctl_shmetro_shmetroroutepriceform_rightnormal_hdf_ss").val();
+console.log(o);
+//alert(o);
+var d = $("#ctl_shmetro_shmetroroutepriceform_rightnormal_hdf_ds").val();
+//alert(d);
+var oname = $("#ctl_shmetro_shmetroroutepriceform_rightnormal_tb_ss").val();
+var dname = $("#ctl_shmetro_shmetroroutepriceform_rightnormal_tb_ds").val();
+console.log(d);
+var t =$("select option:selected").attr("ctl_shmetro_shmetroroutepriceform_rightnormal_ddltt");
+window.location.href='/cphc/index.htm?ctl_shmetro_shmetroroutepriceform1_hdf_ss='+o+'&ctl_shmetro_shmetroroutepriceform1_hdf_ds='+d+'&t='+((t==undefined||t=='')?'':t)+'&ctl_shmetro_shmetroroutepriceform1_tb_ss='+encodeURIComponent(oname)+'&ctl_shmetro_shmetroroutepriceform1_tb_ds='+encodeURIComponent(dname);
+ 
+}
+            function getLineCodeFromStationCode1(sCode)
+            {
+                if (sCode == '') return '';
+                if (sCode.length != 4) return '';
+                if (sCode.charAt(0) == '0')
+                {
+                    return sCode.substr(1,1);
+                }
+                else
+                {
+                    return sCode.substr(0,2);
+                }
+                
+            }
+
+            //起始站与终点站交换
+            function swapstations1() {
+                //隐藏弹出层
+                $('.ddllay1').hide(1, function() { $(this).removeClass('displayed'); });
+                $('.serlay').hide();
+                var tmp = '';
+                //交换hiddenfield
+                tmp = $('#' + rpfid_rightnormal + '_hdf_ss').val();
+                $('#' + rpfid_rightnormal + '_hdf_ss').val($('#' + rpfid_rightnormal + '_hdf_ds').val());
+                $('#' + rpfid_rightnormal + '_hdf_ds').val(tmp);
+                //交换textbox
+                tmp = $('#' + rpfid_rightnormal + '_tb_ss').val();
+                $('#' + rpfid_rightnormal + '_tb_ss').val($('#' + rpfid_rightnormal + '_tb_ds').val());
+                $('#' + rpfid_rightnormal + '_tb_ds').val(tmp);
+                //交换div 背景
+                tmp = $('#' + 'divbg_ss').html();
+                $('#' + 'divbg_ss').html($('#' + 'divbg_ds').html());
+                $('#' + 'divbg_ds').html(tmp);
+            }
+            
+            //显示下拉框弹出层
+            function showddllay1(obj) {
+                var othis = $(obj).parent().parent().find('.ddllay1');
+
+                if (othis.hasClass("displayed")) {
+                    othis.hide(1, function() { othis.removeClass("displayed"); }); ;
+                    //$(obj).parent().parent().find('.value input[type="text"]').removeAttr('readOnly');
+                    $(obj).parent().parent().find('.value input[type="text"]').css('visibility', 'visible');
+                    $(obj).parent().parent().find('.value .tbstbg1').css('visibility', 'visible');
+                }
+                else {
+                    //隐藏查询弹出层
+                    $(obj).parent().parent().find('.serlay').hide();
+                    //$(obj).parent().parent().find('.value input[type="text"]').attr('readOnly', "readOnly");
+                    $(obj).parent().parent().find('.value input[type="text"]').css('visibility', 'hidden');
+                    $(obj).parent().parent().find('.value .tbstbg1').css('visibility', 'hidden');
+                    //初始化ddlline1,ddlstation1
+                    var sCode = $(obj).parent().parent().find('.value input[type="hidden"]').val();
+                    
+                    var lineno = getLineCodeFromStationCode1(sCode)
+
+                    initddlline1(othis.find('.ddlline1'), lineno);
+
+                    initddlstation1(othis.find('.ddlstation1'), lineno, sCode);
+
+                    othis.show(1, function() { othis.addClass("displayed"); });
+                }
+            }
+
+            //初始化ddlline1下拉框数据
+            function initddlline1(obj, selval) {
+                var othis = $(obj);
+                //var opt = othis.find('option');
+                //for (var i = 0; i < opt.size(); i++) {
+                //    alert(opt.eq(i).val());
+                //    if (opt.eq(i).val() == selval) {
+                        othis.val(selval);
+                //        break;
+                //    }
+                //}
+            }
+
+            //初始化ddlstation下拉框数据
+            function initddlstation1(obj, lineno, selval) {
+                var othis = $(obj);
+                othis.empty();
+                othis.append("<option value=''>请选择</option>")
+                jQuery.support.cors = true;
+				$.ajax({
+                     contentType: 'text/plain',
+					type: 'GET',
+					dataType: 'text'
+                  ,url: "https://m.shmetro.com/core/shmetro/mdstationinfoback_new.ashx"
+				  //, url: "http://m.shmetro.com/core/shmetro/mdstationinfoback.ashx"
+				 
+                  , timeout: 5000
+				  //,dataType:'JSONP' // 处理Ajax跨域问题
+                  , async: true
+                  , data: { 'act': 'slsddl', 'ln': lineno, 'sc': selval }
+                  , error: function(XMLHttpRequest, textStatus, errorThrown) {
+                      //alert("err:" + textStatus);
+                  }
+                  , success: function(data, textStatus) {
+                      //alert(data);
+                      if (data != "error" && data != "nodata") {
+                          othis.append(data);
+                      }
+
+                  }
+                });
+            }
+
+            //通过下拉框设置页面中各元素的值或内容
+            function pageloadinit1(objs, objl) {
+                var othis = $(objs);
+                var lValue = $('#' + rpfid_rightnormal + '_' + objl).val()
+                //var lName = $('#' + rpfid_rightnormal + '_' + objl + ' option:selected').text();
+                var lName = $('#' + rpfid_rightnormal + '_' + objl + ' option:selected').val();
+                var sCode = othis.val();
+                var sName = othis.find('option:selected').text() ;
+
+                if (lValue == '' || sCode == '') {
+                    othis.parent().parent().find('.value input[type="hidden"]').val(sCode);
+                    othis.parent().parent().find('.value input[type="text"]').val('');
+                    //othis.parent().parent().find('.value .tbstbg1').html('');
+                    othis.parent().parent().find('.value .tbstbg1').find('span').remove();
+                    othis.parent().parent().find('.value .tbstbg1').css('left','1.6%').css('right','auto').find('b').css('display','');
+                }
+                else {
+                    othis.parent().parent().find('.value input[type="hidden"]').val(sCode);
+                    othis.parent().parent().find('.value input[type="text"]').val(sName);
+                    //othis.parent().parent().find('.value .tbstbg1').html("<span>" + sName + "</span>" + lName);
+                    //othis.parent().parent().find('.value .tbstbg1').html("<span class=\"ln" + lName + "\">" + lName + "</span>");
+                    othis.parent().parent().find('.value .tbstbg1').find('b').css('display', 'none');
+                    othis.parent().parent().find('.value .tbstbg1').find('span').remove();
+                    othis.parent().parent().find('.value .tbstbg1').css('right','42px').css('left', 'auto').append('<span class="ln' + lName + '">' + lName + '</span>');
+                }
+            }
+
+            function chkrpform_rightnormal(obj) {
+			
+	/****************************/
+	//window.location = "https://metro.tenchii.com/metroH5/";		
+			
+                var ss = $('#ctl_shmetro_shmetroroutepriceform_rightnormal_hdf_ss').val();
+                var ds = $('#ctl_shmetro_shmetroroutepriceform_rightnormal_hdf_ds').val();
+
+				console.log("rightnormal:"+$('#ctl_shmetro_shmetroroutepriceform_rightnormal_hdf_ss').val());
+                console.log("rightnormal:"+$('#ctl_shmetro_shmetroroutepriceform_rightnormal_hdf_ds').val());
+                if (ss == '') {
+                    alert("起始站无效！！");
+                    return false;
+                }
+                if (ds == '') {
+                    alert("终点站无效！！！");
+                    return false;
+                }
+                if (Math.abs(parseInt(ss) - parseInt(ds)) <= 0) {
+                    alert("起点站与终点站不能是同一个车站！");
+                    return false;
+                }
+
+                return true;
+            }
+            
+        </script> 
+              <script type="text/javascript">
+
+            var ss = '';
+            var ds = '';
+            var rptimer = null;
+
+            function setStationCode1(obj) {
+                var othis = $(obj);
+                
+                var sCode = othis.attr('id');
+                //var sName = othis.find('span').text();
+				 var sName = othis.find('span.st-name').text();
+                var sbgLine = othis.html();
+                var sLine = getLineCodeFromStationCode1(sCode);
+
+                othis.parent().parent().parent().find('.value input[type="hidden"]').val(sCode);
+                othis.parent().parent().parent().find('.value input[type="text"]').val(sName);
+                //othis.parent().parent().find('.value .tbstbg1').html(sbgLine);
+                //othis.parent().parent().parent().find('.value .tbstbg1').html("<span class=\"ln" + sLine + "\">" + sLine + "</span>");
+                
+                othis.parent().parent().parent().find('.value .tbstbg1').find('span').remove();
+                othis.parent().parent().parent().find('.value .tbstbg1').css('right','42px').css('left','auto').append('<span class="ln' + sLine + '">' + sLine + '</span>');
+                othis.parent().parent().hide();
+
+            }
+
+            function showserlay1(obj) {
+                var othis = $(obj);
+                var serlay = othis.parent().parent().find('.serlay');
+
+                var cv = $.trim(othis.val());
+                console.log("cv:" + cv);
+                if (cv == '') {
+                    serlay.hide();
+                    ss = '';
+                    ds = '';
+                    othis.parent().find(' input[type="hidden"]').val('');
+                    othis.parent().find(' input[type="text"]').val('');
+                    othis.parent().find('.tbstbg1').find('span').remove();
+                    othis.parent().find('.tbstbg1').css('right','auto').css('left', '1.6%').find('b').css('display', '');
+                    return;
+                }
+                else {
+                    othis.parent().find('.tbstbg1').css('left','auto').css('right','42px').find('b').css('display','none');
+                }
+                
+                if (cv.length >= 2) {
+                    if (cv[cv.length - 1] == '站' && cv[cv.length - 2] != '车') {
+                        cv = cv.substr(0, cv.length - 1);
+                    }
+                }
+
+                if (othis.attr('id').indexOf('tb_ss') > -1) {
+                    if (ss == cv) {
+                        serlay.show();
+                        return;
+                    }
+                    else {
+                        ss = cv;
+                    }
+                }
+                else if (othis.attr('id').indexOf('tb_ds') > -1) {
+                    if (ds == cv) {
+                        serlay.show();
+                        return;
+                    }
+                    else {
+                        ds = cv;
+                    }
+                }
+				
+                jQuery.support.cors = true;
+				$.ajax({
+                     contentType: 'text/plain',
+					type: 'GET',
+					dataType: 'text'
+                  , url: "https://m.shmetro.com/core/shmetro/mdstationinfoback_new.ashx"
+				  //, url: "http://119.15.136.136/core/shmetro/mdstationinfoback.ashx"
+				  //, url: "http://m.shmetro.com/core/shmetro/mdstationinfoback.ashx"
+				 
+                  , timeout: 5000
+				  //,contentType: "application/text; charset=utf-8"
+				  //,dataType:'jsonp' // 处理Ajax跨域问题
+                  , async: true
+                  , data: { 'act': 'ssdiv', 'cv': escape(cv) }
+				  // ,jsonp:'callback' 
+				  //, jsonpCallback:"success_jsonpCallback"
+
+                  , error: function(XMLHttpRequest, textStatus, errorThrown) {
+				    // alert( XMLHttpRequest.responseText );
+				
+                   //   alert("err:" + textStatus);
+                      //toszmztimer = window.setTimeout(function() { gettoszmzdata(containobj, contentobj); }, topzmztimeroutval);
+                  }
+                  , success: function(data, textStatus) {
+                      //alert(data);
+
+                      if (data != "error" && data != "nodata") {
+                          serlay.find('.serlaywrap').eq(0).empty();
+                          if (data == "noresult") {
+                              serlay.find('.serlaywrap').eq(0).append("<div>没有找到匹配的站点</div>");
+                          }
+                          else {
+                              serlay.find('.serlaywrap').eq(0).append(data);
+                          }
+                          serlay.show();
+                      }
+                  }
+                });
+
+            }
+
+            //站点文本框获得焦点时，进行比较延时弹出层
+            function tbstation1_focus(obj) {
+                var othis = $(obj);
+                if (othis.attr('id').indexOf('tb_ss') >= 0) {
+                    ss = $.trim(othis.val());
+                }
+                else if (othis.attr('id').indexOf('tb_ds') >= 0) {
+                    ds = $.trim(othis.val());
+                }
+                else {
+                    return;
+                }
+                rptimer = window.setInterval(function() { showserlay1(othis); }, 50);
+            }
+
+            //站点文本框失去焦点时，清除比较和弹出功能
+            function tbstation1_blur(obj) {
+                window.clearInterval(rptimer);
+                rptimer = null;
+                var othis = $(obj);
+                if ($.trim(othis.val()) == '') {
+                    othis.parent().find('.tbstbg1').css('right','auto').css('left','1.6%').find('b').css('display', '');
+                }
+           }
+            
+        
+        </script> 
+              <script type="text/javascript">
+
+            //取得所有站点测试
+            $(function () {
+
+                 jQuery.support.cors = true;
+				$.ajax({
+                     contentType: 'text/plain',
+					type: 'GET',
+					dataType: 'text'
+                  , url: "https://m.shmetro.com/core/shmetro/mdstationinfoback_new.ashx"
+				 // , url: "http://m.shmetro.com/core/shmetro/mdstationinfoback.ashx"
+				 
+                  , timeout: 5000
+				  //,dataType:'JSONP' // 处理Ajax跨域问题
+                  , async: true
+                  , data: { 'act': 'getAllStations' }
+                  , error: function (XMLHttpRequest, textStatus, errorThrown) {
+                      //alert("err:" + textStatus);
+                      //toszmztimer = window.setTimeout(function() { gettoszmzdata(containobj, contentobj); }, topzmztimeroutval);
+                  }
+                  , success: function (data, textStatus) {
+                      $('#hidContent').html(data);
+                  }
+                });
+
+            });
+
+        </script>
+		 <script type="text/javascript">
+
+            $(function() {
+				/*临时跳转路径查询
+				$("input[class*='tbstation']").click(function(){
+					window.location = "https://metro.tenchii.com/metroH5/";
+				});
+				*/
+				 //var hour=$("#tm1 .hour,#tm2 .hour"),min=$("#tm1 .min,,#tm2 .min"),date=new Date(),h=date.getHours(),m=date.getMinutes();
+				//for(var i=5;i<24;i++)hour.append('<option value="'+i+'"'+(i==h?'selected="selected"':'')+'>'+(i<10?'0'+i:i)+'</option>');
+				//for(var i=0;i<60;i++)min.append('<option value="'+i+'"'+(i==m?'selected="selected"':'')+'>'+(i<10?'0'+i:i)+'</option>');
+ 
+                $('.chgbtn1 a').click(function() { swapstations1(); });
+
+                $('#dotbtn1_ss').click(function() {
+                    showddllay1($(this));
+
+                });
+                $('#dotbtn1_ds').click(function() {
+                    showddllay1($(this));
+
+                });
+
+                $('#' + rpfid_rightnormal + '_ddl_sl').change(function() {
+                    var othis = $(this);
+                    var lineno = othis.val();
+                    var sCode = othis.parent().parent().find('.value input[type="hidden"]').val();
+
+                    initddlstation1('#' + rpfid_rightnormal + '_ddl_ss', lineno, sCode);
+                });
+
+                $('#' + rpfid_rightnormal + '_ddl_ss').change(function() {
+                    //var othis = $(this);
+                    /*var lName = $('#' + rpfid_rightnormal + '_ddl_sl option:selected').text();
+                    var sCode = othis.val();
+                    othis.parent().parent().find('.value input[type="hidden"]').val(sCode);
+                    var sName = othis.find('option:selected').text() ;
+                    othis.parent().parent().find('.value input[type="text"]').val(sName);
+                    othis.parent().parent().find('.value .tbstbg1').html("<span>" + sName + "</span>" + lName);
+                    */
+                    pageloadinit1('#' + rpfid_rightnormal + '_ddl_ss', 'ddl_sl');
+                    showddllay1('#' + rpfid_rightnormal + '_ddl_ss');
+                });
+
+                $('#' + rpfid_rightnormal + '_ddl_dl').change(function() {
+                    var othis = $(this);
+                    var lineno = othis.val();
+                    var sCode = othis.parent().parent().find('.value input[type="hidden"]').val();
+
+                    initddlstation1('#' + rpfid_rightnormal + '_ddl_ds', lineno, sCode);
+                });
+
+                $('#' + rpfid_rightnormal + '_ddl_ds').change(function() {
+                    /*var othis = $(this);
+                    var lName = $('#' + rpfid_rightnormal + '_ddl_dl option:selected').text();
+                    var sCode = othis.val();
+                    othis.parent().parent().find('.value input[type="hidden"]').val(sCode);
+                    var sName = othis.find('option:selected').text() ;
+                    othis.parent().parent().find('.value input[type="text"]').val(sName);
+                    othis.parent().parent().find('.value .tbstbg1').html("<span style=\"color:white\">" + sName + "</span>" + lName);
+                    */
+                    pageloadinit1('#' + rpfid_rightnormal + '_ddl_ds', 'ddl_dl');
+                    showddllay1('#' + rpfid_rightnormal + '_ddl_ds');
+                });
+
+                //init
+                pageloadinit1('#' + rpfid_rightnormal + '_ddl_ss', 'ddl_sl');
+                pageloadinit1('#' + rpfid_rightnormal + '_ddl_ds', 'ddl_dl');
+
+
+
+            });
+
+            $(function () {
+
+                //$('.tbstation1').change(function() {
+                //showserlay1($(this));
+                //});
+
+                $('.tbstation1').focus(function () {
+
+                    tbstation1_focus($(this));
+                });
+
+                $('.tbstation1').blur(function () {
+
+                    tbstation1_blur($(this));
+                });
+
+                $('.serlaywrap').on('click', 'a', function () {
+                    var tbstation1 = $(this).parent().parent().parent().find(' input[type="text"]');
+                    tbstation1_blur(tbstation1);
+                    $('.tbstation1').unbind('focus');
+                    $('.tbstation1').unbind('blur');
+                    setStationCode1($(this));
+                    setTimeout(function () { 
+                        $('.tbstation1').bind('focus', function() { tbstation1_focus($(this)); });
+                        $('.tbstation1').bind('blur', function () { tbstation1_blur($(this)); });
+                    }, 100);
+                });
+
+                $('.serlayclose1 a').click(function () {
+                    var serlay = $(this).parent().parent();
+                    serlay.hide();
+                    var tbstation1 = serlay.parent().find(' input[type="text"]');
+                    tbstation1_blur(tbstation1);
+                });
+
+
+            });
+        
+        </script>
+		 <script type="text/javascript">
+
+    $(function () {
+        $(".inner_mainrpr .tabs a").each(function (index) {
+            var othis = $(this);
+            othis.click(function () {
+                $(".rpcontent").css("display", "none");
+                $(".rpcontent" + index + " .rpitempass").css("display", "none");
+                $(".rpcontent" + index).css("display", "block");
+                othis.parent().find(".active").removeClass("active");
+                othis.addClass("active");
+            });
+        });
+
+        $(".rpshpass").click(function () {
+            var othis = $(this);
+
+            if (othis.parent().find(".rpitempass").eq(0).css("display") == "none") {
+                othis.parent().find(".rpitempass").css("display", "table");
+            }
+            else {
+                othis.parent().find(".rpitempass").css("display", "none");
+            }
+        });
+
+        $('.inner_mainrpr .tabs').waypoint('sticky');
+
+        //console.log($('.scrollAnthor').offset().top);
+        try {
+            var scrollTop = $('.scrollAnthor').offset().top - $('.scrollAnthor').outerHeight();
+            var agent = navigator.userAgent;
+            //alert(agent);
+            //if (agent.search(/(iPhone)/) != -1) {
+                scrollTop-=30;
+            //}
+            //alert(scrollTop);
+            //$(document.documentElement).scrollTop(scrollTop) || $(document.body).scrollTop(scrollTop);
+            $('body,html').scrollTop(scrollTop);
+        }
+        catch (e)
+        { }
+
+    });
+
+</script> 
+ <script type="text/javascript">var rpfid_rightnormal='ctl_shmetro_shmetroroutepriceform_rightnormal'</script>
+  <!-- right_normal end -->
+ </div>
+</div>  <!-- right end --> 
+</div>
+<!-- content end --> 
+
+<!-- footer start --> 
+﻿
+
+
+<!--收藏展开开始-->
+<div class="shouchangzk">
+<div class="schang-title">
+<div class="left-schangtitle" onclick="addsc()"><img src="/skin/images/shoucicon.png" width="30" height="29" onclick="this.src='/skin/images/schouxz.png'" /></div>
+<div class="left-histitle" onclick="shouchuan()"><img src="/skin/images/shoucicon.png" width="30" height="29"/></div>
+
+
+<div class="right-schangtitle"><img src="/skin/images/closed-schang.png" width="14" height="14" onclick="closedgb()" /></div>
+
+</div>
+
+
+<style>
+.left-histitle{ float:left; padding-left:10px;}
+.sclist{padding-left:15px}
+.hislist{padding-left:15px}
+.fxlist{padding-left:15px}
+</style>
+<div class="listscjlu">
+<ul>
+
+<li class="tilename">我的收藏<span  class="shouchangmore">更多</span></li>
+<li class="sclist"></li>
+
+
+</ul>
+</div>
+
+<div class="listhistory" style="overflow-y:auto; overflow-x: hidden;">
+<ul>
+
+<li class="tilenamehis">我的历史<span class="historymore">更多</span></li>
+ 
+<li class="hislist"></li>
+
+ 
+</ul>
+</div>
+<div class="listfenxiang">
+<ul>
+<li class="tilenamefx">我的分享</li>
+<li class="fxlist"></li>
+</ul>
+</div>
+
+<div class="lujiangcx"><a  href="/cphc/index.htm" target="_blank">路径与票价查询</a></div>
+<div class="skebiao"><a  href="/hcskb/index.htm" target="_blank">时刻表查询</a> </div>
+<div class="keliuinfo"><a href="/klssxx/index.htm" title="客流实时信息" target="_blank">客流实时信息</a> </div>
+<div class="yanwugzi"><a target="_blank"  href="/yygg/index.htm" title="运营公告" >运营公告</a></div>
+
+</div>
+
+
+<!--收藏展开结束-->
+
+<script>
+(function(){
+console.log('shouchangzk')
+$('.shouchangzk').height(window.innerHeight);
+})()
+function shouchuan(){
+
+
+$(".left-schangtitle").show();
+$(".left-histitle").hide(); 
+$(".shouchangzk").show();
+ 
+$(".listscjlu").show(); 
+$(".listhistory").hide(); 
+$(".listfenxiang").hide(); 
+ }
+function historyurl(){
+$(".left-schangtitle").hide();
+$(".left-histitle").show(); 
+var total = $(".shouchangzk").height();
+$(".listhistory").height(total-250);
+
+$(".shouchangzk").show(); 
+$(".listhistory").show(); 
+$(".listscjlu").hide(); 
+$(".listfenxiang").hide(); 
+ }
+ function fenxiang(){
+$(".shouchangzk").show(); 
+$(".listhistory").hide(); 
+$(".listscjlu").hide(); 
+$(".listfenxiang").show(); 
+
+ }
+ $(".shouchangmore").click(function(){  
+ $(".listhistory").height($(".listhistory").height()+200);
+     $(".lujiangcx").hide(); 
+	$(".skebiao").hide();
+	$(".keliuinfo").hide(); 
+	$(".yanwugzi").hide(); 
+});
+ $(".historymore").click(function(){  
+ $(".listhistory").height($(".listhistory").height()+200);
+     $(".lujiangcx").hide(); 
+	$(".skebiao").hide();
+	$(".keliuinfo").hide(); 
+	$(".yanwugzi").hide();         
+});
+
+
+
+</script>
+
+<script>
+var tbody="";
+var tbodyfx="";
+var strfx="";
+var sclist=$(".tilename");
+var hislist=$(".tilenamehis");
+var fxlist=$(".tilenamefx");
+var obj="";
+var arr=[];
+//初始化
+if($(".fxlist")){
+$(".fxlist").remove();}
+var shareurl = "http://114.80.218.33";
+var sharecontent="我发现一个不错的网页，它叫上海地铁运营服务专页，里面信息是由上海地铁官方发布的，有地铁新闻、地铁实况、路径查询、票卡介绍、地铁官方指南及其他资料下载等等信息。来自官方，值得信赖哦~赶紧去瞧瞧吧~";
+
+strfx+='<li class="fxlist" style="background:url(/skin/images/wbon.png) no-repeat left;padding-left:35px;margin-left:10px;"><a href="http://service.weibo.com/share/share.php?url=" '+encodeURIComponent(shareurl)+'"&title="'+encodeURIComponent(sharecontent)+'">分享到新浪微博</a></li>';
+strfx+='<li class="fxlist" style="background:url(/skin/images/tengxunn.png) no-repeat left;padding-left:35px;margin-left:10px;"><a href="http://share.v.t.qq.com/index.php?c=share&a=index&url=" '+encodeURIComponent(shareurl)+'"&title="'+encodeURIComponent(sharecontent)+'">分享到腾讯微博</a></li>';
+strfx+='<li class="fxlist" style="background:url(/skin/images/qqkongjiann.png) no-repeat left;padding-left:35px;margin-left:10px;"><a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=" '+encodeURIComponent(shareurl)+'"&title="'+encodeURIComponent(sharecontent)+'">分享到QQ空间</a></li>';
+strfx+='<li class="fxlist"><a href="javascript:;" id="weixin" title="关注上海地铁官方微信" onclick="showweixin()">关注上海地铁官方微信</a></li>';
+
+tbodyfx=strfx;
+//console.dirxml(tbodyfx);
+fxlist.after(tbodyfx);
+
+if(localStorage.shoucang=="null"|localStorage.shoucang==" "|localStorage.shoucang==""|localStorage.shoucang==undefined){
+   
+    var lssc=[];
+    var sc={};
+    localStorage.shoucang=lssc;
+    }else{
+    loadsc();
+    var lssc=localStorage.shoucang;
+    var sc={};
+    }
+if(localStorage.history=="null"|localStorage.history==" "|localStorage.history==""|localStorage.history==undefined){
+   
+    var lshis=[];
+    var his={};
+    localStorage.history=lshis;
+    }else{
+    loadhis();
+    var lshis=localStorage.history;
+    var his={};
+    }
+//自动加入历史
+//console.dir(localStorage.history);
+if(localStorage.history!=""){
+ lshis=JSON.parse(localStorage.history);
+}
+  
+  his={};
+    his.url=window.location.href;
+    his.title=$('title').html();
+	var d = new Date();
+	his.timevalue=d.getTime();
+
+    lshis.push(his);
+   lshis=JSON.stringify(lshis);
+    localStorage.history=lshis;
+   loadhis();
+//加入收藏
+function showweixin(){
+ $("#share_weixin").show();
+} 
+function addsc(){
+//console.dir(localStorage.shoucang);
+if(localStorage.shoucang!=""){
+ lssc=JSON.parse(localStorage.shoucang);
+}
+  
+  sc={};
+    sc.url=window.location.href;
+    sc.title=$('title').html();
+
+    lssc.push(sc);
+   lssc=JSON.stringify(lssc);
+    localStorage.shoucang=lssc;
+   loadsc();
+}
+
+//加载收藏
+function loadsc(){
+  obj=localStorage.shoucang;
+  var object=JSON.parse(obj);
+ var str="";
+
+
+//去重
+Array.prototype.removeRepeatAttr=function(){
+    var tmp={},b=[],a=this; 
+    for(var i=0;i<a.length;i++){
+        if(!tmp[a[i].url]){
+            b.push(a[i]);
+            tmp[a[i].url]=!0;
+        }
+    };
+    return b;
+}
+if($(".sclist")){
+$(".sclist").remove();}
+//console.dir(object);
+object=object.removeRepeatAttr();
+//console.dir(object);
+localStorage.shoucang=JSON.stringify(object);
+for(var i=0;i<object.length;i++){
+ str+='<li class="sclist"><a href="'+object[i].url+'">'+object[i].title+'</a><span style="float:right;padding-right:15px;padding-top:10px;"><img src="/skin/images/closed-schang.png"  onclick="delsc(\''+object[i].url+'\')"/></span></li>';
+}
+tbody=str;
+//console.dirxml(tbody);
+sclist.after(tbody);
+
+}
+
+//加载历史
+function loadhis(){
+  obj=localStorage.history;
+  var object=JSON.parse(obj);
+ var str="";
+
+
+//去重
+Array.prototype.removeRepeatAttr=function(){
+    var tmp={},b=[],a=this; 
+    for(var i=0;i<a.length;i++){
+        if(!tmp[a[i].url]){
+            b.push(a[i]);
+            tmp[a[i].url]=!0;
+        }
+    };
+	for(var k=0;k<b.length;k++){
+		for(var j = 0;j<b.length;j++){
+			if(b[j].timevalue>b[k].timevalue){
+				var t = b[j];
+				b[j] = b[k];
+				b[k] = t;
+			}
+		}
+	}
+    return b;
+}
+if($(".hislist")){
+$(".hislist").remove();}
+//console.dir(object);
+object=object.removeRepeatAttr();
+//console.dir(object);
+localStorage.history=JSON.stringify(object);
+for(var i=object.length-1;i>=0;i--){
+var newTime = new Date(object[i].timevalue); 
+var nowTime = new Date();
+var newmonth = newTime.getMonth()+1;
+var nowmonth = nowTime.getMonth()+1;
+var newday= newTime.getDay();
+var nowday = nowTime.getDay();
+newmonth=newmonth>9?newmonth:"0"+newmonth;
+nowmonth=nowmonth>9?nowmonth:"0"+nowmonth;
+newday=newday>9?newday:"0"+newday;
+nowday=nowday>9?nowday:"0"+nowday;
+var newdate = newTime.getFullYear()+'-'+newmonth+'-'+newday;
+var nowdate = nowTime.getFullYear()+'-'+nowmonth+'-'+nowday;
+var viewdate="";
+if(nowdate==newdate){
+	var minuteTemp = newTime.getMinutes();
+	var hourTemp = newTime.getHours();
+	minuteTemp=minuteTemp>9?minuteTemp:"0"+minuteTemp;
+	hourTemp=hourTemp>9?hourTemp:"0"+hourTemp;
+	viewdate=hourTemp+':'+minuteTemp;
+}else{
+	viewdate = newdate;
+}
+
+ str+='<li class="hislist"><a href="'+object[i].url+'">'+object[i].title+'  '+viewdate+'</a></li>';
+}
+tbody=str;
+//console.dirxml(tbody);
+hislist.after(tbody);
+
+}
+
+function delsc(url){
+	//console.log(url);
+	 obj=localStorage.shoucang;
+	 var object=JSON.parse(obj);
+	 //console.log(object);
+		var str="";
+	//删除收藏
+	Array.prototype.indexOf = function(val) {
+	for (var i = 0; i < this.length; i++) {
+	if (this[i].url == val) return i;
+	}
+	return -1;
+	};
+	Array.prototype.removeAttr = function(val) {
+	var index = this.indexOf(val);
+	if (index > -1) {
+	this.splice(index, 1);
+	}
+	};
+	object.removeAttr(url);
+	 //console.log(object);
+	
+	//去重
+	Array.prototype.removeRepeatAttr=function(){
+		var tmp={},b=[],a=this; 
+		for(var i=0;i<a.length;i++){
+			if(!tmp[a[i].url]){
+				b.push(a[i]);
+				tmp[a[i].url]=!0;
+			}
+		};
+		return b;
+	}
+	if($(".sclist")){
+	$(".sclist").remove();}
+	//console.dir(object);
+	object=object.removeRepeatAttr();
+	//console.dir(object);
+	localStorage.shoucang=JSON.stringify(object);
+	for(var i=0;i<object.length;i++){
+	 str+='<li class="sclist"><a href="'+object[i].url+'">'+object[i].title+'</a><span style="float:right;padding-right:15px;padding-top:10px;"><img src="/skin/images/closed-schang.png"  onclick="delsc(\''+object[i].url+'\')"/></span></li>';
+	}
+	tbody=str;
+	//console.dirxml(tbody);
+	sclist.after(tbody);
+}
+function closedgb(){
+ 
+$(".shouchangzk").hide(); 
+ }
+ 
+ function closedht(){
+ 
+$(".historyzk").hide(); 
+ }
+</script>
+</div> </div> 
+ 
+</div> 
+<div  class="dibeu">
+  <div class="xx">
+    <div class="fottom"> 
+      <div class="center-fottom">
+       <img src="/skin/images/diblie.jpg"/> 
+         
+      </div>
+      <div class="right-fottom" style="float:right">
+        <table width="100%" border="0" cellspacing="10" cellpadding="10">
+          <tr>
+            <td><a target="_blank" href="/zlxz/index.htm" title="资料下载"><img src="/skin/images/zlxzai.png"/></a></td>
+            <td><a target="_blank" href="/zxjl/index.htm" title="咨询交流"><img src="/skin/images/zxjiaoliu.png"/></a></td>
+          </tr>
+          <tr>
+            <td><a href="/zxdcha/index.htm"><img src="/skin/images/jiucuo.png" title="在线调研" alt="在线调研"/></a></td>
+            <td><a href="/yjdz/index.htm"><img src="/skin/images/gyimhua.png" title="邮件订阅" alt="邮件订阅"/></a></a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div> </div>
+  
+  
+
+
+<div class="sydibu">
+  <div id="footer"> 
+  <div class="footew"><span style=" background:url(/skin/images/ditieicon.png) no-repeat top left; padding-left:25px; /> "> <b>Copyright &copy; 2008</b> 上海申通地铁集团有限公司 版权所有 <b>All Rights Reserved. 沪ICP备16013416号-3 沪公网安备 31011202005546号 工商备案工商备案 2018091712362015号</b> 
+  <p>为了更好的网站体验，建议您使用谷歌、火狐、IE9及以上版本、360等高版本的浏览器。</p>
+  <!--<a href="#"><img src="/skin/images/ico/ico_15.png" alt="website_count" /></a>--> 
+  </span> <span style="float:right;margin-right:10px;"><a href="https://m.shmetro.com" style="color:#000; font-weight:bold">手机版</a></span> </div>
+ </div></div>
+<style>
+.rightqbiao {position: fixed;    z-index: 9999;}
+.rightfloat1{ background:url(/skin/images/jiantou.png) no-repeat right; cursor:pointer; position:fixed; top:148px; right:0px; width:30px; height:30px;}
+.rightfloat-m{ background:url(/skin/images/xiangxiaright.png) no-repeat right; position:fixed; cursor:pointer; top:148px; right:0px; width:30px;height:30px;}
+.rightfloat1-f{ background:url(/skin/images/jiantou.png) no-repeat right;position:fixed;  cursor:pointer; top:148px;right:0px; width:30px;height:30px;}
+
+.topdbu {
+top:560px !important;
+}
+.rightfloat{
+background: url(/skin/images/rightfloatbg.png) repeat left top !important;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".rightfloat1").click(function(){
+<!--  $(".right_ride_search_form").toggle();-->
+if($(".rightfloat22").css("display")=="block"){
+
+$(".rightfloat22").hide();
+this.className='rightfloat-m';
+
+}else{
+
+$(".rightfloat22").show();
+this.className='rightfloat1-f';
+}
+
+  });
+});
+ 
+</script>
+<style> .zxs{ display:none; position:absolute;margin-left:-120px; margin-top:-90px}</style>
+<script type="text/javascript">
+  $(document).ready(function(){
+  $("#sharewx").mouseover(function(){
+  $(".zxs").toggle();
+  });
+});  
+
+function gbi(){
+	$("#share_weixin").hide();
+	}
+</script>
+
+<div id="share_weixin" style="display:none;position:fixed;top:241px;right:80px;width:300px;background:#fff;height:320px;    border: 1px solid #ddd;z-index:99999">
+<p style="float:right;padding-right:5px; cursor:pointer; font-size:16px;" onclick="gbi()" >X</p>
+<p style="text-align:center;margin:5px;">请扫描以下二维码，将此页面分享到微信</p>
+<div id="share_weixin_qrcode" style="margin:0 auto;width:256px;height:256px;">
+</div>
+</div>
+
+<div class="rightqbiao" style="display:none;">
+  <div class="rightfloat1"> </div>
+  
+  <div class="rightfloat">
+  <div class="rightfloat22">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="sharecon">
+      <tr>
+        <td height="40" align="center"><img style="cursor:pointer" src="/skin/images/star.png" title="收藏" onmouseover="this.src='/skin/images/starhover.png'" onmouseout="this.src='/skin/images/star.png'" onclick="shouchuan()" /></td>
+        <td height="40" align="center"><img style="cursor:pointer" src="/skin/images/dayin.png"  title="历史记录" onmouseover="this.src='/skin/images/dayinhover.png'" onmouseout="this.src='/skin/images/dayin.png'" onclick="historyurl()"/></td>
+      </tr>
+      <tr>
+        <td height="40" align="center"><img style="cursor:pointer" id="changefontsize" src="/skin/images/azi.png" title="字体" onmouseover="this.src='/skin/images/zitihao.png'" onmouseout="this.src='/skin/images/azi.png'" width="29" height="28" /> 
+        <div id="fontsizechange" class="sharetopq" style="display:none;position:absolute; z-index:9999; right:70px; top:50px">
+	  <a href="javascript:;" title="缩小" id="fontSizeLow">A</a>
+      <a href="javascript:;" title="还原" id="fontSizeRe">A</a>
+	  <a href="javascript:;" title="放大" id="fontSizeHigh">A</a>
+      
+		
+		</div>
+		</td>
+		<!--<td height="40" align="center"><img src="/skin/images/share.png" onclick="fenxiang()"/>	-->
+        <td height="40" align="center"><a href="javascript:;" id="share"><img src="/skin/images/share.png" title="分享" width="29" height="28"/>	</a>
+     
+<div id="sharediv" class="sharetop" style="display:none; position:absolute; z-index:9999; right:30px; top:50px">  <a href="javascript:;" title="分享到腾讯微博" id="sharetx">
+<img src="/skin/images/temp/tx.png" border="0" style="cursor:pointer" /></a><a href="javascript:;" title="分享到QQ空间" id="shareqq">
+<img src="/skin/images/temp/qqkj.png" border="0" style="cursor:pointer"/></a> <a href="javascript:;" title="关注上海地铁官方微信" id="sharewx">
+<img src="/skin/images/temp/wxin.png" border="0" style="cursor:pointer"/>
+ 
+</a> <a href="javascript:;" title="分享到新浪微博" id="sharexl">
+<img src="/skin/images/temp/wbo.png" border="0" style="cursor:pointer"/></a> </div>
+        </td>				
+      </tr>
+    </table>
+    
+    <p style="margin-top:3px;">
+    <a target="_blank" href="/flfg/3936.htm" title="上海市轨道交通运营安全管理办法"><p style="text-align:center"><img src="/u/cmswww/201612/19174318kspw.png" alt="上海市轨道交通运营安全管理办法"width="100"/></a>
+    <a target="_blank" href="/ckxz/index.htm" title="上海市轨道交通乘客守则"><p style="text-align:center"><img src="/u/cmswww/201612/191743526h5d.png" alt="上海市轨道交通乘客守则"width="100"/></a>
+    <a target="_blank" href="/flfg/3937.htm" title="上海市轨道交通管理条例"><p style="text-align:center"><img src="/u/cmswww/201610/31203437su86.png" alt="上海市轨道交通管理条例"width="100"/></a>
+    <a target="_blank" href="/gltl/4734.htm" title="市域线乘客守则（试行版）"><p style="text-align:center"><img src="/skin/images/sycksz.png" alt="市域线乘客守则（试行版）"width="100"/></a>
+    </p></div></div>
+  <div class="topdbu"><a title="返回顶部"  href="#"><img src="/skin/images/topding.png"  border="0" /></a></div>
+</div>
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="/skin/js/jhelper_config.js"></script>
+<script type="text/javascript" src="https://wzagjt.shanghai.gov.cn/dist/aria.js?appid=5739ed5250ef3ef15ccec72dec5f1515"></script>
+<!--<script src="https://voice.ewdcloud.com/js/tongyi/jhelper/jhelper_2.0.js" charset="gb2312"></script>-->
+<script src="https://jhelper.shanghai.gov.cn/publicJS/20200811001.js" charset="gb2312"></script>
+
+<script type="text/javascript" src="/skin/js/owl.carousel.min.js"></script>
+
+<script>
+function toggleToolBar()
+{
+	aria.start();
+}
+    $(".navbar-nav .dropdown:last-child ul li:last-child ").keydown(function (e) {
+
+        var e = window.event ? window.event : e;
+        var keyCode = e.which ? e.which : e.keyCode;
+        //tab
+
+        if (keyCode == 9) {
+
+            $(".navbar-nav .dropdown:last-child ul ").hide()
+            $(".navbar-nav .dropdown:last-child a ").css({'background-color':'transparent'})
+        }
+    });
+
+</script>
+
+<!-- footer end -->
+<style rel="stylesheet" type="text/css">
+.linelu{ float:left; width:80px; text-align:center; margin-right:40px;  font-size:14px; font-weight:bold; height:60px;  vertical-align:text-top; color:#676767 }
+.rightline{ float:left; width:100%;background:url(../images/temp/bg-huanline2.jpg) no-repeat left top;  }
+.linecheng{ border-bottom:1px solid #d0d0d0; padding-bottom:5px;}
+.tip{height: 33px;line-height: 33px;overflow: hidden;text-align: center;border: 1px solid #cfcfcf;background: #f1f1f1;font-size: 14px;}
+</style>
+<script type="text/javascript"> 
+function getPlanTrip(startId,endId,planTime,week,ticket,planType)		//获得计划出行路径信息
+	{
+		planType = planType;
+		let xmlhttp;
+	
+		if (window.XMLHttpRequest)
+		{
+			// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+			xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{
+			// IE6, IE5 浏览器执行代码
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				let jdata=xmlhttp.responseText;
+				let pt = new planTrip(jdata,planType);
+				pt.set_language('cn');
+				pt.offshowmsg = 0;			//关闭显示提示信息
+				pt.renderRoutePathInfo("divmain");
+
+				//显示结果DIV
+				document.getElementById("search_result").style.display="block";
+			}
+		}
+		//"startId="+startId+"&endId=" + endId+ "&planTime=22:00&week=5&ticket=oneWay&type=1"
+		xmlhttp.open("GET","https://m.shmetro.com/interface/plantrip/pt.aspx?func=plantrip&startId="+startId+"&endId="+endId+ "&planTime="+planTime+"&week="+week+"&ticket="+ticket+"&type="+planType,true);
+		xmlhttp.send();
+	}
+$(function(){ 
+	pageloadinit('#' + rpfid + '_ddl_ss', 'ddl_sl');
+    pageloadinit('#' + rpfid + '_ddl_ds', 'ddl_dl');
+  $("#so1,#so2").station({c:getParam('o')});
+  $("#sd1,#sd2").station({c:getParam('d')});
+ 
+  $("#app_type_select a").click(function(){
+    $(".app_type_select a").removeClass("cur");
+    $(this).addClass("cur");
+  });
+ 
+  var hour=$("#tm1 .hour,#tm2 .hour"),min=$("#tm1 .min,#tm2 .min"),date=new Date(),h=date.getHours(),m=date.getMinutes();
+	var weekend1 =  $("#jh select[station=t]");
+	var day = date.getDay();
+	weekend1.append('<option value="1"'+(1==day?'selected="selected"':'')+'>周一</option>');
+	weekend1.append('<option value="2"'+(2==day?'selected="selected"':'')+'>周二</option>');
+	weekend1.append('<option value="3"'+(3==day?'selected="selected"':'')+'>周三</option>');
+	weekend1.append('<option value="4"'+(4==day?'selected="selected"':'')+'>周四</option>');
+	weekend1.append('<option value="5"'+(5==day?'selected="selected"':'')+'>周五*</option>');
+	weekend1.append('<option value="6"'+(6==day?'selected="selected"':'')+'>周六*</option>');
+	weekend1.append('<option value="0"'+(0==day?'selected="selected"':'')+'>周日</option>');
+   hour.empty();
+	min.empty();
+   for(var i=0;i<60;i++)min.append('<option value="'+i+'"'+(i==m?'selected="selected"':'')+'>'+(i<10?'0'+i:i)+'</option>');
+   for(var i=4;i<24;i++)hour.append('<option value="'+i+'"'+(i==h?'selected="selected"':'')+'>'+(i<10?'0'+i:i)+'</option>');
+   if(day=='5' || day=='6' ){
+		hour.empty();
+		 for(var i=4;i<24;i++)hour.append('<option value="'+i+'"'+(i==h?'selected="selected"':'')+'>'+(i<10?'0'+i:i)+'</option>');
+		if(h==1){
+		hour.append('<option value="0">00(次)</option>');
+		hour.append('<option value="1" selected="selected">01(次)</option>');
+		}else if (h==0){
+		hour.append('<option value="0"  selected="selected">00(次)</option>')
+		hour.append('<option value="1">01(次)</option>')
+		}else{
+		hour.append('<option value="0">00(次)</option>')
+		hour.append('<option value="1">01(次)</option>')
+		}
+	 }else{
+	  hour.append('<option value="0">00(次)</option>');
+	 }
+      $("#jh select[station=t]").click(function(){
+	var selectday = $("#jh select[station=t]").val();
+	 if(selectday=='5' || selectday=='6' ){
+		hour.empty();
+		 for(var i=4;i<24;i++)hour.append('<option value="'+i+'"'+(i==h?'selected="selected"':'')+'>'+(i<10?'0'+i:i)+'</option>');
+		if(h==1){
+		hour.append('<option value="0">00(次)</option>');
+		hour.append('<option value="1" selected="selected">01(次)</option>');
+		}else if (h==0){
+		hour.append('<option value="0"  selected="selected">00(次)</option>')
+		hour.append('<option value="1">01(次)</option>')
+		}else{
+		hour.append('<option value="0">00(次)</option>')
+		hour.append('<option value="1">01(次)</option>')
+		}
+	 }else{
+		hour.empty();
+		 for(var i=4;i<24;i++)hour.append('<option value="'+i+'"'+(i==h?'selected="selected"':'')+'>'+(i<10?'0'+i:i)+'</option>');
+		  hour.append('<option value="0">00(次)</option>');
+	 }
+  });
+  
+ 
+  $("#mbc_search").click(function(event){
+if($("#tm1 .hour").val()=='0'){
+var tm = 24*60*60 + parseInt($("#tm1 .min").val())*60;
+}else if ($("#tm1 .hour").val()=='1'){
+var tm = 25*60*60 + parseInt($("#tm1 .min").val())*60;
+}else{
+var tm = parseInt($("#tm1 .hour").val())*60*60 + parseInt($("#tm1 .min").val())*60;
+}
+    
+	var data ="";
+	var ctl_shmetro_shmetroroutepriceform1_hdf_ds = getParam('ctl_shmetro_shmetroroutepriceform1_hdf_ds');
+	var ctl_shmetro_shmetroroutepriceform1_hdf_ds_input = $('#' + rpfid + '_hdf_ss').val();
+	console.log("ctl_shmetro_shmetroroutepriceform1_hdf_ds="+ctl_shmetro_shmetroroutepriceform1_hdf_ds);
+	console.log("ctl_shmetro_shmetroroutepriceform1_hdf_ds_input="+ctl_shmetro_shmetroroutepriceform1_hdf_ds_input);
+	if(ctl_shmetro_shmetroroutepriceform1_hdf_ds!=''&& ctl_shmetro_shmetroroutepriceform1_hdf_ss!='' &&ctl_shmetro_shmetroroutepriceform1_hdf_ds_input==''){
+		console.log("跳转");
+		var ctl_shmetro_shmetroroutepriceform1_tm = getParam('ctl_shmetro_shmetroroutepriceform1_tm');
+		var ctl_shmetro_shmetroroutepriceform1_hdf_ss = getParam('ctl_shmetro_shmetroroutepriceform1_hdf_ss');
+		var ctl_shmetro_shmetroroutepriceform1_hdf_ds = getParam('ctl_shmetro_shmetroroutepriceform1_hdf_ds');
+		var ctl_shmetro_shmetroroutepriceform1_tb_ss = getParam('ctl_shmetro_shmetroroutepriceform1_tb_ss');
+		var ctl_shmetro_shmetroroutepriceform1_tb_ds = getParam('ctl_shmetro_shmetroroutepriceform1_tb_ds');
+		$('#ctl_shmetro_shmetroroutepriceform1_hdf_ss').val(ctl_shmetro_shmetroroutepriceform1_hdf_ss);
+		$('#ctl_shmetro_shmetroroutepriceform1_hdf_ds').val(ctl_shmetro_shmetroroutepriceform1_hdf_ds);
+		$('#ctl_shmetro_shmetroroutepriceform1_tb_ss').val(decodeURIComponent(ctl_shmetro_shmetroroutepriceform1_tb_ss));
+		if(parseInt(getLineCodeFromStationCode(ctl_shmetro_shmetroroutepriceform1_hdf_ss))==61){
+			$('#divbg_ss').css('right','10%').css('left','auto').append('<span class="idl ln' + parseInt(getLineCodeFromStationCode(ctl_shmetro_shmetroroutepriceform1_hdf_ss)) + '"><span class="lineno1">浦江线</span></span>');
+			}
+		else{$('#divbg_ss').css('right','10%').css('left','auto').append('<span class="idl ln_' + parseInt(getLineCodeFromStationCode(ctl_shmetro_shmetroroutepriceform1_hdf_ss)) + '"><span class="lineno"></span><span class="ln-text"><img src="/skin/images/line/' + parseInt(getLineCodeFromStationCode(ctl_shmetro_shmetroroutepriceform1_hdf_ss))+ '.svg" style="height:23px;"/></span></span>');
+		}
+		$('#divbg_ss .tips').hide();
+		$('#ctl_shmetro_shmetroroutepriceform1_tb_ds').val(decodeURIComponent(ctl_shmetro_shmetroroutepriceform1_tb_ds));
+		if(parseInt(getLineCodeFromStationCode(ctl_shmetro_shmetroroutepriceform1_hdf_ds))==61)
+		{$('#divbg_ds').css('right','10%').css('left','auto').append('<span class="idl ln' + parseInt(getLineCodeFromStationCode(ctl_shmetro_shmetroroutepriceform1_hdf_ds)) + '"><span class="lineno1">浦江线</span>');
+		}
+		else{$('#divbg_ds').css('right','10%').css('left','auto').append('<span class="idl ln_' + parseInt(getLineCodeFromStationCode(ctl_shmetro_shmetroroutepriceform1_hdf_ds)) + '"><span class="lineno"></span><span class="ln-text"><img src="/skin/images/line/' + parseInt(getLineCodeFromStationCode(ctl_shmetro_shmetroroutepriceform1_hdf_ds))+ '.svg" style="height:23px;"/></span></span>');
+		}
+		$('#divbg_ds .tips').hide();
+		var selectday = getParam('selectday');
+		var tickettype = getParam('tickettype');
+	
+		if(selectday=='1'||selectday=='2'||selectday=='3'||selectday=='4'){
+			result='MONTOTHUR_'+tickettype;
+		}else if(selectday=='5'){
+			result='FRIDAY_'+tickettype;
+		}else if(selectday=='6'){
+			result='SATURDAY_'+tickettype;
+		}else if (selectday=='0')
+		{
+			result='WEEKEND_'+tickettype;
+		}else{
+			result='0';
+		}
+		weekend1.empty();
+		weekend1.append('<option value="1"'+(1==selectday?'selected="selected"':'')+'>周一</option>');
+		weekend1.append('<option value="2"'+(2==selectday?'selected="selected"':'')+'>周二</option>');
+		weekend1.append('<option value="3"'+(3==selectday?'selected="selected"':'')+'>周三</option>');
+		weekend1.append('<option value="4"'+(4==selectday?'selected="selected"':'')+'>周四</option>');
+		weekend1.append('<option value="5"'+(5==selectday?'selected="selected"':'')+'>周五*</option>');
+		weekend1.append('<option value="6"'+(6==selectday?'selected="selected"':'')+'>周六*</option>');
+		weekend1.append('<option value="0"'+(0==selectday?'selected="selected"':'')+'>周日</option>');
+		var hh = (parseInt(parseInt(ctl_shmetro_shmetroroutepriceform1_tm)/3600.0)).toString(),mm=(parseInt((parseFloat(parseInt(ctl_shmetro_shmetroroutepriceform1_tm)/3600.0)-parseInt(parseInt(ctl_shmetro_shmetroroutepriceform1_tm)/3600.0))*60)).toString();
+		 var hour1=$("#tm1 .hour");
+		 var min1=$("#tm1 .min");
+		 console.log("mm="+mm);
+		 console.log("hh="+hh);
+		hour1.empty();
+		 for(var i=4;i<24;i++)hour1.append('<option value="'+i+'"'+(i==hh?'selected="selected"':'')+'>'+(i<10?'0'+i:i)+'</option>');
+		if(hh==25){
+		hour1.append('<option value="0">00(次)</option>');
+		hour1.append('<option value="1" selected="selected">01(次)</option>');
+		}else if (hh==24){
+		hour1.append('<option value="0"  selected="selected">00(次)</option>');
+		hour1.append('<option value="1">01(次)</option>');
+		}else{
+		hour1.append('<option value="0">00(次)</option>');
+		hour1.append('<option value="1">01(次)</option>');
+		}
+		min1.empty();
+		for(var i=0;i<60;i++)min1.append('<option value="'+i+'"'+(i==mm?'selected="selected"':'')+'>'+(i<10?'0'+i:i)+'</option>');
+   
+		tm = ctl_shmetro_shmetroroutepriceform1_tm;
+		data = {"o":ctl_shmetro_shmetroroutepriceform1_hdf_ss,"d":ctl_shmetro_shmetroroutepriceform1_hdf_ds,"t":result,"tm":ctl_shmetro_shmetroroutepriceform1_tm};
+	}
+	if(ctl_shmetro_shmetroroutepriceform1_hdf_ds=='' && ctl_shmetro_shmetroroutepriceform1_hdf_ds_input!=''){	
+	console.log("不跳转");
+		//var tickettype = $("#ctl_shmetro_shmetroroutepriceform1_ddltt").val();//"0";
+		var tickettype = $("#ctl_shmetro_shmetroroutepriceform1_ddltt").val();
+		//getParam('ctl_shmetro_shmetroroutepriceform1_ddltt');
+		var routetype = $("#ctl_shmetro_shmetroroutepriceform1_ddlrt").val();//getParam('ctl_shmetro_shmetroroutepriceform1_ddlrt');
+		
+		var selectday = $("#jh select[station=t]").val();
+	
+		var result='';
+		if(selectday=='1'||selectday=='2'||selectday=='3'||selectday=='4'){
+			result='MONTOTHUR_'+tickettype;
+		}else if(selectday=='5'){
+			result='FRIDAY_'+tickettype;
+		}else if(selectday=='6'){
+			result='SATURDAY_'+tickettype;
+		}else if (selectday=='0')
+		{
+			result='WEEKEND_'+tickettype;
+		}else{
+			result='0';
+		}
+		data = {"o":$('#' + rpfid + '_hdf_ss').val(),"d":$('#' + rpfid + '_hdf_ds').val(),"t":result,"tm":tm,"r":routetype};
+	} 
+	if(ctl_shmetro_shmetroroutepriceform1_hdf_ds!='' && ctl_shmetro_shmetroroutepriceform1_hdf_ds_input!='') {	
+	console.log("不跳转");
+		//var tickettype = "0";
+		var tickettype = $("#ctl_shmetro_shmetroroutepriceform1_ddltt").val();
+		//getParam('ctl_shmetro_shmetroroutepriceform1_ddltt');
+		var routetype = $("#ctl_shmetro_shmetroroutepriceform1_ddlrt").val();
+		var selectday = $("#jh select[station=t]").val();
+	
+		var result='';
+		if(selectday=='1'||selectday=='2'||selectday=='3'||selectday=='4'){
+			result='MONTOTHUR_'+tickettype;
+		}else if(selectday=='5'){
+			result='FRIDAY_'+tickettype;
+		}else if(selectday=='6'){
+			result='SATURDAY_'+tickettype;
+		}else if (selectday=='0')
+		{
+			result='WEEKEND_'+tickettype;
+		}else{
+			result='0';
+		}
+		data = {"o":$('#' + rpfid + '_hdf_ss').val(),"d":$('#' + rpfid + '_hdf_ds').val(),"t":$('#' + rpfid + '_ddltt').val(),"t":result,"tm":tm,"r":routetype};
+	} 
+	console.log("data="+data);
+	//console.log($('#' + rpfid + '_hdf_ss').val());
+	
+    //var data = {"o":$('#' + rpfid + '_hdf_ss').val(),"d":$('#' + rpfid + '_hdf_ds').val(),"t":result,"tm":tm};
+    
+   // var data = {"o":$("#mbc select[station=o]").val(),"d":$("#mbc select[station=d]").val(),"t":"0","tm":tm};
+        if(data.o=="" || data.o=="0"){alert("请选择起始站！！！");return;}
+    if(data.d=="" || data.d=="0"){alert("请选择终点站！！！");return;}
+    if(data.o==data.d){alert("请选择不同的起始站和终点站！");return;}
+    $("#access_result").html('<div class="tip">数据检索中,请稍后...</div>');
+	 var tm2 = parseInt($("#tm1 .hour").val())+ ':' + parseInt($("#tm1 .min").val());
+	if($("#ctl_shmetro_shmetroroutepriceform1_ddltt").val()=="1"){
+	getPlanTrip($('#' + rpfid + '_hdf_ss').val(),$('#' + rpfid + '_hdf_ds').val(),tm2,$("#jh select[station=t]").val(),'oneWay','0');
+	}
+	if($("#ctl_shmetro_shmetroroutepriceform1_ddltt").val()=="0"){
+	  getPlanTrip($('#' + rpfid + '_hdf_ss').val(),$('#' + rpfid + '_hdf_ds').val(),tm2,$("#jh select[station=t]").val(),'oneCard','0');
+	}
+    
+        
+	document.getElementById('search_result_top').scrollIntoView();
+  });
+ 
+  
+  $("#jh_search").click(function(event){
+    var tm = parseInt($("#tm1 .hour").val())*60*60 + parseInt($("#tm1 .min").val())*60;
+ 
+    //var data = {"o":$("#jh select[station=o]").val(),"d":$("#jh select[station=d]").val(),"t":"0","tm":tm};
+    var data = {"o":$('#' + rpfid + '_hdf_ss').val(),"d":$('#' + rpfid + '_hdf_ds').val(),"t":"0","tm":tm};
+    
+	if(data.o=="" || data.o=="0"){alert("请选择起始站！");return;}
+    if(data.d=="" || data.d=="0"){alert("请选择终点站！");return;}
+    if(data.o==data.d){alert("请选择不同的起始站和终点站！");return;}
+    $("#access_result").html('<div class="tip">数据检索中,请稍后...</div>');
+    var tm2 = parseInt($("#tm1 .hour").val())+ ':' + parseInt($("#tm1 .min").val());
+	if($("#ctl_shmetro_shmetroroutepriceform1_ddltt").val()=="1")
+	{
+	getPlanTrip($('#' + rpfid + '_hdf_ss').val(),$('#' + rpfid + '_hdf_ds').val(),tm2,$("#jh select[station=t]").val(),'oneWay','0');
+	}
+	if($("#ctl_shmetro_shmetroroutepriceform1_ddltt").val()=="0"){
+	  getPlanTrip($('#' + rpfid + '_hdf_ss').val(),$('#' + rpfid + '_hdf_ds').val(),tm2,$("#jh select[station=t]").val(),'oneCard','0');
+	}
+        
+  });
+  
+  $(".ipone,.ipad").bind("click",function(){
+    $("#search_result").hide();
+  });
+  var qs = getQueryString();
+  console.log("querystring="+qs.length);
+  if(qs.length){
+    $('#mbc_search').trigger("click");
+  }
+});
+</script> 
+<script type="text/javascript">
+        
+            function getLineCodeFromStationCode(sCode)
+            {
+                if (sCode == '') return '';
+                if (sCode.length != 4) return '';
+                if (sCode.charAt(0) == '0')
+                {
+                    return sCode.substr(1,1);
+                }
+                else
+                {
+                    return sCode.substr(0,2);
+                }
+                
+            }
+
+            //起始站与终点站交换
+            function swapstations() {
+                //隐藏弹出层
+                $('.ddllay').hide(1, function() { $(this).removeClass('displayed'); });
+                $('.serlay').hide();
+                var tmp = '';
+                //交换hiddenfield
+                tmp = $('#' + rpfid + '_hdf_ss').val();
+                $('#' + rpfid + '_hdf_ss').val($('#' + rpfid + '_hdf_ds').val());
+                $('#' + rpfid + '_hdf_ds').val(tmp);
+                //交换textbox
+                tmp = $('#' + rpfid + '_tb_ss').val();
+                $('#' + rpfid + '_tb_ss').val($('#' + rpfid + '_tb_ds').val());
+                $('#' + rpfid + '_tb_ds').val(tmp);
+                //交换div 背景
+                tmp = $('#' + 'divbg_ss').html();
+                $('#' + 'divbg_ss').html($('#' + 'divbg_ds').html());
+                $('#' + 'divbg_ds').html(tmp);
+            }
+            
+            //显示下拉框弹出层
+            function showddllay(obj) {
+                var othis = $(obj).parent().parent().find('.ddllay');
+
+                if (othis.hasClass("displayed")) {
+                    othis.hide(1, function() { othis.removeClass("displayed"); }); ;
+                    //$(obj).parent().parent().find('.value input[type="text"]').removeAttr('readOnly');
+                    $(obj).parent().parent().find('.value input[type="text"]').css('visibility', 'visible');
+                    $(obj).parent().parent().find('.value .tbstbg').css('visibility', 'visible');
+                }
+                else {
+                    //隐藏查询弹出层
+                    $(obj).parent().parent().find('.serlay').hide();
+                    //$(obj).parent().parent().find('.value input[type="text"]').attr('readOnly', "readOnly");
+                    $(obj).parent().parent().find('.value input[type="text"]').css('visibility', 'hidden');
+                    $(obj).parent().parent().find('.value .tbstbg').css('visibility', 'hidden');
+                    //初始化ddlline,ddlstation
+                    var sCode = $(obj).parent().parent().find('.value input[type="hidden"]').val();
+                    
+                    var lineno = getLineCodeFromStationCode(sCode)
+
+                    initddlline(othis.find('.ddlline'), lineno);
+
+                    initddlstation(othis.find('.ddlstation'), lineno, sCode);
+
+                    othis.show(1, function() { othis.addClass("displayed"); });
+                }
+            }
+
+            //初始化ddlline下拉框数据
+            function initddlline(obj, selval) {
+                var othis = $(obj);
+                //var opt = othis.find('option');
+                //for (var i = 0; i < opt.size(); i++) {
+                //    alert(opt.eq(i).val());
+                //    if (opt.eq(i).val() == selval) {
+                        othis.val(selval);
+                //        break;
+                //    }
+                //}
+            }
+
+            //初始化ddlstation下拉框数据
+
+            function initddlstation(obj, lineno, selval) {
+                var othis = $(obj);
+                othis.empty();
+                othis.append("<option value=''>请选择</option>")
+                 jQuery.support.cors = true;
+				$.ajax({
+                     contentType: 'text/plain',
+					type: 'GET',
+					dataType: 'text'
+					, url: "https://m.shmetro.com/core/shmetro/mdstationinfoback_new.ashx"
+
+				 
+                  , timeout: 5000
+				  //,dataType:'JSONP' // 处理Ajax跨域问题
+                  , async: true
+                  , data: { 'act': 'slsddl', 'ln': lineno, 'sc': selval }
+                  , error: function(XMLHttpRequest, textStatus, errorThrown) {
+                      //alert("err:" + textStatus);
+                  }
+                  , success: function(data, textStatus) {
+                      //alert(data);
+                      if (data != "error" && data != "nodata") {
+                          othis.append(data);
+                      }
+
+                  }
+                });
+            }
+
+            //通过下拉框设置页面中各元素的值或内容
+            function pageloadinit(objs, objl) {
+                var othis = $(objs);
+                var lValue = $('#' + rpfid + '_' + objl).val()
+                //var lName = $('#' + rpfid + '_' + objl + ' option:selected').text();
+                var lName = $('#' + rpfid + '_' + objl + ' option:selected').val();
+                var sCode = othis.val();
+               // var sName = othis.find('option:selected').text() + "站";
+               var sName = othis.find('option:selected').text();
+
+                if (lValue == '' || sCode == '') {
+                    othis.parent().parent().find('.value input[type="hidden"]').val(sCode);
+                    othis.parent().parent().find('.value input[type="text"]').val('');
+                    //othis.parent().parent().find('.value .tbstbg').html('');
+                    othis.parent().parent().find('.value .tbstbg').find('span').remove();
+                    othis.parent().parent().find('.value .tbstbg').css('left','1.6%').css('right','auto').find('b').css('display','');
+                }
+                else {
+                    othis.parent().parent().find('.value input[type="hidden"]').val(sCode);
+                    othis.parent().parent().find('.value input[type="text"]').val(sName);
+                    //othis.parent().parent().find('.value .tbstbg').html("<span>" + sName + "</span>" + lName);
+                    //othis.parent().parent().find('.value .tbstbg').html("<span class=\"ln" + lName + "\">" + lName + "</span>");
+                    othis.parent().parent().find('.value .tbstbg').find('b').css('display', 'none');
+                    othis.parent().parent().find('.value .tbstbg').find('span').remove();
+					 if(lName==61){
+                    othis.parent().parent().find('.value .tbstbg').css('right','10%').css('left', 'auto').append('<span class="idl ln' + lName + '"><span class="lineno" >浦江线</span></span>');
+                }else {
+					 othis.parent().parent().find('.value .tbstbg').css('right','10%').css('left', 'auto').append('<span class="idl ln_' + lName + '"><span class="lineno" ></span><span class="ln-text" ><img src="/skin/images/line/'+lName+'.svg" style="height:23px;"/></span></span>');
+				}
+				}
+            }
+
+            function chkrpform(obj) {
+                var ss = $('#' + rpfid + '_hdf_ss').val();
+                var ds = $('#' + rpfid + '_hdf_ds').val();
+                if (ss == '' ) {
+                    alert("起始站无效！");
+                    return false;
+                }
+                if (ds == '') {
+                    alert("终点站无效！");
+                    return false;
+                }
+                if (Math.abs(parseInt(ss) - parseInt(ds)) <= 0) {
+                    alert("起点站与终点站不能是同一个车站！");
+                    return false;
+                }
+
+                return true;
+            }
+            
+        </script> 
+<script type="text/javascript">
+
+            var ss = '';
+            var ds = '';
+            var rptimer = null;
+
+            function setStationCode(obj) {
+                var othis = $(obj);
+				console.log("othis="+othis);
+                
+                var sCode = othis.attr('id');
+               // var sName = othis.find('span').text();
+			    var sName = othis.find('span.st-name').text();
+                var sbgLine = othis.html();
+                var sLine = getLineCodeFromStationCode(sCode);
+
+                othis.parent().parent().parent().find('.value input[type="hidden"]').val(sCode);
+                othis.parent().parent().parent().find('.value input[type="text"]').val(sName);
+                //othis.parent().parent().find('.value .tbstbg').html(sbgLine);
+                //othis.parent().parent().parent().find('.value .tbstbg').html("<span class=\"ln" + sLine + "\">" + sLine + "</span>");
+                
+                othis.parent().parent().parent().find('.value .tbstbg').find('span').remove();
+				if(sLine==61)
+				{ othis.parent().parent().parent().find('.value .tbstbg').css('right','10%').css('left','auto').append('<span class="idl ln' + sLine + '"><span class="lineno1">浦江线</span></span>');
+              
+					}else{
+						 othis.parent().parent().parent().find('.value .tbstbg').css('right','10%').css('left','auto').append('<span class="idl ln_' + sLine + '"><span class="lineno"></span><span class="ln-text"><img src="/skin/images/line/'+sLine+'.svg" style="height:23px;"/></span></span>');
+              }
+                 othis.parent().parent().hide();
+
+            }
+
+            function showserlay(obj) {
+                var othis = $(obj);
+                var serlay = othis.parent().parent().find('.serlay');
+
+                var cv = $.trim(othis.val());
+                console.log("cv:" + cv);
+                if (cv == '') {
+                    serlay.hide();
+                    ss = '';
+                    ds = '';
+                    othis.parent().find(' input[type="hidden"]').val('');
+                    othis.parent().find(' input[type="text"]').val('');
+                    othis.parent().find('.tbstbg').find('span').remove();
+                    othis.parent().find('.tbstbg').css('right','auto').css('left', '1.6%').find('b').css('display', '');
+                    return;
+                }
+                else {
+                    othis.parent().find('.tbstbg').css('left','auto').css('right','10%').find('b').css('display','none');
+                }
+                
+                if (cv.length >= 2) {
+                    if (cv[cv.length - 1] == '站' && cv[cv.length - 2] != '车') {
+                        cv = cv.substr(0, cv.length - 1);
+                    }
+                }
+
+                if (othis.attr('id').indexOf('tb_ss') > -1) {
+                    if (ss == cv) {
+                        serlay.show();
+                        return;
+                    }
+                    else {
+                        ss = cv;
+                    }
+                }
+                else if (othis.attr('id').indexOf('tb_ds') > -1) {
+                    if (ds == cv) {
+                        serlay.show();
+                        return;
+                    }
+                    else {
+                        ds = cv;
+                    }
+                }
+				
+                 jQuery.support.cors = true;
+				$.ajax({
+                     contentType: 'text/plain',
+					type: 'GET',
+					dataType: 'text'
+
+				  , url: "https://m.shmetro.com/core/shmetro/mdstationinfoback_new.ashx"
+				 
+                  , timeout: 5000
+				  //,contentType: "application/text; charset=utf-8"
+				  //,dataType:'jsonp' // 处理Ajax跨域问题
+                  , async: true
+                  , data: { 'act': 'ssdiv', 'cv': escape(cv) }
+				  // ,jsonp:'callback' 
+				  //, jsonpCallback:"success_jsonpCallback"
+
+                  , error: function(XMLHttpRequest, textStatus, errorThrown) {
+				    // alert( XMLHttpRequest.responseText );
+				
+                   //   alert("err:" + textStatus);
+                      //toszmztimer = window.setTimeout(function() { gettoszmzdata(containobj, contentobj); }, topzmztimeroutval);
+                  }
+                  , success: function(data, textStatus) {
+                      //alert(data);
+
+                      if (data != "error" && data != "nodata") {
+                          serlay.find('.serlaywrap').eq(0).empty();
+                          if (data == "noresult") {
+                              serlay.find('.serlaywrap').eq(0).append("<div>没有找到匹配的站点</div>");
+                          }
+                          else {
+                              serlay.find('.serlaywrap').eq(0).append(data);
+                          }
+                          serlay.show();
+                      }
+                  }
+                });
+
+            }
+
+            //站点文本框获得焦点时，进行比较延时弹出层
+            function tbstation_focus(obj) {
+                var othis = $(obj);
+                if (othis.attr('id').indexOf('tb_ss') >= 0) {
+                    ss = $.trim(othis.val());
+                }
+                else if (othis.attr('id').indexOf('tb_ds') >= 0) {
+                    ds = $.trim(othis.val());
+                }
+                else {
+                    return;
+                }
+                rptimer = window.setInterval(function() { showserlay(othis); }, 50);
+            }
+
+            //站点文本框失去焦点时，清除比较和弹出功能
+            function tbstation_blur(obj) {
+                window.clearInterval(rptimer);
+                rptimer = null;
+                var othis = $(obj);
+                if ($.trim(othis.val()) == '') {
+                    othis.parent().find('.tbstbg').css('right','auto').css('left','1.6%').find('b').css('display', '');
+                }
+           }
+            
+        
+        </script> 
+<script type="text/javascript">
+
+            //取得所有站点测试
+            $(function () {
+
+                  jQuery.support.cors = true;
+				$.ajax({
+                     contentType: 'text/plain',
+					type: 'GET',
+					dataType: 'text'
+					//, url: "http://m.shmetro.com/core/shmetro/mdstationinfoback.ashx"
+					, url: "https://m.shmetro.com/core/shmetro/mdstationinfoback_new.ashx"
+
+				 
+                  , timeout: 5000
+				  //,dataType:'JSONP' // 处理Ajax跨域问题
+                  , async: true
+                  , data: { 'act': 'getAllStations' }
+                  , error: function (XMLHttpRequest, textStatus, errorThrown) {
+                      //alert("err:" + textStatus);
+                      //toszmztimer = window.setTimeout(function() { gettoszmzdata(containobj, contentobj); }, topzmztimeroutval);
+                  }
+                  , success: function (data, textStatus) {
+                      $('#hidContent').html(data);
+                  }
+                });
+
+            });
+
+        </script> 
+<script type="text/javascript">
+
+            $(function() {
+				 //var hour=$("#tm1 .hour,#tm2 .hour"),min=$("#tm1 .min,,#tm2 .min"),date=new Date(),h=date.getHours(),m=date.getMinutes();
+				//for(var i=5;i<24;i++)hour.append('<option value="'+i+'"'+(i==h?'selected="selected"':'')+'>'+(i<10?'0'+i:i)+'</option>');
+				//for(var i=0;i<60;i++)min.append('<option value="'+i+'"'+(i==m?'selected="selected"':'')+'>'+(i<10?'0'+i:i)+'</option>');
+ 
+                $('.chgbtn a').click(function() { swapstations(); });
+
+                $('#dotbtn_ss').click(function() {
+                    showddllay($(this));
+
+                });
+                $('#dotbtn_ds').click(function() {
+                    showddllay($(this));
+
+                });
+
+                $('#' + rpfid + '_ddl_sl').change(function() {
+                    var othis = $(this);
+                    var lineno = othis.val();
+                    var sCode = othis.parent().parent().find('.value input[type="hidden"]').val();
+
+                    initddlstation('#' + rpfid + '_ddl_ss', lineno, sCode);
+                });
+
+                $('#' + rpfid + '_ddl_ss').change(function() {
+                    //var othis = $(this);
+                    /*var lName = $('#' + rpfid + '_ddl_sl option:selected').text();
+                    var sCode = othis.val();
+                    othis.parent().parent().find('.value input[type="hidden"]').val(sCode);
+                    var sName = othis.find('option:selected').text();
+                   //var sName = othis.find('option:selected').text() + "站";
+                    othis.parent().parent().find('.value input[type="text"]').val(sName);
+                    othis.parent().parent().find('.value .tbstbg').html("<span>" + sName + "</span>" + lName);
+                    */
+                    pageloadinit('#' + rpfid + '_ddl_ss', 'ddl_sl');
+                    showddllay('#' + rpfid + '_ddl_ss');
+                });
+
+                $('#' + rpfid + '_ddl_dl').change(function() {
+                    var othis = $(this);
+                    var lineno = othis.val();
+                    var sCode = othis.parent().parent().find('.value input[type="hidden"]').val();
+
+                    initddlstation('#' + rpfid + '_ddl_ds', lineno, sCode);
+                });
+
+                $('#' + rpfid + '_ddl_ds').change(function() {
+                    /*var othis = $(this);
+                    var lName = $('#' + rpfid + '_ddl_dl option:selected').text();
+                    var sCode = othis.val();
+                    othis.parent().parent().find('.value input[type="hidden"]').val(sCode);
+                    //var sName = othis.find('option:selected').text() + "站";
+                     var sName = othis.find('option:selected').text();
+                    othis.parent().parent().find('.value input[type="text"]').val(sName);
+                    othis.parent().parent().find('.value .tbstbg').html("<span style=\"color:white\">" + sName + "</span>" + lName);
+                    */
+                    pageloadinit('#' + rpfid + '_ddl_ds', 'ddl_dl');
+                    showddllay('#' + rpfid + '_ddl_ds');
+                });
+
+            
+                
+
+
+
+            });
+
+            $(function () {
+
+                //$('.tbstation').change(function() {
+                //showserlay($(this));
+                //});
+
+                $('.tbstation').focus(function () {
+
+                    tbstation_focus($(this));
+                });
+
+                $('.tbstation').blur(function () {
+
+                    tbstation_blur($(this));
+                });
+
+                $('.serlaywrap').on('click', 'a', function () {
+                    var tbstation = $(this).parent().parent().parent().find(' input[type="text"]');
+                    tbstation_blur(tbstation);
+                    $('.tbstation').unbind('focus');
+                    $('.tbstation').unbind('blur');
+                    setStationCode($(this));
+                    setTimeout(function () { 
+                        $('.tbstation').bind('focus', function() { tbstation_focus($(this)); });
+                        $('.tbstation').bind('blur', function () { tbstation_blur($(this)); });
+                    }, 100);
+                });
+
+                $('.serlayclose a').click(function () {
+                    var serlay = $(this).parent().parent();
+                    serlay.hide();
+                    var tbstation = serlay.parent().find(' input[type="text"]');
+                    tbstation_blur(tbstation);
+                });
+
+
+            });
+        
+        </script> 
+<script type="text/javascript">
+
+    $(function () {
+        $(".inner_mainrpr .tabs a").each(function (index) {
+            var othis = $(this);
+            othis.click(function () {
+                $(".rpcontent").css("display", "none");
+                $(".rpcontent" + index + " .rpitempass").css("display", "none");
+                $(".rpcontent" + index).css("display", "block");
+                othis.parent().find(".active").removeClass("active");
+                othis.addClass("active");
+            });
+        });
+
+        $(".rpshpass").click(function () {
+            var othis = $(this);
+
+            if (othis.parent().find(".rpitempass").eq(0).css("display") == "none") {
+                othis.parent().find(".rpitempass").css("display", "table");
+            }
+            else {
+                othis.parent().find(".rpitempass").css("display", "none");
+            }
+        });
+
+        $('.inner_mainrpr .tabs').waypoint('sticky');
+
+        //console.log($('.scrollAnthor').offset().top);
+        try {
+            var scrollTop = $('.scrollAnthor').offset().top - $('.scrollAnthor').outerHeight();
+            var agent = navigator.userAgent;
+            //alert(agent);
+            //if (agent.search(/(iPhone)/) != -1) {
+                scrollTop-=30;
+            //}
+            //alert(scrollTop);
+            //$(document.documentElement).scrollTop(scrollTop) || $(document.body).scrollTop(scrollTop);
+            $('body,html').scrollTop(scrollTop);
+        }
+        catch (e)
+        { }
+
+    });
+
+</script> 
+<script type="text/javascript">var rpfid='ctl_shmetro_shmetroroutepriceform1'</script>
+</div>
+</body>
+</html>

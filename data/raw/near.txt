@@ -1,0 +1,36 @@
+
+##### 航头～御桥 @293293
+TEXT: bgcolor="#e0c5f0" valign="center"> 名称 时段 列车间隔 沈杜公路～汇臻路 高峰 7:00～20:00 平均10分 其余时段 平均10分 &nbsp; &nbsp; 周一～周五 名称 时段 列车间隔 航头～御桥 早高峰 7:00～9:00 平均 平均 6分 平峰 9:00～17:00 平均 8分 晚高峰 <td align=
+IMGS: []
+
+##### 航头～御桥 @295749
+TEXT: ="font-family: arial,helvetica,sans-serif;">航头～御桥 早高峰 7:00～9:00 平均 平均 6分 平峰 9:00～17:00 平均 8分 晚高峰 17:00～19:00 平均 6分 其余时段 8分～10分 周六、周日 高峰 7:00～20:00 航头～御桥 平均 7分 其余时段 8分～10分 &nbsp; &nbsp; 周一～周五 名称 <td rowspan="2" style="width: 196
+IMGS: []
+
+##### 沈杜公路～汇臻路 @288793
+TEXT: h: 555px;" /> &nbsp; 更多信息请查询上海磁浮交通发展有限公司官网： http://www.smtdc.com/cn/index.html &nbsp; &nbsp; &nbsp; 周一 ～ 周五（工作日） 名称 时段 列车间隔 沈杜公路～汇臻路 早高峰 7:00～9:00 平均4分15秒 平峰 9:00～18:00 平均10分 晚高峰 18:00～20:00 平均5分 <
+IMGS: []
+
+##### 沈杜公路～汇臻路 @291320
+TEXT: 早高峰 7:00～9:00 平均4分15秒 平峰 9:00～18:00 平均10分 晚高峰 18:00～20:00 平均5分 其余时段 平均10分 周六、周日（双休日） 名称 时段 列车间隔 沈杜公路～汇臻路 高峰 7:00～20:00 平均10分 其余时段 平均10分 &nbsp; &nbsp;
+IMGS: []
+
+##### 虹桥2号航站楼～浦东1号2号航站楼 @323449
+TEXT: or: rgb(236, 233, 216); background: white; padding: 0cm; text-align: center;"> 其他时段 5分～12分 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 周一 ～ 周日 时段 列车间隔 虹桥2号航站楼～浦东1号2号航站楼 全天 平均15分 &nbsp; $(function(){ $(".site_select_list .cur").css("background-color",$(".site_select_list .cur").find("span").css("background-color")); }); $(document).ready(function(){ init1(); }); function init0(){ $.ajax({ type:"POST", url:"https://m.shmetro.com/interface/metromap/metromap.aspx?func=fltime&line=1", //url:"https://marketing.cyberspaceit.cn/interface
+IMGS: []
+
+##### 磁浮 @286590
+TEXT: 分 平均4 分 其余时段 8～11分 周六、周日 高峰 7:30～21:00 西岑 ~ 虹桥火车站 平均7 分 其余时段 7～14分 &nbsp; --> &nbsp; 更多信息请查询上海磁浮交通发展有限公司官网： http://www.smtdc.com/cn/index.html &nbsp; &nbsp; &nbsp; <td align="center" colspan="2" height="30
+IMGS: []
+
+##### 磁浮 @325577
+TEXT: ound-color: rgb(221, 221, 221);"> 时段 列车间隔 虹桥2号航站楼～浦东1号2号航站楼 全天 平均15分 &nbsp; $(function(){ $(".site_select_list .cur").css("background-color",$(".site_select_list .cur").find("span").css("background-color")); }); $(document).ready(function(){ init1(); }); function init0(){ $.ajax({ type:"POST", url:"https://m.shmetro.com/interface/metromap/metromap.aspx?func=fltime&line=1", //url:"https://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx?func=fltime&line=1", dataType:"JSON", success:function(json){ setData(json); } }) } function init1(){ $.ajax({ type:"POST", // url:"/i/fa?metoh=getAllLineList",//处理请求的action方法 url:"https://m.shmetro.com/interface/metromap/metromap.aspx?func=lines",//处理请求的action方法 //url:"https://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx?func=lines",//处理请求的action方法 dataType:"JSON", success:function(json){ setLine(json); } }) } function setLine(json){ var html=""; for(var i=0;i 市域机场线 &nbsp; ' html +=' 磁浮线 &nbsp; ' html +=' 金山铁路 &nbsp; ' } else if(json[i].line_no=="41"){ //html +=' '+json[i].line_no+'号线 &nbsp; '; html +=' 浦江线 &nbsp; ' }else{ //html +=' '+json[i].line_no+'号线 &nbsp; ' html +=' '+json[i].line_no+'号线 &nbsp; ' } } $("#lineList").append(html); $(".site_select_list li a").click(function(){ var _line_name = $(this).attr
+IMGS: []
+
+##### 18号线 @505358
+TEXT: le_con").css("display")=="block"){ $(".schedule_con").hide(); this.className='schedule_tophover'; }else{ $(".schedule_con").show(); this.className='schedule_top'; } }); }); 起始站： 拼音或点击右侧选择车站 --> 关 闭 请选择 1号线 2号线 3号线 4号线 5号线 6号线 7号线 8号线 9号线 10号线 11号线 12号线 13号线 14号线 15号线 16号线 17号线 18号线 浦江线 市域机场线 请选择 终点站： <input name="ctl_shmetro_shmetroroutepriceform_rightnormal$tb_ds"
+IMGS: []
+
+##### 18号线 @508411
+TEXT: border="0" /> 终点站： 请输入拼音或点击右侧选择车站 --> 关 闭 请选择 1号线 2号线 3号线 4号线 5号线 6号线 7号线 8号线 9号线 10号线 11号线 12号线 13号线 14号线 15号线 16号线 17号线 18号线 浦江线 市域机场线 请选择 选择票的种类： 交通卡 单程票 换乘方式： 换乘次数最少
+IMGS: []

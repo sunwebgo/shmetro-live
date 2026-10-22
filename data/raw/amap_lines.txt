@@ -1,0 +1,24 @@
+ 0  ln=1号线        color=E3002A   st=28 loop=0 first=莘庄 last=富锦路
+ 1  ln=2号线        color=86B81C   st=31 loop=0 first=浦东1号2号航站楼 last=蟠祥路·国家会计学院
+ 2  ln=3号线        color=FCD600   st=29 loop=0 first=江杨北路 last=上海南站
+ 3  ln=4号线        color=5A2B8D   st=26 loop=1 first=宜山路 last=上海体育馆
+ 4  ln=5号线        color=96499A   st=11 loop=0 first=莘庄 last=闵行开发区
+ 5  ln=5号线        color=96499A   st=15 loop=0 first=莘庄 last=奉贤新城
+ 6  ln=6号线        color=F0087D   st=28 loop=0 first=东方体育中心 last=港城路
+ 7  ln=7号线        color=EE782E   st=33 loop=0 first=花木路 last=美兰湖
+ 8  ln=8号线        color=01A2E2   st=30 loop=0 first=沈杜公路 last=市光路
+ 9  ln=9号线        color=69C7F4   st=35 loop=0 first=曹路 last=上海松江站
+10  ln=10号线       color=C6AFD4   st=33 loop=0 first=基隆路 last=航中路
+11  ln=10号线       color=C6AFD4   st=34 loop=0 first=基隆路 last=虹桥火车站
+12  ln=11号线       color=871C2A   st=33 loop=0 first=嘉定北 last=迪士尼
+13  ln=11号线       color=871C2A   st=37 loop=0 first=迪士尼 last=花桥
+14  ln=12号线       color=007A61   st=32 loop=0 first=七莘路 last=金海路
+15  ln=13号线       color=EB81B9   st=31 loop=0 first=金运路 last=张江路
+16  ln=14号线       color=818530   st=30 loop=0 first=封浜 last=桂桥路
+17  ln=15号线       color=DAC17D   st=30 loop=0 first=顾村公园 last=紫竹高新区
+18  ln=16号线       color=98D1C0   st=13 loop=0 first=龙阳路 last=滴水湖
+19  ln=17号线       color=B85A4E   st=14 loop=0 first=虹桥火车站 last=西岑
+20  ln=18号线       color=D0970A   st=31 loop=0 first=康文路 last=航头
+21  ln=磁浮线        color=008187   st=2 loop=0 first=浦东1号2号航站楼 last=龙阳路
+22  ln=浦江线        color=B5B5B6   st=6 loop=0 first=沈杜公路 last=汇臻路
+23  ln=市域机场线      color=99ADAC   st=7 loop=0 first=虹桥2号航站楼 last=浦东1号2号航站楼

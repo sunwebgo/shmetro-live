@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>上海地铁 2D 动态线路图 · 按时刻表运行的列车</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">上海地铁</span>
+    <span class="sub">2D 动态线路图 · 按官方时刻表运行</span>
+  </div>
+  <div class="clockbox">
+    <div class="clockline">
+      <span id="clockTime" class="clock">--:--:--</span>
+      <span id="clockDate" class="date">----</span>
+    </div>
+    <div class="liveflag" id="liveFlag">实时</div>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="mapwrap">
+    <canvas id="map"></canvas>
+    <div id="errbar" style="display:none;position:absolute;top:0;left:0;right:0;z-index:99;background:#7d1a1a;color:#ffd7d7;padding:6px 12px;font-size:12px"></div>
+    <div id="nightbar" style="display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:8;background:rgba(15,22,31,.92);border:1px solid #22303f;border-radius:10px;padding:14px 20px;font-size:13px;color:#9fb0c3;max-width:520px;text-align:center;line-height:1.7"></div>
+
+    <div class="mapoverlay topleft">
+      <div class="stat" title="当前时刻在线列车总数（含两个方向）">
+        <b id="statTrains">0</b><span>列在线</span>
+      </div>
+      <div class="stat" title="当前处于运营状态的线路数">
+        <b id="statLines">0</b><span>条线路运行中</span>
+      </div>
+      <div class="stat" id="statNext" title="重点车站下一班">--</div>
+    </div>
+
+    <div class="mapoverlay bottomleft">
+      <div class="controls">
+        <button id="btnPlay" class="btn primary" title="播放/暂停时间推演">⏸ 暂停</button>
+        <div class="speedgroup" id="speedGroup">
+          <button class="btn spd" data-speed="1">实时</button>
+          <button class="btn spd active" data-speed="60">60×</button>
+          <button class="btn spd" data-speed="300">300×</button>
+          <button class="btn spd" data-speed="900">900×</button>
+        </div>
+        <button id="btnNow" class="btn" title="回到当前真实时间">回到此刻</button>
+      </div>
+      <div class="timeline">
+        <input id="timeSlider" class="slider" type="range" min="0" max="86399" step="20" value="21600" />
+        <div class="timemarks" id="timeMarks"></div>
+      </div>
+      <div class="controls second">
+        <span class="lbl">日期类型</span>
+        <div class="daygroup" id="dayGroup">
+          <button class="btn day" data-day="auto">自动</button>
+          <button class="btn day" data-day="mon_thu">周一~周四</button>
+          <button class="btn day" data-day="fri">周五</button>
+          <button class="btn day" data-day="sat">周六</button>
+          <button class="btn day" data-day="sun">周日</button>
+        </div>
+        <label class="chk"><input type="checkbox" id="chkLabels" /> 显示站名</label>
+        <label class="chk"><input type="checkbox" id="chkTrails" checked /> 列车方向</label>
+      </div>
+    </div>
+
+    <div class="mapoverlay topright legend" id="legend"></div>
+  </section>
+
+  <aside class="side">
+    <div class="tabs">
+      <button class="tab active" data-tab="panelLines">线路运行</button>
+      <button class="tab" data-tab="panelStation">车站到站</button>
+      <button class="tab" data-tab="panelAbout">数据说明</button>
+    </div>
+
+    <div class="panels">
+      <div class="panel active" id="panelLines">
+        <div class="panelhint">点击线路可在地图上高亮；列表显示当前时刻的实际发车间隔与在线列车数。</div>
+        <div id="lineList" class="linelist"></div>
+      </div>
+
+      <div class="panel" id="panelStation">
+        <div class="panelhint" id="stationHint">在地图上点击任意车站，查看该站各线路两个方向的下一班列车。</div>
+        <div id="stationBody"></div>
+      </div>
+
+      <div class="panel" id="panelAbout">
+        <h3>数据来源</h3>
+        <ul id="srcList"></ul>
+        <h3>口径说明</h3>
+        <ul id="noteList"></ul>
+        <p class="gen" id="genInfo"></p>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<footer class="foot">
+  <span>列车位置由官方首末班车时间 + 官方列车间隔表 + 站间运行时分模型推演得到，非真实车辆定位。</span>
+  <span id="footRight"></span>
+</footer>
+
+<script>
+/* 运行期错误直接显示出来，便于排查 */
+window.addEventListener('error', function (e) {
+  var el = document.getElementById('errbar');
+  if (!el) return;
+  el.style.display = 'block';
+  el.textContent = '脚本错误: ' + (e.message || e.error) + ' @' + (e.filename || '') + ':' + (e.lineno || '');
+});
+</script>
+<script src="data/metro-data.js"></script>
+<script src="js/sim.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

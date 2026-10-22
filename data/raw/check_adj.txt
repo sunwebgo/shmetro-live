@@ -1,0 +1,7 @@
+2026-10-18 weekday=6 (0=Sun)
+L7 花木路 往美兰湖                   first=05:30  last=22:30  arr=0 desc=
+L9 曹路 往上海松江站                 first=05:30  last=22:30  arr=0 desc=
+L10 基隆路 航中路始发 往基隆路             first=06:37  last=23:43  arr=1 desc=
+L10 基隆路 基隆路始发 往航中路             first=05:30  last=22:25  arr=0 desc=
+L13 金运路 往张江路                   first=05:30  last=22:30  arr=0 desc=
+L1 莘庄 往富锦路                   first=05:30  last=22:32  arr=0 desc={"weekday":[0,0,0,0,0,88,88],"dateday":[{"date":"12-31","adjust":"+78"},{"date":"01-26","adjust":"+78"},{"date

@@ -1,0 +1,106 @@
+type=list len=68
+[
+ {
+  "line": 1,
+  "stat_id": "111",
+  "name": "莘庄",
+  "station_code": "11-XZ",
+  "first_time": "05:30",
+  "first_time_desc": "",
+  "last_time": "22:32",
+  "last_time_desc": "{\"weekday\":[0,0,0,0,0,88,88],\"dateday\":[{\"date\":\"12-31\",\"adjust\":\"+78\"},{\"date\":\"01-26\",\"adjust\":\"+78\"},{\"date\":\"04-30\",\"adjust\":\"+78\"},{\"date\":\"09-30\",\"adjust\":\"+78\"}]}",
+  "direction": 1,
+  "description": "往富锦路",
+  "firstarrival_time": 0,
+  "lastarrival_time": 0
+ },
+ {
+  "line": 1,
+  "stat_id": "111",
+  "name": "莘庄",
+  "station_code": "11-XZ",
+  "first_time": "06:04",
+  "first_time_desc": "",
+  "last_time": "23:34",
+  "last_time_desc": "{\"weekday\":[0,0,0,0,0,90,90],\"dateday\":[{\"date\":\"12-31\",\"adjust\":\"+80\"},{\"date\":\"01-26\",\"adjust\":\"+80\"},{\"date\":\"04-30\",\"adjust\":\"+80\"},{\"date\":\"09-30\",\"adjust\":\"+80\"}]}",
+  "direction": -1,
+  "description": "往莘庄",
+  "firstarrival_time": 1,
+  "lastarrival_time": 1
+ },
+ {
+  "line": 1,
+  "stat_id": "112",
+  "name": "外环路",
+  "station_code": "1-WHL",
+  "first_time": "05:32",
+  "first_time_desc": "",
+  "last_time": "22:34",
+  "last_time_desc": "{\"weekday\":[0,0,0,0,0,88,88],\"dateday\":[{\"date\":\"12-31\",\"adjust\":\"+78\"},{\"date\":\"01-26\",\"adjust\":\"+78\"},{\"date\":\"04-30\",\"adjust\":\"+78\"},{\"date\":\"09-30\",\"adjust\":\"+78\"}]}",
+  "direction": 1,
+  "description": "往富锦路",
+  "firstarrival_time": 0,
+  "lastarrival_time": 0
+ },
+ {
+  "line": 1,
+  "stat_id": "112",
+  "name": "外环路",
+  "station_code": "1-WHL",
+  "first_time": "06:02",
+  "first_time_desc": "",
+  "last_time": "23:32",
+  "last_time_desc": "{\"weekday\":[0,0,0,0,0,90,90],\"dateday\":[{\"date\":\"12-31\",\"adjust\":\"+80\"},{\"date\":\"01-26\",\"adjust\":\"+80\"},{\"date\":\"04-30\",\"adjust\":\"+80\"},{\"date\":\"09-30\",\"adjust\":\"+80\"}]}",
+  "direction": -1,
+  "description": "往莘庄",
+  "firstarrival_time": 0,
+  "lastarrival_time": 0
+ }
+]
+...
+[
+ {
+  "line": 1,
+  "stat_id": "137",
+  "name": "友谊西路",
+  "station_code": "1-YYXL",
+  "first_time": "05:32",
+  "first_time_desc": "",
+  "last_time": "22:32",
+  "last_time_desc": "{\"weekday\":[0,0,0,0,0,90,90],\"dateday\":[{\"date\":\"12-31\",\"adjust\":\"+80\"},{\"date\":\"01-26\",\"adjust\":\"+80\"},{\"date\":\"04-30\",\"adjust\":\"+80\"},{\"date\":\"09-30\",\"adjust\":\"+80\"}]}",
+  "direction": -1,
+  "description": "往莘庄",
+  "firstarrival_time": 0,
+  "lastarrival_time": 0
+ },
+ {
+  "line": 1,
+  "stat_id": "138",
+  "name": "富锦路",
+  "station_code": "1-FJL",
+  "first_time": "06:12",
+  "first_time_desc": "",
+  "last_time": "23:37",
+  "last_time_desc": "{\"weekday\":[0,0,0,0,0,88,88],\"dateday\":[{\"date\":\"12-31\",\"adjust\":\"+78\"},{\"date\":\"01-26\",\"adjust\":\"+78\"},{\"date\":\"04-30\",\"adjust\":\"+78\"},{\"date\":\"09-30\",\"adjust\":\"+78\"}]}",
+  "direction": 1,
+  "description": "往富锦路",
+  "firstarrival_time": 1,
+  "lastarrival_time": 1
+ },
+ {
+  "line": 1,
+  "stat_id": "138",
+  "name": "富锦路",
+  "station_code": "1-FJL",
+  "first_time": "05:30",
+  "first_time_desc": "",
+  "last_time": "22:30",
+  "last_time_desc": "{\"weekday\":[0,0,0,0,0,90,90],\"dateday\":[{\"date\":\"12-31\",\"adjust\":\"+80\"},{\"date\":\"01-26\",\"adjust\":\"+80\"},{\"date\":\"04-30\",\"adjust\":\"+80\"},{\"date\":\"09-30\",\"adjust\":\"+80\"}]}",
+  "direction": -1,
+  "description": "往莘庄",
+  "firstarrival_time": 0,
+  "lastarrival_time": 0
+ }
+]
+keys: ['description', 'direction', 'first_time', 'first_time_desc', 'firstarrival_time', 'last_time', 'last_time_desc', 'lastarrival_time', 'line', 'name', 'stat_id', 'station_code']
+lines present: [1]

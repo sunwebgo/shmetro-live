@@ -1,0 +1,71 @@
+len=561059
+kw 首班车 -> 13
+kw 末班车 -> 34
+kw var  -> 239
+kw json -> 483
+kw JSON -> 15
+kw firstTrain -> 0
+kw lastTrain -> 0
+kw station -> 43
+script blocks: 56
+--- block 0 len=0 head=
+--- block 1 len=0 head=
+--- block 2 len=0 head=
+--- block 3 len=0 head=
+--- block 4 len=0 head=
+--- block 5 len=0 head=
+--- block 6 len=0 head=
+--- block 7 len=103 head=function lqysclose1() {  	 document.getElementById("biaochuang").style.cssText = "display:none"; 	 	}
+--- block 8 len=107 head=function lqysclose1x2() {  	 document.getElementById("biaochuang1").style.cssText = "display:none"; 	 	}
+--- block 9 len=316 head=var info;  				var today=new Date();  				var y=today.getFullYear();  				var mo=today.getMonth();  				var da=today.getDate();  				var weekString="日一二三四五六";  				var timeme = y+'年'+(mo+1)+'月'+da+'日 '+' 星期'+weekString.charAt(today.getDay());  				console.log(timeme); 				 $("#wather").append(timeme
+--- block 10 len=0 head=
+--- block 11 len=1108 head=$.ajax({         url:'/i/tos?ty=tip',timeout:15000,         success: function(xml){           if($(xml).find("info").length>0){             $(xml).find("info").each(function(){               var line = $(this).children("lilne").text();               var bs = $(this).children("bs").text();           
+--- block 12 len=0 head=
+--- block 13 len=1046 head=$('.navbar-nav li').focus(function () {         $(this).find('.dropdown-menu').show();     })     $('.navbar-nav li').hover(function () {         $(this).find('.dropdown-menu').show();      },function () {         $(this).find('.dropdown-menu').hide();     })     function displaySubMenuNew(a,data) {
+--- block 14 len=1614 head=$('.navbar-nav li').focus(function () {                     $(this).find('.dropdown-menu').show();                 })                 $('.navbar-nav li').hover(function () {                     $(this).find('.dropdown-menu').show();                  },function () {                     $(this).find('
+--- block 15 len=0 head=
+--- block 16 len=0 head=
+--- block 17 len=1223 head=var lineDN;		//延误证明对象  //初始化延误证明 document.addEventListener("DOMContentLoaded", (event) => { 	//初始化延误证明 	lineDN = new lineDelayNotice(); 	lineDN.webtype="pc"; });  document.addEventListener("linesReady",function(event){ 	lineDN.initTodayLinesState(); }); 	 document.addEventListener("delayTodayReady",
+--- block 18 len=85 head=function kfu(){ 	$("#kefu").hide();  }  function kfu1(){ 	$("#kefu1").hide();  }
+--- block 19 len=56 head=function yx() {    $(".sel").css("display","none"); }
+--- block 20 len=72 head=function lqysclose1x() {    $(".biaochuang").css("display","none"); }
+--- block 21 len=74 head=function lqysclose22() {    $(".biaochuang22").css("display","none"); }
+--- block 22 len=74 head=function lqysclose33() {    $(".biaochuang33").css("display","none"); }
+--- block 23 len=74 head=function lqysclose44() {    $(".biaochuang44").css("display","none"); }
+--- block 24 len=163 head=$(function(){         $(".site_select_list .cur").css("background-color",$(".site_select_list .cur").find("span").css("background-color"));       });
+--- block 25 len=175367 head=$(document).ready(function(){         	init1();	 });   function init0(){ $.ajax({ 		type:"POST",         url:"https://m.shmetro.com/interface/metromap/metromap.aspx?func=fltime&line=1", 		//url:"https://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx?func=fltime&line=1",  		dataType:"JSON
+   tail=split(':')[0]=='00'||time.split(':')[0]=='01'){ 	return '次'+time; 	}else{ 	return time;} 	 }  String.prototype.startWith=function(str){ if(str==null||str==""||this.length==0||str.length>this.length)   return false; if(this.substr(0,str.length)==str)   return true; else   return false; return true; }
+--- block 26 len=0 head=
+--- block 27 len=0 head=
+--- block 28 len=0 head=
+--- block 29 len=0 head=
+--- block 30 len=0 head=
+--- block 31 len=331 head=$(document).ready(function(){   $(".serach_top").click(function(){ <!--  $(".right_ride_search_form").toggle();--> if($(".right_ride_search_form").css("display")=="block"){  $(".right_ride_search_form").hide(); this.className='menu_title';  }else{  $(".right_ride_search_form").show(); this.className
+--- block 32 len=312 head=$(document).ready(function(){   $(".schedule_top").click(function(){ <!--  $(".right_ride_search_form").toggle();--> if($(".schedule_con").css("display")=="block"){  $(".schedule_con").hide(); this.className='schedule_tophover';  }else{  $(".schedule_con").show(); this.className='schedule_top'; }   
+--- block 33 len=0 head=
+--- block 34 len=135 head=$(document).ready(function() { 		$(".schedule_top").click(function(){ 			$(".schedule_con").toggle(); 			});              });
+--- block 35 len=0 head=
+--- block 36 len=263 head=$(document).ready(function(){ 	var olc = new lineChoice(0,"线路选择：",[{"name":"磁浮","value":"42_ext","code":"cf","lineid":"cxf"},{"name":"金山铁路","value":"43_ext","code":"jstl","lineid":"jstl"}]); 		 	//线路列表 	var linelist =olc.renderList('first_time_list','cn'); });
+--- block 37 len=48 head=document.getElementById("ss14").innerHTML="";
+--- block 38 len=48 head=document.getElementById("ss15").innerHTML="";
+--- block 39 len=48 head=document.getElementById("ss16").innerHTML="";
+--- block 40 len=8391 head=function __doPostBackRightNormal(eventTarget, eventArgument) { //window.location = "https://metro.tenchii.com/metroH5/"; 		 var o = $("#ctl_shmetro_shmetroroutepriceform_rightnormal_hdf_ss").val(); console.log(o); //alert(o); var d = $("#ctl_shmetro_shmetroroutepriceform_rightnormal_hdf_ds").val(); 
+   tail=                     alert("终点站无效！！！");                     return false;                 }                 if (Math.abs(parseInt(ss) - parseInt(ds)) <= 0) {                     alert("起点站与终点站不能是同一个车站！");                     return false;                 }                  return true;             }
+--- block 41 len=5604 head=var ss = '';             var ds = '';             var rptimer = null;              function setStationCode1(obj) {                 var othis = $(obj);                                  var sCode = othis.attr('id');                 //var sName = othis.find('span').text(); 				 var sName = othis.find('
+   tail= window.clearInterval(rptimer);                 rptimer = null;                 var othis = $(obj);                 if ($.trim(othis.val()) == '') {                     othis.parent().find('.tbstbg1').css('right','auto').css('left','1.6%').find('b').css('display', '');                 }            }
+--- block 42 len=988 head=//取得所有站点测试             $(function () {                   jQuery.support.cors = true; 				$.ajax({                      contentType: 'text/plain', 					type: 'GET', 					dataType: 'text'                   , url: "https://m.shmetro.com/core/shmetro/mdstationinfoback_new.ashx" 				 // , url: "http://m.
+--- block 43 len=4854 head=$(function() { 				/*临时跳转路径查询 				$("input[class*='tbstation']").click(function(){ 					window.location = "https://metro.tenchii.com/metroH5/"; 				}); 				*/ 				 //var hour=$("#tm1 .hour,#tm2 .hour"),min=$("#tm1 .min,,#tm2 .min"),date=new Date(),h=date.getHours(),m=date.getMinutes(); 				//for(var
+   tail=serlayclose1 a').click(function () {                     var serlay = $(this).parent().parent();                     serlay.hide();                     var tbstation1 = serlay.parent().find(' input[type="text"]');                     tbstation1_blur(tbstation1);                 });               });
+--- block 44 len=1498 head=$(function () {         $(".inner_mainrpr .tabs a").each(function (index) {             var othis = $(this);             othis.click(function () {                 $(".rpcontent").css("display", "none");                 $(".rpcontent" + index + " .rpitempass").css("display", "none");                 
+--- block 45 len=69 head=var rpfid_rightnormal='ctl_shmetro_shmetroroutepriceform_rightnormal'
+--- block 46 len=1116 head=(function(){ console.log('shouchangzk') $('.shouchangzk').height(window.innerHeight); })() function shouchuan(){   $(".left-schangtitle").show(); $(".left-histitle").hide();  $(".shouchangzk").show();   $(".listscjlu").show();  $(".listhistory").hide();  $(".listfenxiang").hide();   } function histo
+--- block 47 len=6422 head=var tbody=""; var tbodyfx=""; var strfx=""; var sclist=$(".tilename"); var hislist=$(".tilenamehis"); var fxlist=$(".tilenamefx"); var obj=""; var arr=[]; //初始化 if($(".fxlist")){ $(".fxlist").remove();} var shareurl = "http://114.80.218.33"; var sharecontent="我发现一个不错的网页，它叫上海地铁运营服务专页，里面信息是由上海地铁官方发布的，
+   tail=-right:15px;padding-top:10px;"><img src="/skin/images/closed-schang.png"  onclick="delsc(\''+object[i].url+'\')"/></span></li>'; 	} 	tbody=str; 	//console.dirxml(tbody); 	sclist.after(tbody); } function closedgb(){   $(".shouchangzk").hide();   }    function closedht(){   $(".historyzk").hide();   }
+--- block 48 len=307 head=$(document).ready(function(){   $(".rightfloat1").click(function(){ <!--  $(".right_ride_search_form").toggle();--> if($(".rightfloat22").css("display")=="block"){  $(".rightfloat22").hide(); this.className='rightfloat-m';  }else{  $(".rightfloat22").show(); this.className='rightfloat1-f'; }    }); 
+--- block 49 len=153 head=$(document).ready(function(){   $("#sharewx").mouseover(function(){   $(".zxs").toggle();   }); });    function gbi(){ 	$("#share_weixin").hide(); 	}
+--- block 50 len=0 head=
+--- block 51 len=0 head=
+--- block 52 len=0 head=
+--- block 53 len=0 head=
+--- block 54 len=0 head=
+--- block 55 len=448 head=function toggleToolBar() { 	aria.start(); }     $(".navbar-nav .dropdown:last-child ul li:last-child ").keydown(function (e) {          var e = window.event ? window.event : e;         var keyCode = e.which ? e.which : e.keyCode;         //tab          if (keyCode == 9) {              $(".navbar-nav
