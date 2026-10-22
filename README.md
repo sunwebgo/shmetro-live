@@ -4,7 +4,14 @@
 **每一个方向上正在运行的每一列车**——一条线路上同时显示多列车，因此可以直接看出
 **发车间隔**与列车的分布。
 
-用浏览器直接打开 `index.html` 即可（纯静态，无需服务器、无需联网）。
+## 在线访问
+
+**<https://sunwebgo.github.io/shmetro-live/>**
+
+打开后建议把右下角「日期类型」切到 **周一~周四**、时间轴拖到 **08:00**，可以看早高峰最密的发车间隔；
+再切到 **周五** 并把时间拖到 **23:30**，能看到只有 1/7/8/9/10/13 号线仍在延时运营。
+
+也可以直接用浏览器打开本地 `index.html`（纯静态，无需服务器、无需联网）。
 
 ---
 
@@ -97,3 +104,13 @@ $node = "<node>"
 `tools/build_data.py` 顶部的 `HEADWAY_SPEC` 是人工整理自官方间隔表的行车间隔定义，
 每条都附有官方原文（如「工作日 早高峰2分30秒/平峰5分/晚高峰3分/其余4~9分」），
 可按需修改后重新构建。
+
+## 部署（GitHub Pages）
+
+仓库：<https://github.com/sunwebgo/shmetro-live>
+
+采用 GitHub Pages **分支部署**：源为 `main` 分支根目录（`build_type: legacy`），没有构建步骤，
+推送到 `main` 后约 1 分钟自动发布到 <https://sunwebgo.github.io/shmetro-live/>。
+
+因为全部是静态文件（HTML + CSS + JS + 数据），除 GitHub Pages 外，任意静态托管
+（本地直接打开、Nginx、Vercel、对象存储等）都能原样运行。
