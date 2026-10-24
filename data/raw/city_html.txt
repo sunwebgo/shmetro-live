@@ -1,57 +1,0 @@
-
-========== szmtr_home.html  (86568 bytes, utf-8) ==========
-<!DOCTYPE html> <html lang="zh-CN"> <head>     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <meta name="renderer" content="webkit">     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">     <title>苏州地铁 - Suzhou Metro</title>     <meta name="keywords" content="苏州轨道交通,苏州地铁,苏e行,Suzhou Rail Transit,Suzhou Metro,昆山地铁,昆山轨道交通,昆山S1线,苏州市轨道交通集团有限公司,苏州轨道交通运营分公司,苏州轨道交通资源开发分公司,苏州轨道交通建设分公司,www.sz-mtr.com"/>     <meta name="description" content="苏州市轨道交通集团有限公司为市直属大型国有企业，主要承担苏州市轨道交通规划、建设、运营、资源开发及物业保障等工作。目前，苏州轨道交通已开通8条线路，运营里程323公里，日均客流超200万。苏e行是苏州轨道交通智慧出行服务平台，苏州轨道交通官方APP，使用苏e行可以在苏州轨道交通任意车站实现扫码乘车，智慧出行。"/>     <meta property="og:image" content="http://www.sz-mtr.com/logo.jpg"/>     <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.7.0/css/font-awesome.css"/>     <link rel="stylesheet" type="text/css" href="/v2/css/homeMain.css"/>     <link rel="stylesheet" type="text/css" href="/v2/css/menu-pc-1.0-20251106.css"/>     <link rel="stylesheet" type="text/css" href="/v2/css/common-1.0-20251106.css">     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.cs
---- links ---
-  /
-  /asset/
-  /asset/construction/
-  /asset/contact/
-  /asset/introduction/
-  /asset/news/
-  /asset/services/
-  /asset/style/
-  /bootstrap/css/bootstrap.min.css
-  /company/CSR/
-  /company/EnterpriseCulture/
-  /company/Logo/
-  /company/honours/
-  /company/introduction/
-  /company/structure/
-  /construction/inform-against/
-  /construction/news/
-  /construction/news/7/202412/12DBEF30.html
-  /construction/news/7/202412/4EBFF589.html
-  /construction/news/8/202407/377525B8.html
-  /construction/routes/
-  /construction/rules/
-  /css/font-awesome-4.7.0/css/font-awesome.css
-  /en/
-  /js/utils.js
-  /news/hot/
-  /news/hot/202609/AC288111.html
-  /news/hot/202610/C7956599.html
-  /news/hot/202610/D2F44AE5.html
-  /news/hot/202610/E41B0348.html
-  /news/media/
-  /news/notice/
-  /news/notice/202509/CEA0C54D.html
-  /news/notice/202510/6A9A73EC.html
-  /news/notice/202510/CD52CACB.html
-  /news/notice/202607/2DEFFC19.html
-  /news/notice/202609/00309BBC.html
-  /news/notice/202609/F2079313.html
-  /news/response/
-  /news/special/
---- 关键词 ---
-  首末班车 x2
-  时刻表 x1
-  timetable x1
-
-========== hzmtr_home.html  (2683 bytes, utf-8) ==========
-<!doctype html> <html lang="en">  <head>   <meta charset="UTF-8" />   <link rel="icon" type="image/svg+xml" href="./logo.png" />   <meta name="viewport" content="width=device-width, initial-scale=1.0" />   <title>杭州地铁官网</title>    <style>     .ie-tip {       display: none;       text-align: center;     }     .content-html table {       border-collapse: collapse;       margin-bottom: 15px;     }     .content-html table td {       line-height: 1.5;       min-width: 30px;       padding: 3px 5px;       text-align: left;       border: 1px solid #ccc;     }     </style>   <script type="module" crossorigin src="./js/index-Byg-IV4M.js"></script>   <link rel="stylesheet" crossorigin href="./css/index-BsvFJ5YY.css"> </head>  <body>   <div class="ie-tip" id="ieTip">     <h3>⚠️ 检测到你正在使用 IE 浏览器，该浏览器已停止维护</h3>     <p>为了保障你的使用体验、数据安全和页面正常显示，建议你切换至主流浏览器（360极速浏览器、360安全浏览器、QQ浏览器可以通过智能切核功能切换至极速模式具体教程地址：<a target="_blank" href="https://bbs.360.cn/thread-14958904-1-1.html">https://bbs.360.cn/thread-14958904-1-1.html</a>）</p>     <p class="browser-list">推荐：Chrome 浏览器、Edge 浏览器、Firefox 浏览器</p>   </div>   <div id="app"></div>       <script>     // 核心函数：检测是否为 IE 浏览器     function isIEBrow
---- links ---
-  ./css/index-BsvFJ5YY.css
-  ./js/index-Byg-IV4M.js
-  ./logo.png
-  https://bbs.360.cn/thread-14958904-1-1.html
---- 关键词 ---
