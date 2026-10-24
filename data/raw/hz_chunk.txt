@@ -1,0 +1,7 @@
+chunk len=13017
+--- api-ish ---
+--- base 拼装 ---
+
+=== 主包 base 上下文 ===
+---
+>import("./index-CHq4dS8O.js"),__vite__mapDeps([0,1]),import.meta.url),children:[]},{path:"/netMap",name:"Site Map",meta:{title:"网站地图"},component:()=>at(()=>import("./index-BECAUc5q.js"),__vite__mapDeps([2,3]),import.meta.url),children:[]}],OF=Object.freeze(Object.defineProperty({__proto__:null,default:Vd},Symbol.toStringTag,{value:"Module"})),co="https://www.hzmetro.com/api",PF="https://prod-hzmetro-portal.hangzhou7.zos.ctyun.cn/public/common/portal/";console.log(co,"HOST_NAME_URL");const ut={HOST_NAME_URL:co,HOST_FILE_URL:PF,HOST_GETRECOMMENDARTICLE:co+"/recommend/getRecommendArticle",HOST_GETALLRECOMMENDATION:co+"/re

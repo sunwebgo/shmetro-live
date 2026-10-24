@@ -1,0 +1,183 @@
+{
+ "1": [
+  {
+   "order": 0,
+   "lineId": "1",
+   "timeNameZh": "周一至周四时刻表",
+   "timeStart": "2023-02-02",
+   "timeId": "a48e9936-4bba-47ef-aec6-83118079be91",
+   "timeNameEn": "Mon. to Thur. Schedule",
+   "timeEnd": "2034-12-11",
+   "timeNameKr": "월요일부터 목요일까지 시간표",
+   "timeNameJp": "月曜日から木曜日までの時間割"
+  },
+  {
+   "order": 0,
+   "lineId": "1",
+   "timeNameZh": "周五至周日时刻表",
+   "timeStart": "2023-12-11",
+   "timeId": "af7594a3-567d-4686-aad6-8611d8e00adb",
+   "timeNameEn": "Fri. to Sun. Schedule",
+   "timeEnd": "2035-02-28",
+   "timeNameKr": "금요일부터 일요일까지 시간표",
+   "timeNameJp": "金曜日から日曜日までの時間割"
+  }
+ ],
+ "2": [
+  {
+   "order": 0,
+   "lineId": "2",
+   "timeNameZh": "周一至周四时刻表",
+   "timeStart": "2026-02-24",
+   "timeId": "b930465c-f75e-4224-992d-703b76c9e2f4",
+   "timeNameEn": "Mon. to Thu. Schedule",
+   "timeEnd": "2034-02-24",
+   "timeNameKr": "월요일~목요일 시각표",
+   "timeNameJp": "月曜日～木曜日 時刻表"
+  },
+  {
+   "order": 0,
+   "lineId": "2",
+   "timeNameZh": "周五至周日时刻表",
+   "timeStart": "2026-02-24",
+   "timeId": "ac5d34d2-2747-4baf-a0d5-2f965980f4f1",
+   "timeNameEn": "Fri. to Sun. Schedule",
+   "timeEnd": "2034-02-24",
+   "timeNameKr": "금요일~일요일 시각표",
+   "timeNameJp": "金曜日～日曜日 時刻表"
+  }
+ ],
+ "4": [
+  {
+   "order": 0,
+   "lineId": "4",
+   "timeNameZh": "周一至周四时刻表",
+   "timeStart": "2026-02-24",
+   "timeId": "43e83fc2-e3ab-4893-befe-219896f16bf2",
+   "timeNameEn": "Mon. to Thu. Schedule",
+   "timeEnd": "2034-02-24",
+   "timeNameKr": "월요일~목요일 시각표",
+   "timeNameJp": "月曜日～木曜日 時刻表"
+  },
+  {
+   "order": 0,
+   "lineId": "4",
+   "timeNameZh": "周五至周日时刻表",
+   "timeStart": "2026-02-24",
+   "timeId": "e78b5a02-b1b6-427b-8f59-afea831fd3dc",
+   "timeNameEn": "Fri. to Sun. Schedule",
+   "timeEnd": "2034-02-24",
+   "timeNameKr": "금요일~일요일 시각표",
+   "timeNameJp": "金曜日～日曜日 時刻表"
+  }
+ ],
+ "5": [
+  {
+   "order": 0,
+   "lineId": "5",
+   "timeNameZh": "周一至周四时刻表",
+   "timeStart": "2026-02-24",
+   "timeId": "f94e8ced-9c0b-4d86-8b7d-913e943b2d8e",
+   "timeNameEn": "Mon. to Thu. Schedule",
+   "timeEnd": "2034-12-31",
+   "timeNameKr": "월요일~목요일 시각표",
+   "timeNameJp": "月曜日～木曜日 時刻表"
+  },
+  {
+   "order": 0,
+   "lineId": "5",
+   "timeNameZh": "周五至周日时刻表",
+   "timeStart": "2026-02-24",
+   "timeId": "f2fd132a-6ff2-4e29-92ae-0754a03a3658",
+   "timeNameEn": "Fri. to Sun. Schedule",
+   "timeEnd": "2034-02-24",
+   "timeNameKr": "금요일~일요일 시각표",
+   "timeNameJp": "金曜日～日曜日 時刻表"
+  }
+ ],
+ "6": [
+  {
+   "order": 0,
+   "lineId": "6",
+   "timeNameZh": "周一至周四时刻表",
+   "timeStart": "2026-02-24",
+   "timeId": "98eb5706-f0ff-45d3-87d3-68d2e0e19259",
+   "timeNameEn": "Mon. to Thu. Schedule",
+   "timeEnd": "2034-02-24",
+   "timeNameKr": "월요일~목요일 시각표",
+   "timeNameJp": "月曜日～木曜日 時刻表"
+  },
+  {
+   "order": 0,
+   "lineId": "6",
+   "timeNameZh": "周五至周日时刻表",
+   "timeStart": "2026-02-24",
+   "timeId": "355a93f8-e3af-42e7-9b7c-0005d47e83be",
+   "timeNameEn": "Fri. to Sun. Schedule",
+   "timeEnd": "2034-02-24",
+   "timeNameKr": "금요일~일요일 시각표",
+   "timeNameJp": "金曜日～日曜日 時刻表"
+  }
+ ],
+ "7": [
+  {
+   "order": 0,
+   "lineId": "7",
+   "timeNameZh": "周一至周日时刻表",
+   "timeStart": "2026-02-24",
+   "timeId": "f3450db5-dcf0-47ff-aad9-3a1487351871",
+   "timeNameEn": "Mon. to Sun. Schedule",
+   "timeEnd": "2034-02-24",
+   "timeNameKr": "평일 시각표",
+   "timeNameJp": "通常時刻表"
+  }
+ ],
+ "8": [
+  {
+   "order": 0,
+   "lineId": "8",
+   "timeNameZh": "周一至周日时刻表",
+   "timeStart": "2026-02-24",
+   "timeId": "ad1d540d-9e21-44c2-b7a2-9c9a577f8a83",
+   "timeNameEn": "Mon. to Sun. Schedule",
+   "timeEnd": "2034-02-24",
+   "timeNameKr": "평일 시각표",
+   "timeNameJp": "通常時刻表"
+  }
+ ],
+ "3_11": [
+  {
+   "order": 0,
+   "lineId": "3_11",
+   "timeNameZh": "周一至周四时刻表",
+   "timeStart": "2026-01-01",
+   "timeId": "48b5b873-db4a-41c9-a004-a6afe6520ec3",
+   "timeNameEn": "Mon. to Thu. Schedule",
+   "timeEnd": "2038-03-31",
+   "timeNameKr": "월요일부터 목요일까지 시간표",
+   "timeNameJp": "月曜日から木曜日までの時間割"
+  },
+  {
+   "order": 0,
+   "lineId": "3_11",
+   "timeNameZh": "周五至周日时刻表",
+   "timeStart": "2022-02-02",
+   "timeId": "2e56ace5-4c7b-49bb-bdb0-f987abbc193e",
+   "timeNameEn": "Fri. to Sun. Schedule",
+   "timeEnd": "2037-03-01",
+   "timeNameKr": "금요일부터 일요일까지 시간표",
+   "timeNameJp": "金曜日から日曜日までの時間割"
+  },
+  {
+   "order": 0,
+   "lineId": "3_11",
+   "timeNameZh": "大站快车",
+   "timeStart": "2023-01-01",
+   "timeId": "9a0446d9-a33f-4606-90bf-1e70d6705d94",
+   "timeNameEn": "Express Schedule",
+   "timeEnd": "2037-02-01",
+   "timeNameKr": "대역급행",
+   "timeNameJp": "快速列車"
+  }
+ ]
+}

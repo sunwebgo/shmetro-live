@@ -1,0 +1,41 @@
+keys=['stations', 'guideDescZh', 'guideDescEn', 'timetableFrequency', 'lineId', 'sortOrder', 'timeNameZh', 'timeStart', 'timeId', 'timeNameEn', 'timeEnd', 'timeNameKr', 'timeNameJp']
+guideDescZh=工作日早高峰行车间隔约2-4分钟，晚高峰行车间隔约2分35秒-4分钟，平峰行车间隔约6分钟。
+
+注：--表示终到，×表示不经过，〇表示越站。
+
+freq: name=首班车    dirType=UP    keys=['frequencyNameZh', 'frequencyDirectionType', 'frequencyNameKr', 'frequencyNameEn', 'frequencyNameJp', 'timetableDirection', 'frequencyDirectionTypeStationId']
+   timetableDirection 组数=1  keys=['timetableFirstLastTimes', 'directionNameZh', 'directionNameEn', 'directionNameJp', 'directionNameKr']
+   item keys=['timetableFirstLastTimes', 'directionNameZh', 'directionNameEn', 'directionNameJp', 'directionNameKr']
+     timetableFirstLastTimes: list len=24 sample=[{"stationId": "0144", "tfltTime": "6:14", "tfltId": null}, {"stationId": "0154", "tfltTime": "6:03", "tfltId": null}]
+     directionNameZh=往木渎
+     directionNameEn=To Mudu
+     directionNameJp=木渎行き
+     directionNameKr=목두행
+
+freq: name=末班车    dirType=UP    keys=['frequencyNameZh', 'frequencyDirectionType', 'frequencyNameKr', 'frequencyNameEn', 'frequencyNameJp', 'timetableDirection', 'frequencyDirectionTypeStationId']
+   timetableDirection 组数=1  keys=['timetableFirstLastTimes', 'directionNameZh', 'directionNameEn', 'directionNameJp', 'directionNameKr']
+   item keys=['timetableFirstLastTimes', 'directionNameZh', 'directionNameEn', 'directionNameJp', 'directionNameKr']
+     timetableFirstLastTimes: list len=24 sample=[{"stationId": "0152", "tfltTime": "22:58", "tfltId": null}, {"stationId": "0148", "tfltTime": "23:06", "tfltId": null}]
+     directionNameZh=往木渎
+     directionNameEn=To Mudu
+     directionNameJp=木渎行き
+     directionNameKr=목두행
+
+freq: name=首班车    dirType=DOWN  keys=['frequencyNameZh', 'frequencyDirectionType', 'frequencyNameKr', 'frequencyNameEn', 'frequencyNameJp', 'timetableDirection', 'frequencyDirectionTypeStationId']
+   timetableDirection 组数=1  keys=['timetableFirstLastTimes', 'directionNameZh', 'directionNameEn', 'directionNameJp', 'directionNameKr']
+   item keys=['timetableFirstLastTimes', 'directionNameZh', 'directionNameEn', 'directionNameJp', 'directionNameKr']
+     timetableFirstLastTimes: list len=24 sample=[{"stationId": "0155", "tfltTime": "6:11", "tfltId": null}, {"stationId": "0152", "tfltTime": "6:05", "tfltId": null}]
+     directionNameZh=往钟南街
+     directionNameEn=To Zhongnan Jie
+     directionNameJp=鐘南街行き
+     directionNameKr=중난가행
+
+freq: name=末班车    dirType=DOWN  keys=['frequencyNameZh', 'frequencyDirectionType', 'frequencyNameKr', 'frequencyNameEn', 'frequencyNameJp', 'timetableDirection', 'frequencyDirectionTypeStationId']
+   timetableDirection 组数=1  keys=['timetableFirstLastTimes', 'directionNameZh', 'directionNameEn', 'directionNameJp', 'directionNameKr']
+   item keys=['timetableFirstLastTimes', 'directionNameZh', 'directionNameEn', 'directionNameJp', 'directionNameKr']
+     timetableFirstLastTimes: list len=24 sample=[{"stationId": "0154", "tfltTime": "23:04", "tfltId": null}, {"stationId": "0149", "tfltTime": "22:54", "tfltId": null}]
+     directionNameZh=往钟南街
+     directionNameEn=To Zhongnan Jie
+     directionNameJp=鐘南街行き
+     directionNameKr=중난가행
+

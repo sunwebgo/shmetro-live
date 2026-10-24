@@ -1,11 +1,15 @@
 /* =========================================================================
- * app.js —— Canvas 2D 动态上海地铁线路图
+ * app.js —— Canvas 2D 动态城市轨道线路图 (上海 / 苏州 / 杭州)
  * ========================================================================= */
 (function () {
   'use strict';
 
-  var DATA = window.SHMETRO_DATA;
-  if (!DATA) { document.body.innerHTML = '<p style="padding:30px;color:#f66">缺少 data/metro-data.js, 请先运行 tools/build_data.py</p>'; return; }
+  var CITIES = window.METRO_CITIES;
+  if (!CITIES || !CITIES.cities) {
+    document.body.innerHTML = '<p style="padding:30px;color:#f66">缺少 data/metro-data.js, 请先运行 tools/build_data.py</p>';
+    return;
+  }
+  var DATA = CITIES.cities[CITIES.meta.cityOrder[0]];
 
   var TZ = 'Asia/Shanghai';
   var SAMPLES = 8;               // 每段曲线的采样点数
@@ -649,34 +653,69 @@
   })();
 
   /* ================================================================== 说明 */
-  (function () {
-    var s = document.getElementById('srcList');
-    s.innerHTML = DATA.meta.sources.map(function (x) {
+  function renderAbout() {
+    var m = DATA.meta || {};
+    document.getElementById('srcList').innerHTML = (m.sources || []).map(function (x) {
       return '<li>' + esc(x.name) + '<br><a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.url) + '</a></li>';
     }).join('');
-    document.getElementById('noteList').innerHTML = DATA.meta.notes.map(function (x) {
+    document.getElementById('noteList').innerHTML = (m.notes || []).map(function (x) {
       return '<li>' + esc(x) + '</li>';
     }).join('');
-    document.getElementById('genInfo').textContent = '数据生成时间：' + DATA.meta.generated + '（时区 ' + DATA.meta.timezone + '）';
-    var svc = 0, stn = 0;
+    document.getElementById('genInfo').textContent =
+      '数据生成时间：' + (m.generated || CITIES.meta.generated) + '（时区 ' + (m.timezone || CITIES.meta.timezone) + '）';
+    var svc = 0;
     DATA.lines.forEach(function (L) { svc += L.services.length; });
-    stn = Object.keys(SIM.stations()).length;
+    var stn = Object.keys(SIM.stations()).length;
     document.getElementById('footRight').textContent =
-      DATA.lines.length + ' 条线路 · ' + svc + ' 个交路 · ' + stn + ' 座车站';
-  })();
+      DATA.name + ' · ' + DATA.lines.length + ' 条线路 · ' + svc + ' 个交路 · ' + stn + ' 座车站';
+  }
+
+  /* ================================================================ 城市切换 */
+  function renderCityTabs() {
+    var el = document.getElementById('cityTabs');
+    if (!el) return;
+    el.innerHTML = SIM.cities().map(function (c) {
+      return '<button class="btn city' + (c.key === SIM.cityKey ? ' active' : '') + '" data-city="' +
+        esc(c.key) + '">' + esc(c.name) + '<i>' + c.lines + '</i></button>';
+    }).join('');
+    Array.prototype.forEach.call(el.querySelectorAll('.btn.city'), function (b) {
+      b.onclick = function () { useCity(b.getAttribute('data-city')); };
+    });
+  }
+
+  function useCity(key) {
+    if (!SIM.useCity(key)) return;
+    DATA = SIM.data;
+    state.selLine = null;
+    state.selStation = null;
+    state.hoverStation = null;
+    state.hidden = {};
+    geom.key = '';
+    setupProjection();
+    renderCityTabs();
+    renderAbout();
+    updatePanels();
+    draw();
+  }
 
   /* ================================================================== 启动 */
   window.addEventListener('resize', function () { resize(); setupProjection(); geom.key = ''; });
   resize();
+  SIM.useCity(SIM.cityKey);
+  DATA = SIM.data;
   setupProjection();
   var s0 = shanghaiNow();
   state.date = s0.date;
   state.time = s0.sec;
+  renderCityTabs();
+  renderAbout();
+  updatePanels();
   // 调试/自动化测试入口
   window.__METRO_APP__ = {
     state: state, draw: draw, updatePanels: updatePanels, geom: geom,
     project: project, rebuild: function () { geom.key = ''; rebuildGeometry(); },
-    switchTab: switchTab, setup: function () { resize(); setupProjection(); geom.key = ''; }
+    switchTab: switchTab, useCity: useCity, renderAbout: renderAbout,
+    setup: function () { resize(); setupProjection(); geom.key = ''; }
   };
   requestAnimationFrame(tick);
 })();

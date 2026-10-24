@@ -30,6 +30,15 @@ button{font:inherit;color:inherit}
 .brand{display:flex;align-items:baseline;gap:12px}
 .logo{font-size:19px;font-weight:700;letter-spacing:.5px}
 .sub{color:var(--txt2);font-size:12px}
+.citytabs{display:flex;gap:6px;margin-left:10px;align-self:center}
+.btn.city{
+  padding:5px 13px;font-size:13px;border-radius:8px;background:#16202c;
+  border:1px solid var(--line);color:var(--txt2);position:relative;
+}
+.btn.city i{font-style:normal;font-size:10px;color:var(--txt3);margin-left:5px}
+.btn.city:hover{color:var(--txt);background:#1b2836}
+.btn.city.active{background:#1d3a5c;border-color:#2f6ea8;color:#d8ecff}
+.btn.city.active i{color:#8fbde8}
 .clockbox{display:flex;align-items:center;gap:10px}
 .clockline{text-align:right;line-height:1.15}
 .clock{font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}

@@ -80,7 +80,7 @@ def main():
     f1 = load_font(int(22 * SS))
     f2 = load_font(int(13 * SS))
     m = d["meta"]
-    title = "上海地铁 2D 动态线路图 · %s %s" % (m["dateLabel"], m["dayLabel"])
+    title = "%s 2D 动态线路图 · %s %s" % (m.get("cityName") or "城市轨道", m["dateLabel"], m["dayLabel"])
     dr.rectangle([S(14), S(14), S(430), S(74)], fill=(15, 22, 31, 225), outline=(34, 48, 63, 255))
     dr.text((S(26), S(20)), title, font=f1, fill=(230, 237, 243, 255))
     dr.text((S(26), S(50)), "时刻 %s   在线列车 %d 列   数据生成 %s"

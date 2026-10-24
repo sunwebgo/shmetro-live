@@ -1,0 +1,39 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-24T06:44:21Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "relation",
+  "id": 5161881,
+  "tags": {
+    "colour": "#B5CD56",
+    "name": "高新有轨电车1号线",
+    "network": "苏州高新区有轨电车",
+    "operator": "苏州高新有轨电车",
+    "route": "tram",
+    "type": "route",
+    "wikidata": "Q15919668",
+    "wikipedia": "zh:苏州高新区有轨电车1号线"
+  }
+},
+{
+  "type": "relation",
+  "id": 13334262,
+  "tags": {
+    "colour": "#850000",
+    "name": "高新有轨电车2号线",
+    "operator": "苏州高新有轨电车",
+    "route": "tram",
+    "type": "route",
+    "wikidata": "Q17392828",
+    "wikipedia": "zh:苏州高新区有轨电车2号线"
+  }
+}
+
+  ]
+}

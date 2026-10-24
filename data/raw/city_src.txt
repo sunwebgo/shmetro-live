@@ -1,0 +1,42 @@
+=== 苏州 sz_time.html (21080) ===
+tables=0
+  URL /js/menu.js
+  URL /v2/js/jquery-3.1.1.js
+  URL /js/IECommon.js
+  URL /bootstrap/js/respond.min.js
+  URL /bootstrap/js/html5shiv.min.js
+  URL /js/utils.js
+  URL /service/guide/map/javascript/szmtr.js
+  URL /service/guide/map/javascript/szmtrTime.js
+  URL /service/guide/map/javascript/stationInfo_zh.js
+  URL /js/laydate.js
+  URL /v2/plugins/timetable/html2canvas.min.js
+  URL /v2/plugins/timetable/polyfill.min.js
+  URL /v2/plugins/timetable/timetable-component-1.0-20251106.js
+  URL /v2/js/browser-utils-1.0-20251106.js
+  URL /v2/js/menu-pc-1.0-20251106.js
+--- 关键词 ---
+  首班 x0
+  末班 x6
+  间隔 x0
+  ajax x4
+  getJSON x0
+  station x7
+
+=== 杭州 bundle (1841090) ===
+  http://www.w3.org/1998/Math/MathML
+  http://www.w3.org/1999/xlink
+  http://www.w3.org/2000/svg
+  https://hzmetro-web-app.mtros.cn/hz_lost_goods_web_passenger_pc/index.html#/dashboard/found/list
+  https://prod-hzmetro-portal.hangzhou7.zos.ctyun.cn/public/common/portal/
+  https://weibo.com/u/2219143801
+  https://www.hzmetro.com/api
+  https://zhaocai.hzmetro.com
+--- baseURL ---
+--- 关键 path ---
+  /operation/online
+  /construction/online
+  /construction/builtLine
+  /operation/operatingSchedule
+  /railway-life/resourcesOnline
+  /tod/online

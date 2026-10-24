@@ -65,7 +65,7 @@ const els = {};
 const IDS = ['map', 'clockTime', 'clockDate', 'liveFlag', 'statTrains', 'statLines', 'statNext',
   'legend', 'lineList', 'stationHint', 'stationBody', 'srcList', 'noteList', 'genInfo',
   'footRight', 'btnPlay', 'btnNow', 'timeSlider', 'chkLabels', 'chkTrails', 'timeMarks',
-  'speedGroup', 'dayGroup', 'panelLines', 'panelStation', 'panelAbout', 'errbar'];
+  'speedGroup', 'dayGroup', 'panelLines', 'panelStation', 'panelAbout', 'errbar', 'cityTabs'];
 IDS.forEach(id => { els[id] = makeEl(id); });
 
 /* tab / 按钮集合 */
@@ -234,10 +234,48 @@ try {
 }
 
 console.log('== 说明面板 ==');
-ok(els.srcList.innerHTML.indexOf('shmetro') >= 0, '数据来源未渲染');
+ok(els.srcList.innerHTML.indexOf('http') >= 0, '数据来源未渲染');
 ok(els.noteList.innerHTML.length > 20, '口径说明未渲染');
 ok(els.footRight.textContent.indexOf('车站') >= 0, '页脚统计未渲染: ' + els.footRight.textContent);
 wk(els.footRight.textContent);
+
+console.log('== 城市切换 ==');
+try {
+  ok(els.cityTabs.innerHTML.indexOf('data-city') >= 0, '城市切换按钮未渲染');
+  const before = els.footRight.textContent;
+  const keys = ['suzhou', 'suzhou_tram', 'hangzhou', 'shanghai'];
+  keys.forEach(k => {
+    APP.state.live = false;
+    APP.state.time = 8 * 3600;
+    APP.useCity(k);
+    APP.draw();
+    const foot = els.footRight.textContent;
+    ok(foot.length > 0 && foot.indexOf('车站') >= 0, k + ' 切换后页脚未更新');
+    ok(els.lineList.innerHTML.length > 200, k + ' 切换后线路列表为空');
+    ok(els.legend.innerHTML.indexOf('data-line') >= 0, k + ' 切换后图例为空');
+    ok(els.statTrains.textContent !== '' && +els.statTrains.textContent > 0,
+      k + ' 切换后在线列车为 0: ' + els.statTrains.textContent);
+    wk(k.padEnd(14) + foot + ' → 08:00 在线 ' + els.statTrains.textContent + ' 列');
+  });
+  ok(els.footRight.textContent === before, '切回上海后页脚应与初始一致');
+} catch (e) {
+  ok(false, '城市切换抛错: ' + e.message + '\n' + (e.stack || '').split('\n').slice(0, 4).join('\n'));
+}
+
+console.log('== 每个城市全时段绘制 ==');
+try {
+  ['shanghai', 'suzhou', 'suzhou_tram', 'hangzhou'].forEach(k => {
+    APP.useCity(k);
+    APP.state.live = false;
+    for (let t = 0; t < 86400; t += 3600) {
+      APP.state.time = t;
+      APP.draw();
+    }
+  });
+  wk('4 个数据集 × 24 个时刻绘制完成, 无异常');
+} catch (e) {
+  ok(false, '全时段绘制抛错: ' + e.message + '\n' + (e.stack || '').split('\n').slice(0, 4).join('\n'));
+}
 
 console.log('\n===============================');
 console.log(fail === 0 ? '✅ 前端脚本校验通过' : '❌ 失败 ' + fail + ' 项');

@@ -1,0 +1,693 @@
+{
+ "data": {
+  "stations": [
+   {
+    "stationNameZh": "木渎",
+    "stationNameEn": "Mudu",
+    "stationId": "0140"
+   },
+   {
+    "stationNameZh": "金枫路",
+    "stationNameEn": "Jinfenglu",
+    "stationId": "0141"
+   },
+   {
+    "stationNameZh": "汾湖路",
+    "stationNameEn": "Fenhulu",
+    "stationId": "0142"
+   },
+   {
+    "stationNameZh": "玉山路",
+    "stationNameEn": "Yushanlu",
+    "stationId": "0143"
+   },
+   {
+    "stationNameZh": "狮子山",
+    "stationNameEn": "Shizishan",
+    "stationId": "0144"
+   },
+   {
+    "stationNameZh": "塔园路",
+    "stationNameEn": "Tayuanlu",
+    "stationId": "0145"
+   },
+   {
+    "stationNameZh": "滨河路",
+    "stationNameEn": "Binhelu",
+    "stationId": "0146"
+   },
+   {
+    "stationNameZh": "西环路",
+    "stationNameEn": "Xihuanlu",
+    "stationId": "0147"
+   },
+   {
+    "stationNameZh": "桐泾北路",
+    "stationNameEn": "Tongjingbeilu",
+    "stationId": "0148"
+   },
+   {
+    "stationNameZh": "广济南路",
+    "stationNameEn": "Guangjinanlu",
+    "stationId": "0149"
+   },
+   {
+    "stationNameZh": "养育巷",
+    "stationNameEn": "Yangyuxiang",
+    "stationId": "0150"
+   },
+   {
+    "stationNameZh": "乐桥",
+    "stationNameEn": "Leqiao",
+    "stationId": "0151"
+   },
+   {
+    "stationNameZh": "临顿路",
+    "stationNameEn": "Lindunlu",
+    "stationId": "0152"
+   },
+   {
+    "stationNameZh": "相门",
+    "stationNameEn": "Xiangmen",
+    "stationId": "0153"
+   },
+   {
+    "stationNameZh": "东环路",
+    "stationNameEn": "Donghuanlu",
+    "stationId": "0154"
+   },
+   {
+    "stationNameZh": "中央公园",
+    "stationNameEn": "Zhongyanggongyuan",
+    "stationId": "0155"
+   },
+   {
+    "stationNameZh": "星海广场",
+    "stationNameEn": "Xinghaiguangchang",
+    "stationId": "0156"
+   },
+   {
+    "stationNameZh": "东方之门",
+    "stationNameEn": "Dongfangzhimen",
+    "stationId": "0157"
+   },
+   {
+    "stationNameZh": "文化博览中心",
+    "stationNameEn": "Wenhuabolanzhongxin",
+    "stationId": "0158"
+   },
+   {
+    "stationNameZh": "时代广场",
+    "stationNameEn": "Shidaiguangchang",
+    "stationId": "0159"
+   },
+   {
+    "stationNameZh": "星湖街",
+    "stationNameEn": "Xinghujie",
+    "stationId": "0160"
+   },
+   {
+    "stationNameZh": "南施街",
+    "stationNameEn": "Nanshijie",
+    "stationId": "0161"
+   },
+   {
+    "stationNameZh": "星塘街",
+    "stationNameEn": "Xingtangjie",
+    "stationId": "0162"
+   },
+   {
+    "stationNameZh": "钟南街",
+    "stationNameEn": "Zhongnanjie",
+    "stationId": "0163"
+   }
+  ],
+  "guideDescZh": "工作日早高峰行车间隔约2-4分钟，晚高峰行车间隔约2分35秒-4分钟，平峰行车间隔约6分钟。\n\n注：--表示终到，×表示不经过，〇表示越站。",
+  "guideDescEn": "During weekday morning peak hours, the train intervals are approximately 2 to 4 minutes; during evening peak hours, the intervals are about 2 minutes and 35 seconds to 4 minutes; and during off-peak hours, the intervals are around 6 minutes.\n\nNote: \"--\" indicates \"Terminal\", \"×\" indicates \"not to arrive\", and \"〇\" indicates \"skip-stop service\".",
+  "timetableFrequency": [
+   {
+    "frequencyNameZh": "首班车",
+    "frequencyDirectionType": "UP",
+    "frequencyNameKr": "첫차",
+    "frequencyNameEn": "First",
+    "frequencyNameJp": "始発",
+    "timetableDirection": [
+     {
+      "timetableFirstLastTimes": [
+       {
+        "stationId": "0144",
+        "tfltTime": "6:14",
+        "tfltId": null
+       },
+       {
+        "stationId": "0154",
+        "tfltTime": "6:03",
+        "tfltId": null
+       },
+       {
+        "stationId": "0143",
+        "tfltTime": "6:16",
+        "tfltId": null
+       },
+       {
+        "stationId": "0157",
+        "tfltTime": "6:07",
+        "tfltId": null
+       },
+       {
+        "stationId": "0140",
+        "tfltTime": "--",
+        "tfltId": null
+       },
+       {
+        "stationId": "0146",
+        "tfltTime": "6:10",
+        "tfltId": null
+       },
+       {
+        "stationId": "0145",
+        "tfltTime": "6:12",
+        "tfltId": null
+       },
+       {
+        "stationId": "0161",
+        "tfltTime": "6:04",
+        "tfltId": null
+       },
+       {
+        "stationId": "0153",
+        "tfltTime": "6:06",
+        "tfltId": null
+       },
+       {
+        "stationId": "0152",
+        "tfltTime": "6:07",
+        "tfltId": null
+       },
+       {
+        "stationId": "0150",
+        "tfltTime": "6:01",
+        "tfltId": null
+       },
+       {
+        "stationId": "0147",
+        "tfltTime": "6:08",
+        "tfltId": null
+       },
+       {
+        "stationId": "0158",
+        "tfltTime": "6:03",
+        "tfltId": null
+       },
+       {
+        "stationId": "0155",
+        "tfltTime": "6:02",
+        "tfltId": null
+       },
+       {
+        "stationId": "0156",
+        "tfltTime": "6:00",
+        "tfltId": null
+       },
+       {
+        "stationId": "0141",
+        "tfltTime": "6:20",
+        "tfltId": null
+       },
+       {
+        "stationId": "0148",
+        "tfltTime": "6:06",
+        "tfltId": null
+       },
+       {
+        "stationId": "0149",
+        "tfltTime": "6:04",
+        "tfltId": null
+       },
+       {
+        "stationId": "0160",
+        "tfltTime": "6:00",
+        "tfltId": null
+       },
+       {
+        "stationId": "0151",
+        "tfltTime": "6:00",
+        "tfltId": null
+       },
+       {
+        "stationId": "0162",
+        "tfltTime": "6:02",
+        "tfltId": null
+       },
+       {
+        "stationId": "0163",
+        "tfltTime": "6:00",
+        "tfltId": null
+       },
+       {
+        "stationId": "0142",
+        "tfltTime": "6:18",
+        "tfltId": null
+       },
+       {
+        "stationId": "0159",
+        "tfltTime": "6:01",
+        "tfltId": null
+       }
+      ],
+      "directionNameZh": "往木渎",
+      "directionNameEn": "To Mudu",
+      "directionNameJp": "木渎行き",
+      "directionNameKr": "목두행"
+     }
+    ],
+    "frequencyDirectionTypeStationId": "0140"
+   },
+   {
+    "frequencyNameZh": "末班车",
+    "frequencyDirectionType": "UP",
+    "frequencyNameKr": "막차",
+    "frequencyNameEn": "Last",
+    "frequencyNameJp": "終電",
+    "timetableDirection": [
+     {
+      "timetableFirstLastTimes": [
+       {
+        "stationId": "0152",
+        "tfltTime": "22:58",
+        "tfltId": null
+       },
+       {
+        "stationId": "0148",
+        "tfltTime": "23:06",
+        "tfltId": null
+       },
+       {
+        "stationId": "0161",
+        "tfltTime": "22:39",
+        "tfltId": null
+       },
+       {
+        "stationId": "0146",
+        "tfltTime": "23:10",
+        "tfltId": null
+       },
+       {
+        "stationId": "0149",
+        "tfltTime": "23:04",
+        "tfltId": null
+       },
+       {
+        "stationId": "0157",
+        "tfltTime": "22:48",
+        "tfltId": null
+       },
+       {
+        "stationId": "0158",
+        "tfltTime": "22:44",
+        "tfltId": null
+       },
+       {
+        "stationId": "0145",
+        "tfltTime": "23:12",
+        "tfltId": null
+       },
+       {
+        "stationId": "0163",
+        "tfltTime": "22:35",
+        "tfltId": null
+       },
+       {
+        "stationId": "0142",
+        "tfltTime": "23:19",
+        "tfltId": null
+       },
+       {
+        "stationId": "0154",
+        "tfltTime": "22:54",
+        "tfltId": null
+       },
+       {
+        "stationId": "0144",
+        "tfltTime": "23:14",
+        "tfltId": null
+       },
+       {
+        "stationId": "0160",
+        "tfltTime": "22:41",
+        "tfltId": null
+       },
+       {
+        "stationId": "0147",
+        "tfltTime": "23:08",
+        "tfltId": null
+       },
+       {
+        "stationId": "0159",
+        "tfltTime": "22:42",
+        "tfltId": null
+       },
+       {
+        "stationId": "0155",
+        "tfltTime": "22:52",
+        "tfltId": null
+       },
+       {
+        "stationId": "0151",
+        "tfltTime": "23:00",
+        "tfltId": null
+       },
+       {
+        "stationId": "0153",
+        "tfltTime": "22:56",
+        "tfltId": null
+       },
+       {
+        "stationId": "0143",
+        "tfltTime": "23:17",
+        "tfltId": null
+       },
+       {
+        "stationId": "0140",
+        "tfltTime": "--",
+        "tfltId": null
+       },
+       {
+        "stationId": "0150",
+        "tfltTime": "23:02",
+        "tfltId": null
+       },
+       {
+        "stationId": "0141",
+        "tfltTime": "23:21",
+        "tfltId": null
+       },
+       {
+        "stationId": "0156",
+        "tfltTime": "22:50",
+        "tfltId": null
+       },
+       {
+        "stationId": "0162",
+        "tfltTime": "22:37",
+        "tfltId": null
+       }
+      ],
+      "directionNameZh": "往木渎",
+      "directionNameEn": "To Mudu",
+      "directionNameJp": "木渎行き",
+      "directionNameKr": "목두행"
+     }
+    ],
+    "frequencyDirectionTypeStationId": "0140"
+   },
+   {
+    "frequencyNameZh": "首班车",
+    "frequencyDirectionType": "DOWN",
+    "frequencyNameKr": "첫차",
+    "frequencyNameEn": "First",
+    "frequencyNameJp": "始発",
+    "timetableDirection": [
+     {
+      "timetableFirstLastTimes": [
+       {
+        "stationId": "0155",
+        "tfltTime": "6:11",
+        "tfltId": null
+       },
+       {
+        "stationId": "0152",
+        "tfltTime": "6:05",
+        "tfltId": null
+       },
+       {
+        "stationId": "0142",
+        "tfltTime": "5:44",
+        "tfltId": null
+       },
+       {
+        "stationId": "0153",
+        "tfltTime": "6:07",
+        "tfltId": null
+       },
+       {
+        "stationId": "0141",
+        "tfltTime": "5:42",
+        "tfltId": null
+       },
+       {
+        "stationId": "0154",
+        "tfltTime": "6:09",
+        "tfltId": null
+       },
+       {
+        "stationId": "0146",
+        "tfltTime": "5:52",
+        "tfltId": null
+       },
+       {
+        "stationId": "0145",
+        "tfltTime": "5:50",
+        "tfltId": null
+       },
+       {
+        "stationId": "0162",
+        "tfltTime": "6:27",
+        "tfltId": null
+       },
+       {
+        "stationId": "0161",
+        "tfltTime": "6:24",
+        "tfltId": null
+       },
+       {
+        "stationId": "0147",
+        "tfltTime": "5:54",
+        "tfltId": null
+       },
+       {
+        "stationId": "0144",
+        "tfltTime": "5:48",
+        "tfltId": null
+       },
+       {
+        "stationId": "0159",
+        "tfltTime": "6:20",
+        "tfltId": null
+       },
+       {
+        "stationId": "0160",
+        "tfltTime": "6:22",
+        "tfltId": null
+       },
+       {
+        "stationId": "0140",
+        "tfltTime": "5:40",
+        "tfltId": null
+       },
+       {
+        "stationId": "0163",
+        "tfltTime": "--",
+        "tfltId": null
+       },
+       {
+        "stationId": "0148",
+        "tfltTime": "5:57",
+        "tfltId": null
+       },
+       {
+        "stationId": "0158",
+        "tfltTime": "6:18",
+        "tfltId": null
+       },
+       {
+        "stationId": "0150",
+        "tfltTime": "6:01",
+        "tfltId": null
+       },
+       {
+        "stationId": "0143",
+        "tfltTime": "5:46",
+        "tfltId": null
+       },
+       {
+        "stationId": "0151",
+        "tfltTime": "6:03",
+        "tfltId": null
+       },
+       {
+        "stationId": "0149",
+        "tfltTime": "5:59",
+        "tfltId": null
+       },
+       {
+        "stationId": "0156",
+        "tfltTime": "6:13",
+        "tfltId": null
+       },
+       {
+        "stationId": "0157",
+        "tfltTime": "6:15",
+        "tfltId": null
+       }
+      ],
+      "directionNameZh": "往钟南街",
+      "directionNameEn": "To Zhongnan Jie",
+      "directionNameJp": "鐘南街行き",
+      "directionNameKr": "중난가행"
+     }
+    ],
+    "frequencyDirectionTypeStationId": "0163"
+   },
+   {
+    "frequencyNameZh": "末班车",
+    "frequencyDirectionType": "DOWN",
+    "frequencyNameKr": "막차",
+    "frequencyNameEn": "Last",
+    "frequencyNameJp": "終電",
+    "timetableDirection": [
+     {
+      "timetableFirstLastTimes": [
+       {
+        "stationId": "0154",
+        "tfltTime": "23:04",
+        "tfltId": null
+       },
+       {
+        "stationId": "0149",
+        "tfltTime": "22:54",
+        "tfltId": null
+       },
+       {
+        "stationId": "0146",
+        "tfltTime": "22:47",
+        "tfltId": null
+       },
+       {
+        "stationId": "0144",
+        "tfltTime": "22:43",
+        "tfltId": null
+       },
+       {
+        "stationId": "0141",
+        "tfltTime": "22:37",
+        "tfltId": null
+       },
+       {
+        "stationId": "0142",
+        "tfltTime": "22:39",
+        "tfltId": null
+       },
+       {
+        "stationId": "0151",
+        "tfltTime": "22:58",
+        "tfltId": null
+       },
+       {
+        "stationId": "0159",
+        "tfltTime": "23:15",
+        "tfltId": null
+       },
+       {
+        "stationId": "0152",
+        "tfltTime": "23:00",
+        "tfltId": null
+       },
+       {
+        "stationId": "0140",
+        "tfltTime": "22:35",
+        "tfltId": null
+       },
+       {
+        "stationId": "0162",
+        "tfltTime": "23:21",
+        "tfltId": null
+       },
+       {
+        "stationId": "0157",
+        "tfltTime": "23:10",
+        "tfltId": null
+       },
+       {
+        "stationId": "0156",
+        "tfltTime": "23:08",
+        "tfltId": null
+       },
+       {
+        "stationId": "0158",
+        "tfltTime": "23:13",
+        "tfltId": null
+       },
+       {
+        "stationId": "0148",
+        "tfltTime": "22:52",
+        "tfltId": null
+       },
+       {
+        "stationId": "0145",
+        "tfltTime": "22:45",
+        "tfltId": null
+       },
+       {
+        "stationId": "0153",
+        "tfltTime": "23:02",
+        "tfltId": null
+       },
+       {
+        "stationId": "0163",
+        "tfltTime": "--",
+        "tfltId": null
+       },
+       {
+        "stationId": "0160",
+        "tfltTime": "23:17",
+        "tfltId": null
+       },
+       {
+        "stationId": "0143",
+        "tfltTime": "22:41",
+        "tfltId": null
+       },
+       {
+        "stationId": "0150",
+        "tfltTime": "22:56",
+        "tfltId": null
+       },
+       {
+        "stationId": "0161",
+        "tfltTime": "23:19",
+        "tfltId": null
+       },
+       {
+        "stationId": "0147",
+        "tfltTime": "22:49",
+        "tfltId": null
+       },
+       {
+        "stationId": "0155",
+        "tfltTime": "23:06",
+        "tfltId": null
+       }
+      ],
+      "directionNameZh": "往钟南街",
+      "directionNameEn": "To Zhongnan Jie",
+      "directionNameJp": "鐘南街行き",
+      "directionNameKr": "중난가행"
+     }
+    ],
+    "frequencyDirectionTypeStationId": "0163"
+   }
+  ],
+  "lineId": "1",
+  "sortOrder": 1,
+  "timeNameZh": "周一至周四时刻表",
+  "timeStart": "2023-02-02",
+  "timeId": "a48e9936-4bba-47ef-aec6-83118079be91",
+  "timeNameEn": "Mon. to Thur. Schedule",
+  "timeEnd": "2034-12-11",
+  "timeNameKr": "월요일부터 목요일까지 시간표",
+  "timeNameJp": "月曜日から木曜日までの時間割"
+ },
+ "code": 0,
+ "msg": "操作成功"
+}

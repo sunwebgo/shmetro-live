@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<title>首末班车时间 - 苏州地铁 - Suzhou Metro</title>
+	<!-- Bootstrap -->
+	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/css/style.css">
+	<script type="text/javascript" src="/js/menu.js"></SCRIPT>
+	<script type="text/javascript" src="/v2/js/jquery-3.1.1.js"></script>
+	<script src="/js/IECommon.js"></script>
+	<link href="/css/menu.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="/bootstrap/js/respond.min.js"></script>
+	<script src="/bootstrap/js/html5shiv.min.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="/v2/css/menu-pc-1.0-20251106.css"/>
+	<link rel="stylesheet" type="text/css" href="/v2/css/common-1.0-20251106.css"/>
+	<link rel="stylesheet" type="text/css" href="/v2/css/footer.css"/>
+	<script src="/js/utils.js"></script>
+	<script src="/service/guide/map/javascript/szmtr.js"></script>
+	<script src="/service/guide/map/javascript/szmtrTime.js"></script>
+	<script src="/service/guide/map/javascript/stationInfo_zh.js"></script>
+	<link rel="stylesheet" type="text/css" href="/service/guide/map/css/common-line.css"/>
+	<link rel="stylesheet" type="text/css" href="/v2/plugins/timetable/timetable-component-1.0-20251106.css"/>
+	<script type="text/javascript" src="/js/laydate.js"></script>
+	<script type="text/javascript" src="/v2/plugins/timetable/html2canvas.min.js"></script>
+	<script type="text/javascript" src="/v2/plugins/timetable/polyfill.min.js"></script>
+	<script type="text/javascript" src="/v2/plugins/timetable/timetable-component-1.0-20251106.js"></script>
+	<script type="text/javascript" src="/v2/js/browser-utils-1.0-20251106.js"></script>
+	<script type="text/javascript">
+		// 移动端检测
+		if (BrowserUtils.checkMobile()) {
+			window.location.href = "./mobile.html";
+		}
+	</script>
+	<style>
+		.top-banner-container .top-banner-content {
+			width: 328px;
+		}
+	</style>
+</head>
+<body class="body_bg1" style="height:auto">
+<div id="wrapper" class="w100per hidden-xs hidden-sm">
+	<div id="out-content" class="pb">
+		<div id="header">
+			<div class="menu_top clearfix">
+	<!-- 菜单栏 Start-->
+	<div class="nav_center">
+		<!-- logo -->
+		<div class="top_logo">
+			<a href="/">
+				<div class="nav_logo_img"></div>
+			</a>
+		</div>
+		<!-- 菜单 -->
+		<div class="top_nav">
+			<ul class="fr">
+				<li class=""> <a href="/">首页</a></li>
+				<li>
+					<div class="nav_line"></div>
+					<a>集团概况</a>
+					<div class="navigation_information single_column_widen">
+						<div>
+							<div class="operation"></div>
+							<div class="operation_column operationColor">
+								<div><a href="/company/introduction/">公司简介</a></div>
+								<div><a href="/company/structure/">组织架构</a></div>
+								<div><a href="/company/EnterpriseCulture/">企业文化</a></div>
+								<div><a href="/company/Logo/">Logo标准图</a></div>
+								<div><a href="/company/CSR/">社会责任报告</a></div>
+								<div><a href="/company/honours/">荣誉墙</a></div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="nav_line"></div>
+					<a>新闻中心</a>
+					<div class="navigation_information single_column">
+						<div>
+							<div class="operation"></div>
+							<div class="operation_column operationColor">
+								<div><a href="/news/hot/">头条新闻</a></div>
+								<div><a href="/news/notice/">通知公告</a></div>
+								<div><a href="/news/response/">地铁课堂</a></div>
+								<div><a href="/news/media/">媒体报道</a></div>
+								<div><a href="/news/special/">专题活动</a></div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="nav_line"></div>
+					<a href="https://hire.sz-mtr.com/zp.html#/" target="_blank">人才招聘</a>
+					<div class="navigation_information single_column">
+						<div>
+							<div class="operation"></div>
+							<div class="operation_column operationColor">
+								<div><a href="https://hire.sz-mtr.com/zp.html#/channel/02" target="_blank">社会招聘</a></div>
+								<div><a href="https://hire.sz-mtr.com/zp.html#/channel/01" target="_blank">校园招聘</a></div>
+								<div><a href="https://hire.sz-mtr.com/zp.html#/customChannel/525" target="_blank">应聘指南</a></div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="nav_line"></div>
+					<a href="https://zzcg.sz-mtr.com" target="_blank">采购招标</a>
+					<div class="navigation_information single_column">
+						<div>
+							<div class="operation"></div>
+							<div class="operation_column operationColor">
+								<div><a href="https://zzcg.sz-mtr.com/cgxx/002001/sort.html" target="_blank" title="采购计划">采购计划</a></div>
+								<div><a href="https://zzcg.sz-mtr.com/cgxx/002002/sort.html" target="_blank" title="采购公告">采购公告</a></div>
+								<div><a href="https://zzcg.sz-mtr.com/cgxx/002007/sort.html" target="_blank" title="中标公告">中标公告</a></div>
+								<div><a href="https://zzcg.sz-mtr.com/zsxx/sorts.html" target="_blank">招商信息</a></div>
+								<div><a href="https://szgd.szjcw.com/" target="_blank">平台商城</a></div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="nav_line"></div>
+					<a>规划建设</a>
+					<div class="navigation_information single_column">
+						<div>
+							<div class="operation"></div>
+							<div class="operation_column operationColor">
+								<div><a href="/construction/routes/">线网规划</a></div>
+								<div><a href="/construction/news/">工程建设</a></div>
+								<div><a href="https://rpzone.sz-mtr.com:19443">地铁保护</a></div>
+								<div><a href="/construction/inform-against/">隐患举报</a></div>
+								<div><a href="/construction/rules/">政策法规</a></div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="nav_line"></div>
+					<a>运营服务</a>
+					<div class="navigation_information three_column">
+						<div class="column-group">
+							<div class="operation">
+								运营信息
+							</div>
+							<div class="operation_column">
+								<div><a href="/service/information/news/">运营动态</a></div>
+								<div><a href="/service/information/deeds/">好人好事</a></div>
+								<div><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz==&amp;action=getalbum&amp;album_id=3861914350105395202" target="_blank">运营调整</a></div>
+								<div><a href="/service/information/publication/">执法公示</a></div>
+								<div><a href="/service/information/delay/">电子致歉信</a></div>
+							</div>
+						</div>
+						<div class="column-group">
+							<div class="operation">
+								乘车指南
+							</div>
+							<div class="operation_column">
+								<div><a target="_blank" href="/service/guide/map/index_zh.html">运行线路图</a></div>
+								<div><a href="/service/guide/time/">首末班车时间</a></div>
+								<div><a href="/service/guide/stations/suexingStation.html">运行时刻表</a></div>
+								<div><a href="https://szex.sz-mtr.com/sz-app-h5/ipis/metromap/index.html#/crowding?cityId=3205">列车拥挤度</a></div>
+								<div><a href="/service/guide/stations/">车站信息</a></div>
+								<div><a href="/service/guide/ticket/">票务指引</a></div>
+								<div><a target="_blank" href="/suexing/">苏e行App</a></div>
+							</div>
+						</div>
+						<div class="column-group">
+							<div class="operation">
+								精致服务
+							</div>
+							<div class="operation_column">
+								<div><a href="/service/ServeYou/hommization/">特色服务</a></div>
+								<div><a href="/service/ServeYou/LostAndFound/">失物招领</a></div>
+								<div><a href="/service/ServeYou/safety/">安全文明</a></div>
+								<div><a href="/service/ServeYou/performance-pledge/">服务承诺</a></div>
+								<div><a href="/service/ServeYou/volunteer/">志愿者招募</a></div>
+								<div><a href="https://bbs.sz-mtr.com">广济南社区</a></div>
+							</div>
+						</div>
+						<div style="clear:both;"></div>
+					</div>
+				</li>
+				<li>
+					<div class="nav_line"></div>
+					<a>产业经营</a>
+					<div class="navigation_information four-column">
+						<div class="column-group">
+							<div class="operation">
+								<a href="/asset/">资产经营</a>
+							</div>
+							<div class="operation_column">
+								<div><a href="/asset/news/">新闻资讯</a></div>
+								<div><a href="/asset/style/">项目风采</a></div>
+								<div><a href="http://zzcg.sz-mtr.com/zsxx/sorts.html" target="_blank">招商信息</a></div>
+								<div><a href="/asset/construction/">工程建设</a></div>
+								<div><a href="/asset/services/">产品服务</a></div>
+								<div><a href="/asset/introduction/">关于我们</a></div>
+								<div><a href="/asset/contact/">联系我们</a></div>
+							</div>
+						</div>
+
+						<div class="column-group">
+							<div class="operation">
+								<a href="https://dsj.sz-mtr.com/">大数据公司</a>
+							</div>
+							<div class="operation_column">
+								<div><a href="https://dsj.sz-mtr.com/products.html">解决方案</a></div>
+								<div><a href="https://dsj.sz-mtr.com/news.html">新闻中心</a></div>
+								<div><a href="https://dsj.sz-mtr.com/about.html">关于我们</a></div>
+							</div>
+						</div>
+						<div style="clear:both;"></div>
+					</div>
+				</li>
+				<li>
+					<div class="nav_line"></div>
+					<a href="/service/guide/travel/travelIndex.html">乘着地铁游苏州</a>
+					<div class="navigation_information single_column">
+						<div class="xxx">
+							<div class="operation"></div>
+							<div class="operation_column operationColor">
+								<div><a href="/service/guide/travel/culturalResources.html">旅游景点</a></div>
+								<div><a href="/service/guide/travel/travelogue.html">地铁游记</a></div>
+								<div><a href="/service/guide/travel/creative/">地铁文创</a></div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- 搜索框和英文入口 -->
+		<div class="top_right">
+			<!--搜索输入框-->
+			<div class="top_right_search">
+				<div class="top_right_search_form">
+					<input type="text" name="keyword" placeholder="搜索" class="search-input">
+					<button type="submit" class="search-btn" onclick="globalSearch()">
+						<i class="fa fa-search"></i>
+					</button>
+				</div>
+			</div>
+
+			<!--英文跳转-->
+			<div class="top_right_english">
+				<a href="/en/">EN</a>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		// 计算字体大小
+		var basePSWidth = 1920;
+		var width = document.documentElement.clientWidth;
+		if (width < 1920) {
+			width = 1920;
+		}
+		var scale = width / basePSWidth;
+		document.documentElement.style.fontSize = Math.min(scale, 2) * 16 + 'px';
+
+		function globalSearch() {
+			var keyword = $(".top_right_search input").val();
+			if($.trim(keyword) == ""){
+				alert('请输入关键字！');
+			}else{
+				$(".top_right_search input").val('');
+				location.href = "/home/index.html?keyword=" + keyword;
+			}
+		}
+	</script>
+	<!-- 菜单栏 End-->
+
+			</div>
+		</div>
+	</div>
+	<!-- /wrapper -->
+
+    <!-- ---------------顶部banner图含标题 Start----------- -->
+    <div class="top-banner-container">
+        <img class="top-banner-img" />
+        <div class="top-banner-container-box">
+            <div class="top-banner-content">
+                <div class="top-banner-title">首末班时间</div>
+                <div class="top-banner-subtitle">First/Last Train</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+            var num=Math.floor(Math.random()*6+1);
+            $(".top-banner-container .top-banner-img").css('background-image','url(/images/top'+num+'.jpg)');
+
+        // 设置顶部banner图标题宽度
+        var titleLength = $(".top-banner-container .top-banner-title").html().length;
+        if (titleLength < 4) {
+            titleLength = 4;
+        }
+        // 每个字的宽度
+        var letterWidth = 136/4;    // 4个中文字母的宽度是136px
+        var titleWidth = titleLength * letterWidth;
+        var contentWidth = titleWidth + 110;    // 110px为标题距离左侧的距离
+        $(".top-banner-container .top-banner-content").css('width',contentWidth+'px');
+    </script>
+    <!-- ---------------顶部banner图含标题 End----------- -->
+</div>
+<div class="self-adaptation container  theme-showcase" role="main" style="min-height: 800px;">
+<ul class="suspended hidden-xs hidden-sm" id="suspended" style="display: block;">
+    <li class="suspended-li zhipu-suspended-li" onclick="openZhipuWindow();">
+        <img class="black" src="/v2/images/icon_shuziren_baide.png" alt="">
+        <img class="white" src="/v2/images/icon_shuziren_baide.png" alt="">
+        <div class="desc other">
+            智能客服
+        </div>
+    </li>
+    <li class="suspended-li">
+        <a href="https://weibo.com/u/2400917504" target="_blank">
+            <img class="black" src="/v2/images/icon_weibo.png" alt="">
+            <img class="white" src="/v2/images/icon_weibo_baide.png" alt="">
+        </a>
+        <div class="desc">
+            <img src="/v2/images/pic_weibo.jpg" alt="">
+        </div>
+    </li>
+    <li class="suspended-li">
+        <img class="black" src="/v2/images/icon_weixin.png" alt="">
+        <img class="white" src="/v2/images/icon_weixin_baide.png" alt="">
+        <div class="desc">
+            <img src="/v2/images/pic_wechat.jpg" alt="">
+        </div>
+    </li>
+    <li class="suspended-li">
+        <a href="https://www.douyin.com/user/MS4wLjABAAAAtZj-5NKfkt_MaN61-HkopqRvmSvecMD4lrv7enPATy4" target="_blank">
+            <img class="black" src="/v2/images/icon_douyin.png" alt="">
+            <img class="white" src="/v2/images/icon_douyin_baide.png" alt="">
+        </a>
+        <div class="desc">
+            <img src="/v2/images/pic_tictok.jpg" alt="">
+        </div>
+    </li>
+    <li class="suspended-li">
+        <a href="https://www.xiaohongshu.com/user/profile/60ec1a99000000002002b1ae" target="_blank">
+            <img class="black xiaohongshu" src="/v2/images/icon_xiaohongshu.png" alt="">
+            <img class="white xiaohongshu" src="/v2/images/icon_xiaohongshu_baide.png" alt="">
+        </a>
+        <div class="desc">
+            <img src="/v2/images/pic_redBook.png" alt="">
+        </div>
+    </li>
+    <li class="suspended-li">
+        <a href="/suexing" target="_blank">
+            <img class="black" src="/v2/images/icon_e.png" alt="">
+            <img class="white" src="/v2/images/icon_e_baise.png" alt="">
+        </a>
+        <div class="desc other">
+            苏e行App
+        </div>
+    </li>
+    <li class="suspended-li">
+        <a href="https://www.sz-mtr.com/service/ServeYou/performance-pledge/" target="_blank">
+            <img class="black" src="/v2/images/icon_dianhua.png" alt="">
+            <img class="white" src="/v2/images/icon_dianhua_baide.png" alt="">
+        </a>
+        <div class="desc phone">
+            <div class="phonePadding">服务热线</div>
+            <div>0512-69899000</div>
+        </div>
+    </li>
+    <li class="suspended-li">
+        <a href="https://bbs.sz-mtr.com" target="_blank">
+            <img class="black" src="/v2/images/icon_guangjinan.png" alt="">
+            <img class="white" src="/v2/images/icon_guangjinan_baide.png" alt="">
+        </a>
+        <div class="desc other">
+            留言投诉
+        </div>
+    </li>
+</ul>
+<!-- 智慧平台弹窗 -->
+<div id="zhipuModal" class="zhipu-modal" style="display: none;">
+    <div class="zhipu-modal-content">
+        <div class="zhipu-modal-header">
+            <span class="zhipu-modal-title">智慧平台</span>
+            <span class="zhipu-modal-close" onclick="closeZhipuWindow()">&times;</span>
+        </div>
+        <iframe id="zhipuIframe" class="zhipu-modal-iframe" src="" frameborder="0"></iframe>
+    </div>
+</div>
+
+<style>
+
+</style>
+
+<script type="text/javascript">
+    // 智慧平台弹窗功能
+    function openZhipuWindow() {
+        var modal = document.getElementById('zhipuModal');
+        var iframe = document.getElementById('zhipuIframe');
+        if (modal && iframe) {
+            iframe.src = 'https://szsubway.apps.galaxy-future.com/?team_id=240542173802561181&share_image_proxy=false';
+            modal.style.display = 'flex';
+            // 阻止背景滚动
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeZhipuWindow() {
+        var modal = document.getElementById('zhipuModal');
+        var iframe = document.getElementById('zhipuIframe');
+        if (modal && iframe) {
+            modal.style.display = 'none';
+            iframe.src = '';
+            // 恢复背景滚动
+            document.body.style.overflow = '';
+        }
+    }
+
+    // 点击弹窗背景关闭
+    window.addEventListener('click', function(event) {
+        var modal = document.getElementById('zhipuModal');
+        if (event.target === modal) {
+            closeZhipuWindow();
+        }
+    });
+
+    // ESC键关闭弹窗
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' || event.keyCode === 27) {
+            var modal = document.getElementById('zhipuModal');
+            if (modal && modal.style.display !== 'none') {
+                closeZhipuWindow();
+            }
+        }
+    });
+</script>
+	<!--首末班车时刻表-->
+	<div class="container-time">
+
+	</div>
+</div>
+<div class="bottomNav hidden-xs hidden-sm">
+    <div class="bottomNavSupplier">
+        <div class="bottomNavSupplierContent">
+            <div class="bottomNavSupplierContentLeft">
+                <div style="line-height: 70px;">地址：苏州市干将西路668号　传真：0512-69899030
+                </div>
+                <div>Copyright 苏州市轨道交通集团有限公司 版权所有 All Rights Reserved</div>
+            </div>
+            <div class="bottomNavSupplierContentCenter">
+                <div class="bottomNavSupplierContentCenterImg"></div>
+            </div>
+            <div class="bottomNavSupplierContentRight">
+                <div style="line-height: 70px;">本网站使用部分字体经 北京北大方正电子有限公司 授权许可</div>
+                <div><a href="http://beian.miit.gov.cn/" target="_blank" style="color:white">苏ICP备08114418号-1</a> 江苏迈恩信息科技有限公司 提供技术支持</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/v2/js/menu-pc-1.0-20251106.js"></script>
+<script type="text/javascript">
+	var timetableComponent;
+	var virtualLinesData = []; // 存储虚拟线路数据
+
+	$(document).ready(function() {
+		// 先获取虚拟线路数据
+		$.ajax({
+			url: '/admin/time_table/getAllVirtualLines.do',
+			type: 'GET',
+			dataType: 'json',
+			success: function(response) {
+				if (response.code === 0) {
+					virtualLinesData = response.data;
+					// 处理线路数据，将3号线和11号线合并
+					var processedLines = [];
+
+					for (var i = 0; i < szmtr.line.length; i++) {
+						var line = szmtr.line[i];
+
+						// 跳过11号线
+						if (line.lineName === "11") {
+							continue;
+						}
+
+						// 修改3号线的名称为"3/11号线"
+						if (line.lineName === "3") {
+							line.name = "3/11号线";
+						}
+
+						processedLines.push(line);
+					}
+
+					// 创建时刻表组件实例
+					timetableComponent = new TimetableComponent('.container-time', {
+						enableEdit: false,
+						langSuffix: 'Zh',   // 中文Zh，英文En
+						languagePack: szmtr.language,
+						linePack: processedLines,
+						stationPack: szmtr.stations,
+						// 获取时刻表数据回调
+						onLoadScheduleData: function(lineId) {
+							// 将原始线路ID转换为虚拟线路ID
+							var virtualLineId = getVirtualLineIdFromOriginalLineId(lineId);
+
+							$.ajax({
+								url: '/admin/time_table/getTimetableTimeByLineId.do',
+								type: 'GET',
+								data: { lineId: virtualLineId },
+								dataType: 'json',
+								success: function(data) {
+									if (data.code===0) {
+										timetableComponent.setScheduleData(lineId, data.data);
+									}else{
+										console.error(data.msg);
+									}
+								},
+								error: function(xhr, status, error) {
+									console.error('获取时刻表数据失败:', error);
+								}
+							});
+						},
+
+						// 获取首末班车时间数据回调
+						onLoadFirstLastTimes: function(lineId, timeId) {
+							// 将虚拟线路ID转换为原始线路ID
+							//var originalLineId = getVirtualLineIdFromOriginalLineId(lineId);
+
+							$.ajax({
+								url: '/admin/time_table/getTimetableDtoByTimeId.do',
+								type: 'GET',
+								dataType: 'json',
+								data: { timeId: timeId },
+								success: function(data) {
+									if (data.code===0) {
+										timetableComponent.setFirstLastTimesData(data.data);
+									}else{
+										console.error(data.msg);
+									}
+								},
+								error: function(xhr, status, error) {
+									console.error('获取首末班车时间数据失败:', error);
+								}
+							});
+						}
+					});
+
+					// 初始化加载线路数据
+					if (typeof timetableComponent.options.onLoadLines === 'function') {
+						timetableComponent.options.onLoadLines();
+					}
+				} else {
+					console.error('获取虚拟线路失败:', response.msg);
+				}
+			},
+			error: function(xhr, status, error) {
+				console.error('获取虚拟线路数据失败:', error);
+			}
+		});
+	});
+
+	/**
+	 * 通过原始线路ID获取虚拟线路ID
+	 * @param virtualLineId 原始线路ID (如 "3" 或 "11")
+	 * @returns {string} 虚拟线路ID (如 "3_11")
+	 */
+	function getVirtualLineIdFromOriginalLineId(originalLineId) {
+		for (var i = 0; i < virtualLinesData.length; i++) {
+			if (virtualLinesData[i].originalLineId === (originalLineId+"")) {
+				return virtualLinesData[i].lineId;
+			}
+		}
+		// 如果找不到，返回原ID（兼容处理）
+		return originalLineId;
+	}
+
+	/**
+	 * 切换语言
+	 * @param {string} language 语言 zh/en
+	 */
+	function changeLanguage(language) {
+		var baseUrl = window.location.protocol + "//" + window.location.hostname;
+		$.ajax({
+			url: baseUrl + "/service/guide/map/javascript/stationInfo_" + language + ".js",
+			dataType: "script",
+			async: false
+		});
+
+		timetableComponent.changeLanguage(language, szmtr.language, szmtr.line, szmtr.stations);
+	}
+</script>
+</body>
+</html>

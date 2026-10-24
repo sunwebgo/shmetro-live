@@ -1,0 +1,12 @@
+ut @115144
+  HOST_GETRECOMMENDARTICLE           API/recommend/getRecommendArticle
+  HOST_GETALLRECOMMENDATION          API/recommend/getAllRecommendation
+  HOST_GETSECTIONARTICLEAPPROVE      API/article/getSectionArticleApprove
+  HOST_ARTICLEINFO                   API/section/articleInfo
+  HOST_ALLSECTION                    API/section/all
+  HOST_BANNERALL                     API/banner/all
+  HOST_SEARCH                        API/article/search
+  HOST_GETALLSUBTDATA                API/operation/all
+  HOST_MILESTONEYEAR                 API/milestone/year
+  HOST_MILESTONELIST                 API/milestone/list
+  HOST_FARE                          API/operation/fare

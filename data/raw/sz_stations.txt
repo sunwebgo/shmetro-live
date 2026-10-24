@@ -1,0 +1,67 @@
+stations @341 / len 36726
+szmtr.stations = new Array();
+
+szmtr.language = {
+    fromPlaceHolder: "输入起点",
+    toPlaceHolder: "输入终点",
+    searchText:"查询",
+    from:'从',
+    to:'往',
+    searchTitle:'出行方案',
+    continueRide:"11号线和3号线贯通运行，乘坐常规列车您无需下车，即可以到达您的目的站。",
+    transferTo: "往",
+    toEnd: "",
+    unFold: "展开",
+    fold: "收起",
+    fare: "票价",
+    unit: "元",
+    station: "站",
+    kilometer: "公里",
+    duration: "时长",
+    fullLength: "全长",
+    monToThu: "周一至周四",
+    friToSun: "周五至周日",
+    satToSun: "周六至周日", //周六至周日
+    point: "以上方案仅供参考， 具体以实际情况为准。请您留意进站及换乘的首末班时间，以免耽误您的行程。",
+    mobilePoint: "出行方案仅供参考，具体以实际为准。",
+    minutes: "分钟",
+    branchLine: "支线",
+    transfer: "换乘",
+    transfer1: "换乘",
+    stationNum: "站",
+    first: "首班车",
+    last: "末班车",
+    ride: "乘坐", //乘坐
+    rideRep: "乘坐",
+    rideDesc: "",
+    errorTip1: "系统异常：未加载到数据",
+    errorTip2: "系统异常：数据格式错误",
+    errorTip3: "数据加载失败",
+    all: "共", //共几站
+    times: "次",
+    direction:'',
+    language: "Chinese",
+    arrowRightImg: "url(images/arrow_right.png) no-repeat",
+    arrowLeftImg: "url(images/arrow_left.png) no-repeat",
+    arrowDownImg: "url(images/arrow_down.png) no-repeat",
+    arrowUpImg: "url(images/arrow_up.png) no-repeat",
+    fontSize: "45",
+    backgroundImage: "images/line",
+    directLength: undefined, //用于判断行驶方向字符串长度
+    lineStationPlaceholder: "输入首字母快速查询",    // 线路站点选择组件-搜索提示
+    timetableUp: "上行",    // 首末班车时刻表-上行
+    timetableDown: "下行",    // 首末班车时刻表-下行
+    timetableStation: "车站",    // 首末班车时刻表-车站
+    timetableDirection: "方向",     // 首末班车时刻表-方向
+    timetableFirstLastTimes: "首/末班车",   // 首末班车时刻表-首/末班车时间
+    loading: '加载中...',
+    error: '加载失败，请稍后重试',
+    infoTitle: '景点信息'
+};
+
+
+
+szmtr.stations["1002"] = { name: "", displayName: "", pinyin: "", tx: 3340, ty: 1339.5, dx: 0 };
+szmtr.stations["1003"] = { name: "", displayName: "", pinyin: "", tx: 3509, ty: 1170.5, dx: 0 };
+szmtr.stations["1004"] = { name: "", displayName: "", pinyin: "", tx: 3736, ty: 1105.5, dx: 0 };
+szmtr.stations["1005"] = { name: "", displayName: "", pi

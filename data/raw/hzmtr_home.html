@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>杭州地铁官网</title>
+   <style>
+    .ie-tip {
+      display: none;
+      text-align: center;
+    }
+    .content-html table {
+      border-collapse: collapse;
+      margin-bottom: 15px;
+    }
+    .content-html table td {
+      line-height: 1.5;
+      min-width: 30px;
+      padding: 3px 5px;
+      text-align: left;
+      border: 1px solid #ccc;
+    }
+    </style>
+  <script type="module" crossorigin src="./js/index-Byg-IV4M.js"></script>
+  <link rel="stylesheet" crossorigin href="./css/index-BsvFJ5YY.css">
+</head>
+
+<body>
+  <div class="ie-tip" id="ieTip">
+    <h3>⚠️ 检测到你正在使用 IE 浏览器，该浏览器已停止维护</h3>
+    <p>为了保障你的使用体验、数据安全和页面正常显示，建议你切换至主流浏览器（360极速浏览器、360安全浏览器、QQ浏览器可以通过智能切核功能切换至极速模式具体教程地址：<a target="_blank" href="https://bbs.360.cn/thread-14958904-1-1.html">https://bbs.360.cn/thread-14958904-1-1.html</a>）</p>
+    <p class="browser-list">推荐：Chrome 浏览器、Edge 浏览器、Firefox 浏览器</p>
+  </div>
+  <div id="app"></div>
+      <script>
+    // 核心函数：检测是否为 IE 浏览器
+    function isIEBrowser() {
+      const userAgent = navigator.userAgent.toLowerCase();
+      // 检测 IE6~IE10（包含 MSIE 关键字）
+      const isLowIE = /msie/.test(userAgent);
+      // 检测 IE11（包含 trident 关键字，且无 msie 关键字）
+      const isIE11 = /trident/.test(userAgent) && !/msie/.test(userAgent);
+      
+      // 兼容方案：检测 ActiveXObject（IE 专属对象，现代浏览器无此对象）
+      const hasActiveX = typeof ActiveXObject !== "undefined" || (typeof window !== "undefined" && window.ActiveXObject);
+
+      // 满足任一条件即为 IE 浏览器
+      return isLowIE || isIE11 || hasActiveX;
+    }
+
+    // 页面加载完成后执行检测
+    window.onload = function() {
+      if (isIEBrowser()) {
+        // 若是 IE 浏览器，显示提示框
+        // 可选：控制台额外打印提示（方便开发者调试）
+        console.warn("当前浏览器为 IE 浏览器，建议切换至主流浏览器！");
+        document.getElementById("ieTip").style.display = "block";
+      }
+    };
+  </script>
+</body>
+
+</html>
+<style>
+  body {
+    margin: 0;
+    /* 去掉默认外边距 */
+    padding: 0;
+    /* 去掉默认内边距 */
+  }
+</style>

@@ -1,0 +1,3 @@
+--- def Gye @1613901
+const Gye=async(e,t)=>{try{return(await _n({method:"POST",url:ut.HOST_GETALLSUBTDATA,data:e,headers:{"Content-Type":"application/x-www-form-urlencoded"}})).data}catch(n){throw n}},Twe=async(e,t)=>{try{return(await _n({method:"POST",url:ut.HOST_FARE,data:e,headers:{"Content-Type":"application/x-www-form-urlencoded"}})).data}catch(n){throw n}},Qye="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAPOElEQVR4AeydW8hmVRnHv8mIrIwkyCiSDlA3QWZYoIUFFqXo6GhNgRIlBZaBJXQVmtZlNEVlQVEXgU2HGRubjMkcwYsoSrJC6MYoKqygpgOKVPb1/3/t5ezvnffdx/U8ex3+8jyz9mEdnvV/1m/2u/d+3/FJW/pPCkiBjQoIkI3S6IQU2NoSIFoFUqBDAQHSIY5OSQEBojUgBToUMASkY1SdkgKZKCBAMkmUwlxGAQGyjO4aNRMFBEgmiVKYyyggQJbRXaNmokCegGQirsLMXwEBk
+

@@ -1,7 +1,7 @@
 /* =========================================================================
- * snapshot.js —— 复用 js/sim.js 的真实仿真逻辑, 导出指定时刻的
+ * snapshot.js —— 复用 js/sim.js 的真实仿真逻辑, 导出指定城市/时刻的
  * 像素级绘制数据(线路折线/车站/列车), 供 render_png.py 出图。
- * 用法: node snapshot.js <dayKey> <星期几0-6> <HH:MM> <输出json> [W] [H]
+ * 用法: node snapshot.js <cityKey> <dayKey> <星期几0-6> <HH:MM> <输出json> [W] [H]
  * ========================================================================= */
 global.window = global;
 const fs = require('fs');
@@ -11,20 +11,27 @@ require(path.join(ROOT, 'data/metro-data.js'));
 require(path.join(ROOT, 'js/sim.js'));
 
 const SIM = global.SIM;
-const DATA = global.SHMETRO_DATA;
+const CITIES = global.METRO_CITIES;
 
-const dayKey = process.argv[2] || 'mon_thu';
-const dow = +(process.argv[3] || 1);
-const hhmm = process.argv[4] || '08:00';
-const outFile = process.argv[5] || path.join(ROOT, 'data/snapshot.json');
-const W = +(process.argv[6] || 1600);
-const H = +(process.argv[7] || 1000);
+const cityKey = process.argv[2] || 'shanghai';
+const dayKey = process.argv[3] || 'mon_thu';
+const dow = +(process.argv[4] || 1);
+const hhmm = process.argv[5] || '08:00';
+const outFile = process.argv[6] || path.join(ROOT, 'data/snapshot.json');
+const W = +(process.argv[7] || 1600);
+const H = +(process.argv[8] || 1000);
 const SAMPLES = 8;
+
+if (!CITIES.cities[cityKey]) {
+  console.error('未知城市: ' + cityKey + '  可选: ' + Object.keys(CITIES.cities).join(', '));
+  process.exit(1);
+}
+SIM.useCity(cityKey);
+const DATA = SIM.data;
 
 const [hh, mm] = hhmm.split(':').map(Number);
 const time = hh * 3600 + mm * 60;
-// 2026-10-18 是周日
-const date = new Date(2026, 9, 18 + dow);
+const date = new Date(2026, 9, 18 + dow);   // 2026-10-18 是周日
 
 /* ------------------------------------------------------------- 投影(同 app.js) */
 const b = { x0: 1e9, x1: -1e9, y0: 1e9, y1: -1e9 };
@@ -35,11 +42,10 @@ DATA.lines.forEach(L => L.services.forEach(s => s.st.forEach(p => {
 const lat0 = (b.y0 + b.y1) / 2, lng0 = (b.x0 + b.x1) / 2;
 const cosL = Math.cos(lat0 * Math.PI / 180);
 const k = Math.min(W / ((b.x1 - b.x0) * cosL), H / (b.y1 - b.y0)) * 0.9;
-const PADX = 0, PADY = 0;
 function project(lng, lat) {
   return [
-    Math.round(W / 2 + (lng - lng0) * cosL * k + PADX),
-    Math.round(H / 2 - (lat - lat0) * k + PADY)
+    Math.round(W / 2 + (lng - lng0) * cosL * k),
+    Math.round(H / 2 - (lat - lat0) * k)
   ];
 }
 function crPoint(p0, p1, p2, p3, t) {
@@ -64,7 +70,7 @@ DATA.lines.forEach(L => L.services.forEach(s => {
     }
   }
   line.push(project(pts[m - 1][1], pts[m - 1][2]));
-  paths.push({ line: L.name, color: L.color, pts: line, total: s.total, off: s.off, loop: loop, svcId: s.id });
+  paths.push({ line: L.name, color: L.color, pts: line, svcId: s.id });
 }));
 
 /* ------------------------------------------------------------------ 车站 */
@@ -74,7 +80,8 @@ for (const nm in idx) {
   const e = idx[nm];
   const seen = {}; let cnt = 0;
   e.entries.forEach(en => { if (!seen[en.line.name]) { seen[en.line.name] = 1; cnt++; } });
-  stations.push({ n: nm, x: project(e.x, e.y)[0], y: project(e.x, e.y)[1], lines: cnt });
+  const xy = project(e.x, e.y);
+  stations.push({ n: nm, x: xy[0], y: xy[1], lines: cnt });
 }
 
 /* ------------------------------------------------------------------ 列车 */
@@ -97,23 +104,21 @@ DATA.lines.forEach(L => {
   const st = SIM.lineStat(L, time, dayKey, date);
   summary.push({
     name: L.name, color: L.color, trains: st.trains, running: st.running,
-    hwMin: st.headwayMin, hwMax: st.headwayMax,
-    fwd: st.svcInfo[0] ? { first: st.svcInfo[0].fwd.first, last: st.svcInfo[0].fwd.last } : null,
-    rev: st.svcInfo[0] ? { first: st.svcInfo[0].rev.first, last: st.svcInfo[0].rev.last } : null
+    hwMin: st.headwayMin, hwMax: st.headwayMax
   });
 });
 
 const payload = {
   meta: {
+    city: cityKey, cityName: DATA.fullName || DATA.name,
     dayKey, dow, time, hhmm, W, H,
     dayLabel: SIM.dayLabel(dayKey),
     dateLabel: date.getFullYear() + '-' + SIM.pad2(date.getMonth() + 1) + '-' + SIM.pad2(date.getDate()),
-    generated: DATA.meta.generated,
+    generated: CITIES.meta.generated,
     trains: out.length
   },
   paths, stations, trains: out, summary
 };
 
 fs.writeFileSync(outFile, JSON.stringify(payload));
-console.log('snapshot ' + hhmm + ' ' + dayKey + ' -> ' + outFile +
-  '  列车 ' + out.length + ' 列, 线路路径 ' + paths.length + ' 条, 车站 ' + stations.length + ' 座');
+console.log(`snapshot ${DATA.name} ${hhmm} ${dayKey} -> ${outFile}  列车 ${out.length} 列, 路径 ${paths.length} 条, 车站 ${stations.length} 座`);

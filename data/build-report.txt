@@ -1,29 +1,56 @@
-1号线      svc0 莘庄             -> 富锦路            st=28 len= 36.1km run= 60min  fwd 05:30/22:32  rev 05:30/22:30  hw=1A/1A
-2号线      svc0 浦东1号2号航站楼      -> 蟠祥路·国家会计学院     st=31 len= 57.5km run= 89min  fwd 06:00/22:30  rev 05:25/21:57  hw=2A/2A
-3号线      svc0 江杨北路           -> 上海南站           st=29 len= 39.0km run= 65min  fwd 05:20/22:40  rev 05:20/22:35  hw=3A/3A
-4号线      svc0 宜山路            -> 宜山路            st=27 len= 32.3km run= 55min  fwd 05:25/21:30  rev 06:29/22:34  hw=4A/4B
-5号线      svc0 莘庄             -> 闵行开发区          st=11 len= 16.2km run= 24min  fwd 06:00/22:35  rev 05:50/22:00  hw=5B/5B
-5号线      svc1 莘庄             -> 奉贤新城           st=15 len= 26.2km run= 38min  fwd 05:50/22:40  rev 05:28/22:00  hw=5A/5A
-6号线      svc0 东方体育中心         -> 港城路            st=28 len= 31.2km run= 54min  fwd 05:30/22:30  rev 05:30/22:30  hw=6A/6A
-7号线      svc0 花木路            -> 美兰湖            st=33 len= 41.2km run= 70min  fwd 05:30/22:30  rev 05:30/22:15  hw=7A/7A
-8号线      svc0 沈杜公路           -> 市光路            st=30 len= 35.5km run= 61min  fwd 05:30/22:30  rev 05:30/22:30  hw=8A/8A
-9号线      svc0 曹路             -> 上海松江站          st=35 len= 61.7km run= 97min  fwd 05:30/22:30  rev 05:40/22:30  hw=9A/9A
-10号线     svc0 基隆路            -> 航中路            st=33 len= 37.2km run= 65min  fwd 05:30/22:25  rev 05:30/22:25  hw=10B/10B
-10号线     svc1 基隆路            -> 虹桥火车站          st=34 len= 39.0km run= 68min  fwd 05:25/22:30  rev 05:25/22:30  hw=10A/10A
-11号线     svc0 嘉定北            -> 迪士尼            st=33 len= 58.9km run= 92min  fwd 05:36/22:10  rev 05:58/22:30  hw=11A/11A
-11号线     svc1 迪士尼            -> 花桥             st=37 len= 68.3km run=106min  fwd 05:58/22:00(兜底)  rev 05:37/22:00  hw=11B/11B
-12号线     svc0 七莘路            -> 金海路            st=32 len= 38.2km run= 65min  fwd 05:30/22:30  rev 05:30/22:30  hw=12A/12A
-13号线     svc0 金运路            -> 张江路            st=31 len= 37.2km run= 64min  fwd 05:30/22:30  rev 05:30/22:30  hw=13A/13A
-14号线     svc0 封浜             -> 桂桥路            st=30 len= 35.9km run= 61min  fwd 05:30/22:30  rev 05:30/22:30  hw=14A/14A
-15号线     svc0 顾村公园           -> 紫竹高新区          st=30 len= 40.3km run= 67min  fwd 05:30/22:30  rev 05:30/22:30  hw=15A/15A
-16号线     svc0 龙阳路            -> 滴水湖            st=13 len= 54.8km run= 52min  fwd 05:50/22:30  rev 06:00/22:30  hw=16A/16A
-17号线     svc0 虹桥火车站          -> 西岑             st=14 len= 39.0km run= 47min  fwd 06:00/23:00  rev 05:30/22:30  hw=17A/17A
-18号线     svc0 康文路            -> 航头             st=31 len= 43.0km run= 71min  fwd 05:55/22:16  rev 05:30/22:30  hw=18A/18A
-磁浮线      svc0 浦东1号2号航站楼      -> 龙阳路            st= 2 len= 24.3km run=  7min  fwd 06:45/21:40  rev 07:02/21:55  hw=cfA/cfA
-浦江线      svc0 沈杜公路           -> 汇臻路            st= 6 len=  5.4km run=  9min  fwd 05:30/22:30  rev 05:10/22:10  hw=41A/41A
-市域机场线    svc0 虹桥2号航站楼        -> 浦东1号2号航站楼      st= 7 len= 51.5km run= 34min  fwd 05:45/22:00  rev 06:00/22:15  hw=51A/51A
+1号线       svc0 莘庄            -> 富锦路           st=28 run= 60min model fwd 05:30/22:32 rev 05:30/22:30 hw=1A
+2号线       svc0 浦东1号2号航站楼     -> 蟠祥路·国家会计学院    st=31 run= 89min model fwd 06:00/22:30 rev 05:25/21:57 hw=2A
+3号线       svc0 江杨北路          -> 上海南站          st=29 run= 65min model fwd 05:20/22:40 rev 05:20/22:35 hw=3A
+4号线       svc0 宜山路           -> 上海体育馆         st=27 run= 55min model fwd 05:25/21:30 rev 06:29/22:34 hw=4A
+5号线       svc0 莘庄            -> 闵行开发区         st=11 run= 24min model fwd 06:00/22:35 rev 05:50/22:00 hw=5B
+5号线       svc1 莘庄            -> 奉贤新城          st=15 run= 38min model fwd 05:50/22:40 rev 05:28/22:00 hw=5A
+6号线       svc0 东方体育中心        -> 港城路           st=28 run= 54min model fwd 05:30/22:30 rev 05:30/22:30 hw=6A
+7号线       svc0 花木路           -> 美兰湖           st=33 run= 70min model fwd 05:30/22:30 rev 05:30/22:15 hw=7A
+8号线       svc0 沈杜公路          -> 市光路           st=30 run= 61min model fwd 05:30/22:30 rev 05:30/22:30 hw=8A
+9号线       svc0 曹路            -> 上海松江站         st=35 run= 97min model fwd 05:30/22:30 rev 05:40/22:30 hw=9A
+10号线      svc0 基隆路           -> 航中路           st=33 run= 65min model fwd 05:30/22:25 rev 05:30/22:25 hw=10B
+10号线      svc1 基隆路           -> 虹桥火车站         st=34 run= 68min model fwd 05:25/22:30 rev 05:25/22:30 hw=10A
+11号线      svc0 嘉定北           -> 迪士尼           st=33 run= 92min model fwd 05:36/22:10 rev 05:58/22:30 hw=11A
+11号线      svc1 迪士尼           -> 花桥            st=37 run=106min model fwd 05:58/22:00 rev 05:37/22:00 hw=11B
+12号线      svc0 七莘路           -> 金海路           st=32 run= 65min model fwd 05:30/22:30 rev 05:30/22:30 hw=12A
+13号线      svc0 金运路           -> 张江路           st=31 run= 64min model fwd 05:30/22:30 rev 05:30/22:30 hw=13A
+14号线      svc0 封浜            -> 桂桥路           st=30 run= 61min model fwd 05:30/22:30 rev 05:30/22:30 hw=14A
+15号线      svc0 顾村公园          -> 紫竹高新区         st=30 run= 67min model fwd 05:30/22:30 rev 05:30/22:30 hw=15A
+16号线      svc0 龙阳路           -> 滴水湖           st=13 run= 52min model fwd 05:50/22:30 rev 06:00/22:30 hw=16A
+17号线      svc0 虹桥火车站         -> 西岑            st=14 run= 47min model fwd 06:00/23:00 rev 05:30/22:30 hw=17A
+18号线      svc0 康文路           -> 航头            st=31 run= 71min model fwd 05:55/22:16 rev 05:30/22:30 hw=18A
+磁浮线       svc0 浦东1号2号航站楼     -> 龙阳路           st= 2 run=  7min model fwd 06:45/21:40 rev 07:02/21:55 hw=cfA
+浦江线       svc0 沈杜公路          -> 汇臻路           st= 6 run=  9min model fwd 05:30/22:30 rev 05:10/22:10 hw=41A
+市域机场线     svc0 虹桥2号航站楼       -> 浦东1号2号航站楼     st= 7 run= 34min model fwd 05:45/22:00 rev 06:00/22:15 hw=51A
+SZ 1号线     木渎             -> 钟南街            st=24 run= 49min official fwd 05:40/22:35 alt 05:40
+SZ 2号线     骑河             -> 桑田岛            st=35 run= 69min model fwd 05:40/22:25 alt 05:40
+SZ 3号线     唯亭(花桥)         -> 苏州新区火车站        st=37 run= 76min model fwd 05:55/22:28 alt 05:55
+SZ 4号线     龙道浜            -> 同里             st=31 run= 67min model fwd 05:40/22:25 alt 05:40
+SZ 5号线     阳澄湖南           -> 太湖香山           st=34 run= 71min model fwd 05:40/22:20 alt 05:40
+SZ 6号线     苏州新区火车站        -> 桑田岛            st=30 run= 58min model fwd 05:40/22:20 alt 05:40
+SZ 7号线     常楼             -> 木里             st=28 run= 64min official fwd 05:50/22:25 alt -
+SZ 8号线     西津桥            -> 车坊             st=28 run= 56min official fwd 05:40/22:20 alt -
+SZ 11号线    唯亭(苏州新区火车站)    -> 花桥             st=28 run= 58min model fwd 06:12/22:48 alt 06:12
+TRAM 高新有轨电车1号线        st=15 最大间距3.2km run=71min
+TRAM 高新有轨电车2号线        st=15 最大间距1.7km run=58min
+HZ 1号线     svc0 湘湖             -> 萧山国际机场         st=33 run= 72min model fwd 05:54/22:50
+HZ 2号线     svc0 朝阳             -> 良渚             st=33 run= 70min model fwd 06:00/23:02
+HZ 3号线     svc0 吴山前村           -> 星桥             st=34 run= 74min model fwd 06:00/22:47
+HZ 3号线     svc1 星桥             -> 石马             st=28 run= 62min model fwd 06:00/22:35
+HZ 4号线     svc0 浦沿             -> 池华街            st=33 run= 70min model fwd 06:00/22:40
+HZ 5号线     svc0 南湖东            -> 姑娘桥            st=40 run= 89min model fwd 06:02/22:30
+HZ 6号线     svc0 枸桔弄            -> 桂花西路           st=33 run= 81min model fwd 06:02/22:50
+HZ 6号线     svc1 枸桔弄            -> 双浦             st=25 run= 54min model fwd 06:08/23:00
+HZ 7号线     svc0 江东二路           -> 吴山广场           st=24 run= 68min model fwd 06:09/22:30
+HZ 8号线     svc0 文海南路           -> 新湾路            st= 9 run= 24min model fwd 06:05/23:02
+HZ 9号线     svc0 龙安             -> 观音塘            st=21 run= 46min model fwd 06:02/23:04
+HZ 10号线    svc0 逸盛路            -> 黄龙体育中心         st=12 run= 22min model fwd 06:04/22:54
+HZ 16号线    svc0 九州街            -> 绿汀路            st=12 run= 36min model fwd 06:10/22:33
+HZ 19号线    svc0 永盛路            -> 火车西站           st=17 run= 47min model fwd 06:00/23:11
 
-输出: D:\Idea_project\SpringAI-2.0\shmetro-live\data\metro-data.js
-大小: 40.6 KB
-线路数: 21
-服务(路径)数: 24
+上海         线路 21 条, 交路 24 个
+苏州         线路  9 条, 交路  9 个
+苏州电车       线路  2 条, 交路  2 个
+杭州         线路 12 条, 交路 14 个
+
+输出 D:\shmetro-live\data\metro-data.js  83.2 KB

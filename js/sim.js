@@ -1,23 +1,49 @@
 /* =========================================================================
- * sim.js —— 上海地铁列车运行仿真内核
- * 输入: window.SHMETRO_DATA (由 tools/build_data.py 生成)
- * 输出: 任意时刻、任意日期类型下, 每条线路每个方向每一列车的在线位置
+ * sim.js —— 城市轨道交通列车运行仿真内核 (多城市)
+ * 输入: window.METRO_CITIES (由 tools/build_data.py 生成)
+ * 输出: 任意城市、任意时刻、任意日期类型下, 每条线路每个方向每一列车的位置
  *
- * 运行规则(全部来自官方公布数据):
- *   1) 首末班车时间: 官方 fltime 接口(含周五/周六延时运营的分钟增量与特定日期增量)
- *   2) 发车间隔: 官方"列车间隔"表, 分 工作日/周五/双休日/延时运营 四种时段方案
- *   3) 站间运行时分: 停车 35s + 里程 / 线路旅行速度 (模型值)
+ * 运行规则:
+ *   1) 首末班车时间: 官方数据; 苏州区分「周一至周四」与「周五至周日」两套班表(fwd.alt)
+ *   2) 发车间隔: 官方间隔表(上海/苏州) 或 公开信息典型值(杭州/电车)
+ *   3) 站间运行时分: 官方逐站首班车差分 或 停车35s + 里程/旅行速度
  *   4) 首班车起, 按当时适用的间隔逐列发车, 直至末班车
  * ========================================================================= */
 (function (global) {
   'use strict';
 
-  var DATA = global.SHMETRO_DATA || { lines: [], headways: {} };
+  var CITIES = global.METRO_CITIES || { meta: { cityOrder: [] }, cities: {} };
   var DAY_KEYS = ['sun', 'mon_thu', 'mon_thu', 'mon_thu', 'mon_thu', 'fri', 'sat'];
 
+  var cityKey = (CITIES.meta && CITIES.meta.cityOrder && CITIES.meta.cityOrder[0]) || null;
+  var DATA = cityKey ? CITIES.cities[cityKey] : { lines: [], headways: {} };
+
   /* ------------------------------------------------------------------ 缓存 */
-  var depCache = Object.create(null);      // 发车时刻表缓存
-  var statCache = Object.create(null);     // 服务统计缓存
+  var depCache = Object.create(null);
+  var statCache = Object.create(null);
+  var _stationIndex = null;
+
+  function resetCaches() {
+    depCache = Object.create(null);
+    statCache = Object.create(null);
+    _stationIndex = null;
+  }
+
+  function useCity(key) {
+    if (!key || !CITIES.cities[key]) return false;
+    if (key === cityKey) return true;
+    cityKey = key;
+    DATA = CITIES.cities[key];
+    resetCaches();
+    return true;
+  }
+
+  function cityList() {
+    return (CITIES.meta.cityOrder || []).map(function (k) {
+      var c = CITIES.cities[k];
+      return { key: k, name: c.name, fullName: c.fullName, lines: c.lines.length };
+    });
+  }
 
   function cacheKey(svc, dirKey, dayKey, date) {
     return svc.id + '|' + dirKey + '|' + dayKey + '|' + date.getMonth() + '-' + date.getDate();
@@ -33,15 +59,13 @@
     return { mon_thu: '周一~周四', fri: '周五', sat: '周六', sun: '周日' }[k] || k;
   }
 
-  /** 该日期该线路适用的间隔方案(工作日/周五/双休日) */
   function daySpecOf(hw, dayKey) {
     if (!hw) return null;
-    if (dayKey === 'fri') return hw.friday || hw.weekday;
+    if (dayKey === 'fri') return hw.friday || hw.weekend || hw.weekday;
     if (dayKey === 'sat' || dayKey === 'sun') return hw.weekend || hw.weekday;
     return hw.weekday || hw.weekend;
   }
 
-  /** 特定日期增量(如 12-31 延时), 单位分钟 */
   function dateAdjustMin(dd, date) {
     if (!dd || !dd.length) return 0;
     var key = pad2(date.getMonth() + 1) + '-' + pad2(date.getDate());
@@ -63,22 +87,13 @@
   }
 
   /* ------------------------------------------------------------- 间隔取值 */
-  /**
-   * 某一时刻实际适用的发车间隔(秒)。
-   * 命中固定时段则取该时段值; 否则在"其余时段(lo~hi)"之间线性过渡:
-   *   - 首个时段之前: 由 hi 收窄到 lo
-   *   - 末个时段之后: 由 lo 放宽到 hi
-   *   - 两个时段之间: V 形过渡
-   * 周五/周六 22:30 之后切换到延时运营间隔。
-   */
   function headwayAt(hwKey, dayKey, t, serviceStart, serviceEnd) {
-    var hw = DATA.headways[hwKey];
+    var hw = (DATA.headways || {})[hwKey];
     if (!hw) return 300;
     if ((dayKey === 'fri' || dayKey === 'sat') && hw.extended) {
       var eb = hw.extended.bands[0];
       if (t >= eb.t0) {
-        var eDs = hw.extended;
-        var eLo = eDs.other[0], eHi = eDs.other[1];
+        var eDs = hw.extended, eLo = eDs.other[0], eHi = eDs.other[1];
         if (t >= eb.t1) {
           var kk = clamp01((t - eb.t1) / Math.max(600, serviceEnd - eb.t1));
           return Math.round(eLo + (eHi - eLo) * kk);
@@ -116,24 +131,32 @@
   function clamp01(x) { return x < 0 ? 0 : (x > 1 ? 1 : x); }
 
   /* --------------------------------------------------------------- 发车表 */
+  /** 该方向在给定日期类型下的首末班车(秒) */
+  function spanOf(svc, dirKey, dayKey, date) {
+    var d = svc[dirKey];
+    var first = d.first, last = d.last;
+    if (d.alt && (dayKey === 'fri' || dayKey === 'sat' || dayKey === 'sun')) {
+      first = d.alt.first || first;
+      last = d.alt.last || last;
+    }
+    var adj = 0;
+    if (d.wd && d.wd[date.getDay()]) adj += d.wd[date.getDay()];
+    adj += dateAdjustMin(d.dd, date);
+    return { first: first, last: last + adj * 60 };
+  }
+
   function getDepartures(svc, dirKey, dayKey, date) {
     var key = cacheKey(svc, dirKey, dayKey, date);
     var cached = depCache[key];
     if (cached) return cached;
 
-    var d = svc[dirKey];
-    var adj = 0;
-    if (d.wd && d.wd[date.getDay()]) adj += d.wd[date.getDay()];
-    adj += dateAdjustMin(d.dd, date);
-
-    var first = d.first;
-    var last = d.last + adj * 60;
+    var sp = spanOf(svc, dirKey, dayKey, date);
     var hwKey = dirKey === 'rev' ? (svc.hwRev || svc.hw) : svc.hw;
 
-    var out = [], t = first, guard = 0;
-    while (t <= last && guard++ < 6000) {
+    var out = [], t = sp.first, guard = 0;
+    while (t <= sp.last && guard++ < 6000) {
       out.push(t);
-      var h = headwayAt(hwKey, dayKey, t, first, last);
+      var h = headwayAt(hwKey, dayKey, t, sp.first, sp.last);
       t += Math.max(30, h);
     }
     depCache[key] = out;
@@ -152,7 +175,6 @@
     return lo;
   }
 
-  /** 列车在其路径上的当前位置: 返回 {i, u} — 第 i 段(i→i+1) 上的比例 u */
   function pointAt(svc, dirKey, progress) {
     var off = svc.off, total = svc.total;
     var v = dirKey === 'rev' ? (total - progress) : progress;
@@ -165,13 +187,9 @@
   }
 
   /* ------------------------------------------------------- 某时刻在线列车 */
-  var _pool = [];
-  /**
-   * 返回该时刻在线列车数组。每项: {svc, line, dirKey, dep, progress, idx}
-   */
   function trainsAt(time, dayKey, date, lineFilter) {
     var res = [];
-    var lines = DATA.lines;
+    var lines = DATA.lines || [];
     for (var li = 0; li < lines.length; li++) {
       var line = lines[li];
       if (lineFilter && lineFilter !== line.name) continue;
@@ -181,21 +199,15 @@
         for (var k = 0; k < 2; k++) {
           var dirKey = k === 0 ? 'fwd' : 'rev';
           var deps = getDepartures(svc, dirKey, dayKey, date);
-          // 发车时刻表已排序, 用二分定位窗口内的列车
-          var loT = time - total, hiT = time;
-          var a = lowerBound(deps, loT);
+          var a = lowerBound(deps, time - total);
           for (var j = a; j < deps.length; j++) {
             var t0 = deps[j];
-            if (t0 > hiT) break;
-            res.push({
-              svc: svc, line: line, dirKey: dirKey,
-              dep: t0, progress: time - t0, idx: j
-            });
+            if (t0 > time) break;
+            res.push({ svc: svc, line: line, dirKey: dirKey, dep: t0, progress: time - t0, idx: j });
           }
         }
       }
     }
-    _pool = res;
     return res;
   }
 
@@ -206,31 +218,29 @@
   }
 
   /* -------------------------------------------------------- 线路当前概况 */
-  /** 某线路当前时刻的运行概况 */
   function lineStat(line, time, dayKey, date) {
-    var key = line.name + '|' + dayKey + '|' + Math.floor(time / 60) + '|' + date.getMonth() + '-' + date.getDate();
+    var key = (cityKey || '') + '|' + line.name + '|' + dayKey + '|' + Math.floor(time / 60) +
+      '|' + date.getMonth() + '-' + date.getDate();
     if (statCache[key]) return statCache[key];
 
-    var trains = 0, hwMin = Infinity, hwMax = 0, running = false;
-    var svcInfo = [];
+    var trains = 0, hwMin = Infinity, hwMax = 0, running = false, svcInfo = [];
     for (var i = 0; i < line.services.length; i++) {
       var svc = line.services[i];
       var info = { svc: svc, fwd: {}, rev: {}, online: 0, onlineFwd: 0, onlineRev: 0 };
       for (var k = 0; k < 2; k++) {
         var dirKey = k === 0 ? 'fwd' : 'rev';
-        var d = svc[dirKey];
         var deps = getDepartures(svc, dirKey, dayKey, date);
-        info[dirKey].first = deps.length ? deps[0] : d.first;
-        info[dirKey].last = deps.length ? deps[deps.length - 1] : d.last;
+        var sp = spanOf(svc, dirKey, dayKey, date);
+        info[dirKey].first = deps.length ? deps[0] : sp.first;
+        info[dirKey].last = deps.length ? deps[deps.length - 1] : sp.last;
         var hwKey = dirKey === 'rev' ? (svc.hwRev || svc.hw) : svc.hw;
-        var h = headwayAt(hwKey, dayKey, time, info[dirKey].first, info[dirKey].last);
+        var h = headwayAt(hwKey, dayKey, time, sp.first, sp.last);
         info[dirKey].headway = h;
         if (time >= info[dirKey].first - 120 && time <= info[dirKey].last + svc.total) {
           running = true;
           hwMin = Math.min(hwMin, h);
           hwMax = Math.max(hwMax, h);
         }
-        // 在线列车数
         var n = 0;
         var a = lowerBound(deps, time - svc.total);
         for (var j = a; j < deps.length; j++) {
@@ -246,20 +256,17 @@
     }
     var out = {
       line: line, trains: trains, running: running, svcInfo: svcInfo,
-      headwayMin: isFinite(hwMin) ? hwMin : 0,
-      headwayMax: hwMax
+      headwayMin: isFinite(hwMin) ? hwMin : 0, headwayMax: hwMax
     };
     statCache[key] = out;
     return out;
   }
 
   /* ------------------------------------------------------------ 车站到站 */
-  /** 车站站台/线路索引, 惰性建立 */
-  var _stationIndex = null;
   function stationIndex() {
     if (_stationIndex) return _stationIndex;
     var idx = Object.create(null);
-    var lines = DATA.lines;
+    var lines = DATA.lines || [];
     for (var li = 0; li < lines.length; li++) {
       var line = lines[li];
       for (var si = 0; si < line.services.length; si++) {
@@ -278,10 +285,6 @@
   function stations() { return stationIndex(); }
   function stationByName(n) { return stationIndex()[n]; }
 
-  /**
-   * 某车站接下来 n 班列车(按到达时间排序)。
-   * 每条线路每个方向分别取若干班, 返回 {line, svc, dirKey, arrive, isTerminus, destName}
-   */
   function stationArrivals(stationName, time, dayKey, date, perDir) {
     perDir = perDir || 3;
     var st = stationByName(stationName);
@@ -297,7 +300,6 @@
         seen[key] = 1;
 
         var svc = en.svc;
-        // 该方向上的到达时刻 = 发车时刻 + 行驶到本站的用时
         var travel = dirKey === 'fwd' ? svc.off[en.k] : (svc.total - svc.off[en.k]);
         var deps = getDepartures(svc, dirKey, dayKey, date);
         var n = 0;
@@ -306,8 +308,7 @@
           var arrive = deps[j] + travel;
           if (arrive < time - 30) continue;
           out.push({
-            line: en.line, svc: svc, dirKey: dirKey, arrive: arrive,
-            wait: arrive - time,
+            line: en.line, svc: svc, dirKey: dirKey, arrive: arrive, wait: arrive - time,
             destName: dirKey === 'fwd'
               ? (svc.loop ? svc.dirNames[0] : svc.to)
               : (svc.loop ? svc.dirNames[1] : svc.from),
@@ -324,11 +325,15 @@
 
   /* --------------------------------------------------------------- 导出 */
   global.SIM = {
-    data: DATA,
+    get data() { return DATA; },
+    get cityKey() { return cityKey; },
+    cities: cityList,
+    useCity: useCity,
     dayKeyOf: dayKeyOf,
     dayLabel: dayLabel,
     headwayAt: headwayAt,
     daySpecOf: daySpecOf,
+    spanOf: spanOf,
     getDepartures: getDepartures,
     trainsAt: trainsAt,
     pointAt: pointAt,
