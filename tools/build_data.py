@@ -912,10 +912,23 @@ def merge_lines(lines):
 
 def main():
     cities, diags = [], []
-    for fn in (build_shanghai, build_suzhou, build_suzhou_tram, build_hangzhou):
-        c = fn()
+
+    shanghai = build_shanghai()
+    suzhou = build_suzhou()
+    tram = build_suzhou_tram()
+    hangzhou = build_hangzhou()
+
+    # 有轨电车并入苏州, 作为同城线路一起展示 (no=100+ 排在最后)
+    if tram and suzhou:
+        suzhou["lines"].extend(tram["lines"])
+        suzhou["headways"].update(tram["headways"])
+        suzhou["meta"]["sources"].extend(tram["meta"]["sources"])
+        suzhou["meta"]["notes"].extend(tram["meta"]["notes"])
+        suzhou.setdefault("diag", []).extend(tram.get("diag") or [])
+        suzhou["fullName"] = "苏州轨道交通（含高新区有轨电车）"
+
+    for c in (shanghai, suzhou, hangzhou):
         if not c or not c.get("lines"):
-            diags.append("[跳过] %s" % fn.__name__)
             continue
         diags.extend(c.pop("diag", []) or [])
         c["lines"] = merge_lines(c["lines"])

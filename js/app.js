@@ -18,6 +18,37 @@
   var canvas = document.getElementById('map');
   var ctx = canvas.getContext('2d');
 
+  /* ------------------------------------------------------- 线路显示色调整 */
+  // 浅色主题下, 官方色里的浅色(3号线黄/16号线浅绿等)在白底上过淡, 按亮度适当加深;
+  // 列车用同色系的更深色, 避免白色描边把线路切成虚线段。结果按线路缓存。
+  function hexToRgb(h) {
+    h = (h || '#888888').replace('#', '');
+    if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+    return [parseInt(h.substr(0, 2), 16), parseInt(h.substr(2, 2), 16), parseInt(h.substr(4, 2), 16)];
+  }
+  function shadeHex(hex, f) {
+    if (f === 1) return hex;
+    var c = hexToRgb(hex);
+    return 'rgb(' + c.map(function (v) { return Math.round(v * f); }).join(',') + ')';
+  }
+  function lumFactor(hex) {
+    var c = hexToRgb(hex);
+    var lum = 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2];
+    return lum > 205 ? 0.68 : (lum > 180 ? 0.80 : (lum > 160 ? 0.90 : 1));
+  }
+  function dispColorOf(hex) { return shadeHex(hex, lumFactor(hex)); }
+  function dispColor(line) {
+    if (!line._dc) { line._dc = dispColorOf(line.color); line._lf = lumFactor(line.color); }
+    return line._dc;
+  }
+  function trainColor(line) {
+    if (!line._tc) {
+      dispColor(line);
+      line._tc = shadeHex(line.color, line._lf * 0.62);
+    }
+    return line._tc;
+  }
+
   /* ==================================================================== 状态 */
   var state = {
     time: 6 * 3600,          // 当前推演时刻(秒)
@@ -118,7 +149,7 @@
         }
         var lastP = pts[m - 1];
         line.push(project(lastP[1], lastP[2]));
-        geom.paths.push({ svc: s, line: s.name, color: L.color, pts: line, loop: loop });
+        geom.paths.push({ svc: s, line: s.name, color: L.color, dc: dispColor(L), pts: line, loop: loop });
       });
     });
 
@@ -152,12 +183,14 @@
     // ---- 线路 ----
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
+    // ---- 线路 ----
     geom.paths.forEach(function (g) {
       if (state.hidden[g.line]) return;
       var dim = state.selLine && state.selLine !== g.line;
-      ctx.globalAlpha = dim ? 0.22 : 0.92;
-      ctx.strokeStyle = g.color;
-      ctx.lineWidth = (state.selLine === g.line ? 4.6 : 3.4);
+      var selected = state.selLine === g.line;
+      ctx.globalAlpha = dim ? 0.16 : 0.95;
+      ctx.strokeStyle = g.dc;
+      ctx.lineWidth = selected ? 5.2 : 3.8;
       ctx.beginPath();
       var pts = g.pts;
       ctx.moveTo(pts[0][0], pts[0][1]);
@@ -174,14 +207,18 @@
       sp.entries.forEach(function (en) { if (!state.hidden[en.line.name]) hidden = false; });
       if (hidden) continue;
       var isSel = nm === selName, isHov = nm === state.hoverStation;
-      var r = sp.lines > 1 ? 3.1 : 2.1;
-      if (isSel || isHov) r += 2.2;
+      var multi = sp.lines > 1;
+      // 单线站不画点: 线路本身即表示走线, 画点会把线切成虚线段;
+      // 只在换乘站 / 悬停 / 选中时绘制标记。
+      if (!multi && !isSel && !isHov) continue;
+      var r = 3.2;
+      if (isSel || isHov) r += 1.6;
       ctx.beginPath();
       ctx.arc(sp.p[0], sp.p[1], r, 0, Math.PI * 2);
-      ctx.fillStyle = (isSel || isHov) ? '#ffffff' : '#0d1117';
+      ctx.fillStyle = '#ffffff';
       ctx.fill();
-      ctx.lineWidth = sp.lines > 1 ? 1.7 : 1.2;
-      ctx.strokeStyle = (isSel || isHov) ? '#58a6ff' : '#e6edf3';
+      ctx.lineWidth = (isSel || isHov) ? 2.0 : 1.7;
+      ctx.strokeStyle = (isSel || isHov) ? '#2563eb' : '#3f5872';
       ctx.stroke();
     }
 
@@ -189,7 +226,7 @@
     if (state.showLabels || view.z > 2.4) {
       ctx.font = '10px "Microsoft YaHei",sans-serif';
       ctx.textBaseline = 'middle';
-      ctx.fillStyle = 'rgba(220,235,250,.78)';
+      ctx.fillStyle = 'rgba(30,45,66,.80)';
       for (var nm2 in geom.stationPts) {
         var sp2 = geom.stationPts[nm2];
         if (sp2.lines < 2 && view.z < 3) continue;
@@ -220,22 +257,23 @@
       ctx.save();
       ctx.translate(p[0], p[1]);
       ctx.rotate(ang);
-      ctx.globalAlpha = dim2 ? 0.25 : 1;
-      var len = 6.4, wid = 3.8;
+      ctx.globalAlpha = dim2 ? 0.22 : 1;
+      // 白色车厢 + 线路色描边: 线路保持连续, 列车又能清楚看到
+      var len = 8.4, wid = 5.2;
       ctx.beginPath();
-      roundRect(-len / 2, -wid / 2, len, wid, 1.6);
-      ctx.fillStyle = tr.line.color;
+      roundRect(-len / 2, -wid / 2 + 0.7, len - 1.4, wid - 1.4, 2.0);
+      ctx.fillStyle = '#ffffff';
       ctx.fill();
-      ctx.lineWidth = 1.0;
-      ctx.strokeStyle = dim2 ? '#333' : 'rgba(255,255,255,.92)';
+      ctx.lineWidth = 1.3;
+      ctx.strokeStyle = dim2 ? '#c3cedb' : trainColor(tr.line);
       ctx.stroke();
       if (state.showDir) {
         ctx.beginPath();
-        ctx.moveTo(len / 2 - 0.4, 0);
-        ctx.lineTo(len / 2 - 2.6, -wid / 2 + 0.6);
-        ctx.lineTo(len / 2 - 2.6, wid / 2 - 0.6);
+        ctx.moveTo(len / 2 - 1.1, 0);
+        ctx.lineTo(len / 2 - 3.4, -wid / 2 + 1.5);
+        ctx.lineTo(len / 2 - 3.4, wid / 2 - 1.5);
         ctx.closePath();
-        ctx.fillStyle = 'rgba(255,255,255,.95)';
+        ctx.fillStyle = dim2 ? '#d5dee8' : trainColor(tr.line);
         ctx.fill();
       }
       ctx.restore();
@@ -365,7 +403,7 @@
     DATA.lines.forEach(function (L) {
       var st = SIM.lineStat(L, state.time, dayKey, state.date);
       html += '<div class="row' + (state.hidden[L.name] ? ' off' : '') + '" data-line="' + esc(L.name) + '">' +
-        '<span class="sw" style="background:' + L.color + '"></span>' +
+        '<span class="sw" style="background:' + dispColor(L) + '"></span>' +
         '<span>' + esc(L.name) + '</span>' +
         '<span class="cnt">' + (st.running ? st.trains + '列' : '—') + '</span></div>';
     });
@@ -389,7 +427,7 @@
         ? (st.headwayMin === st.headwayMax ? fmtHw(st.headwayMin) : fmtHw(st.headwayMin) + '~' + fmtHw(st.headwayMax))
         : '非运营时段';
       html += '<div class="lrow' + (state.selLine === L.name ? ' sel' : '') + '" data-line="' + esc(L.name) + '">';
-      html += '<div class="h"><span class="badge" style="background:' + L.color + '">' + esc(L.name.replace('号线', '')) + '</span>';
+      html += '<div class="h"><span class="badge" style="background:' + dispColor(L) + '">' + esc(L.name.replace('号线', '')) + '</span>';
       html += '<span class="nm">' + esc(L.name) + '</span>';
       html += '<span class="cnt">' + (st.running ? st.trains + ' 列在线' : '停运') + '</span></div>';
       html += '<div class="meta"><span><i>当前间隔</i> ' + hwTxt + '</span>' +
@@ -458,7 +496,7 @@
       arrs.forEach(function (a) { (groups[a.line.name] = groups[a.line.name] || []).push(a); });
       Object.keys(groups).forEach(function (ln) {
         var L = lineset[ln];
-        html += '<div class="arrgrp"><div class="gt"><span class="badge" style="background:' + L.color + '">' +
+        html += '<div class="arrgrp"><div class="gt"><span class="badge" style="background:' + dispColor(L) + '">' +
           esc(ln.replace('号线', '')) + '</span>' + esc(ln) + '</div>';
         html += '<table class="arrtbl"><thead><tr><th>方向</th><th>列车</th><th>到站时刻</th><th>还有</th></tr></thead><tbody>';
         groups[ln].forEach(function (a, i) {

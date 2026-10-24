@@ -81,7 +81,7 @@ for (const nm in idx) {
   const seen = {}; let cnt = 0;
   e.entries.forEach(en => { if (!seen[en.line.name]) { seen[en.line.name] = 1; cnt++; } });
   const xy = project(e.x, e.y);
-  stations.push({ n: nm, x: xy[0], y: xy[1], lines: cnt });
+  stations.push({ n: nm, x: xy[0], y: xy[1], lines: cnt, color: e.entries[0].line.color });
 }
 
 /* ------------------------------------------------------------------ 列车 */

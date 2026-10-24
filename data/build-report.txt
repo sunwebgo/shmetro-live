@@ -49,8 +49,7 @@ HZ 16号线    svc0 九州街            -> 绿汀路            st=12 run= 36mi
 HZ 19号线    svc0 永盛路            -> 火车西站           st=17 run= 47min model fwd 06:00/23:11
 
 上海         线路 21 条, 交路 24 个
-苏州         线路  9 条, 交路  9 个
-苏州电车       线路  2 条, 交路  2 个
+苏州         线路 11 条, 交路 11 个
 杭州         线路 12 条, 交路 14 个
 
-输出 D:\shmetro-live\data\metro-data.js  83.2 KB
+输出 D:\shmetro-live\data\metro-data.js  83.1 KB

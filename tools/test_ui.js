@@ -243,7 +243,7 @@ console.log('== 城市切换 ==');
 try {
   ok(els.cityTabs.innerHTML.indexOf('data-city') >= 0, '城市切换按钮未渲染');
   const before = els.footRight.textContent;
-  const keys = ['suzhou', 'suzhou_tram', 'hangzhou', 'shanghai'];
+  const keys = ['suzhou', 'hangzhou', 'shanghai'];
   keys.forEach(k => {
     APP.state.live = false;
     APP.state.time = 8 * 3600;
@@ -264,7 +264,7 @@ try {
 
 console.log('== 每个城市全时段绘制 ==');
 try {
-  ['shanghai', 'suzhou', 'suzhou_tram', 'hangzhou'].forEach(k => {
+  ['shanghai', 'suzhou', 'hangzhou'].forEach(k => {
     APP.useCity(k);
     APP.state.live = false;
     for (let t = 0; t < 86400; t += 3600) {
@@ -272,7 +272,10 @@ try {
       APP.draw();
     }
   });
-  wk('4 个数据集 × 24 个时刻绘制完成, 无异常');
+  wk('3 个数据集 × 24 个时刻绘制完成, 无异常');
+  APP.useCity('suzhou');
+  ok(els.lineList.innerHTML.indexOf('有轨电车') >= 0, '苏州线路列表应包含有轨电车');
+  ok(els.lineList.innerHTML.indexOf('高新有轨电车1号线') >= 0, '苏州应包含高新有轨电车1号线');
 } catch (e) {
   ok(false, '全时段绘制抛错: ' + e.message + '\n' + (e.stack || '').split('\n').slice(0, 4).join('\n'));
 }

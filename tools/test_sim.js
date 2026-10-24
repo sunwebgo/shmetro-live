@@ -18,7 +18,7 @@ console.log('== 1. 城市列表 ==');
 const list = SIM.cities();
 ok(CITIES.meta.cityOrder.length >= 3, '城市数量应 ≥ 3, 实际 ' + CITIES.meta.cityOrder.length);
 list.forEach(c => wk(`${c.key.padEnd(14)} ${c.name.padEnd(6)} ${c.lines} 条线路`));
-['shanghai', 'suzhou', 'suzhou_tram', 'hangzhou'].forEach(k => {
+['shanghai', 'suzhou', 'hangzhou'].forEach(k => {
   ok(!!CITIES.cities[k], '缺少城市数据: ' + k);
 });
 
@@ -134,9 +134,8 @@ console.log('\n== 8. 车站到站推算 ==');
 {
   const cases = [
     ['shanghai', '人民广场'], ['shanghai', '徐家汇'],
-    ['suzhou', '东方之门'], ['suzhou', '狮子山'],
+    ['suzhou', '东方之门'], ['suzhou', '狮子山'], ['suzhou', '苏州乐园'],
     ['hangzhou', '武林广场'], ['hangzhou', '龙翔桥'],
-    ['suzhou_tram', '苏州乐园'],
   ];
   cases.forEach(([city, st]) => {
     SIM.useCity(city);
