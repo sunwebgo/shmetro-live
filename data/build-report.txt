@@ -31,8 +31,11 @@ SZ 6号线     苏州新区火车站        -> 桑田岛            st=30 run= 5
 SZ 7号线     常楼             -> 木里             st=28 run= 64min official fwd 05:50/22:25 alt -
 SZ 8号线     西津桥            -> 车坊             st=28 run= 56min official fwd 05:40/22:20 alt -
 SZ 11号线    唯亭(苏州新区火车站)    -> 花桥             st=28 run= 58min model fwd 06:12/22:48 alt 06:12
-TRAM 高新有轨电车1号线        st=15 最大间距3.2km run=71min
-TRAM 高新有轨电车2号线        st=15 最大间距1.7km run=58min
+  吸附: 狮子山 电车↔地铁相距 643m, 已合并为同一节点
+TRAM 高新有轨电车1号线        st=15 最大间距3.2km run=72min
+  吸附: 文昌路 电车↔地铁相距 542m, 已合并为同一节点
+  吸附: 苏州新区火车站 电车↔地铁相距 475m, 已合并为同一节点
+TRAM 高新有轨电车2号线        st=15 最大间距1.9km run=60min
 HZ 1号线     svc0 湘湖             -> 萧山国际机场         st=33 run= 72min model fwd 05:54/22:50
 HZ 2号线     svc0 朝阳             -> 良渚             st=33 run= 70min model fwd 06:00/23:02
 HZ 3号线     svc0 吴山前村           -> 星桥             st=34 run= 74min model fwd 06:00/22:47

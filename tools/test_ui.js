@@ -280,6 +280,18 @@ try {
   ok(false, '全时段绘制抛错: ' + e.message + '\n' + (e.stack || '').split('\n').slice(0, 4).join('\n'));
 }
 
+console.log('== 样式表关键规则 ==');
+{
+  const css = fs.readFileSync(path.join(ROOT, 'css/style.css'), 'utf8');
+  // 三个面板是 position:absolute 叠放的, 基础规则必须 display:none, 否则会互相覆盖
+  ok(/\.panel\s*\{[^}]*display\s*:\s*none/.test(css),
+    '.panel 缺少 display:none —— 三个面板会叠在一起, 侧栏文字错乱且标签失效');
+  ok(/\.panel\.active\s*\{[^}]*display\s*:\s*block/.test(css), '.panel.active 需要 display:block');
+  ok(/\.panels\s*\{[^}]*position\s*:\s*relative/.test(css), '.panels 需要 position:relative');
+  ok(/\.layout\s*\{[^}]*grid-template-columns/.test(css), '.layout 需要 grid 布局');
+  wk('面板显隐/定位规则正常');
+}
+
 console.log('\n===============================');
 console.log(fail === 0 ? '✅ 前端脚本校验通过' : '❌ 失败 ' + fail + ' 项');
 console.log('===============================');

@@ -49,6 +49,11 @@ def train_color(h):
     return _shade(h, _lum_factor(h) * 0.62)
 
 
+def station_color(h):
+    """普通站圆点: 比线路更深一档, 不描白边以保持线路连续。"""
+    return _shade(h, _lum_factor(h) * 0.48)
+
+
 def load_font(size):
     for p in (r"C:\Windows\Fonts\msyh.ttc", r"C:\Windows\Fonts\msyhbd.ttc",
               r"C:\Windows\Fonts\simhei.ttf", r"C:\Windows\Fonts\simsun.ttc"):
@@ -94,14 +99,19 @@ def main():
             r = 1.9 * SS
             dr.ellipse([x - r, y - r, x + r, y + r], fill=col + (243,))
 
-    # ---- 车站: 只画换乘站(单线站画点会把线路切成虚线段) ----
+    # ---- 车站: 普通站小圆点(线路色加深), 换乘站白底深边 ----
     for s in d["stations"]:
-        if s["lines"] < 2:
-            continue
         x, y = S(s["x"]), S(s["y"])
-        r = 3.2 * SS
-        dr.ellipse([x - r, y - r, x + r, y + r], fill=(255, 255, 255, 255),
-                   outline=(63, 88, 114, 255), width=max(1, int(1.7 * SS)))
+        if s["lines"] > 1:
+            r = 3.3 * SS
+            dr.ellipse([x - r, y - r, x + r, y + r], fill=(255, 255, 255, 255),
+                       outline=(63, 88, 114, 255), width=max(1, int(1.7 * SS)))
+        else:
+            # 与网页远景一致: 小而淡, 避免把线路切成虚线段
+            r = 1.5 * SS
+            dr.ellipse([x - r, y - r, x + r, y + r], fill=(255, 255, 255, 107),
+                       outline=station_color(s.get("color") or "#888888") + (107,),
+                       width=max(1, int(1.0 * SS)))
 
     # ---- 列车: 白色车厢 + 线路色描边 ----
     for t in d["trains"]:

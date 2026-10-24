@@ -146,7 +146,7 @@ button{font:inherit;color:inherit}
 .tab:hover{color:var(--txt);background:#f4f8fd}
 .tab.active{color:var(--accent);border-bottom-color:var(--accent);background:var(--accent-soft);font-weight:600}
 .panels{flex:1;min-height:0;position:relative}
-.panel{position:absolute;inset:0;overflow:auto;padding:13px}
+.panel{position:absolute;inset:0;overflow:auto;padding:13px;display:none}
 .panel.active{display:block}
 .panelhint{font-size:11.5px;color:var(--txt3);margin-bottom:11px;line-height:1.65}
 

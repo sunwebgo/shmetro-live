@@ -48,6 +48,13 @@
     }
     return line._tc;
   }
+  function stationColor(line) {
+    if (!line._sc) {
+      dispColor(line);
+      line._sc = shadeHex(line.color, line._lf * 0.48);
+    }
+    return line._sc;
+  }
 
   /* ==================================================================== 状态 */
   var state = {
@@ -208,18 +215,36 @@
       if (hidden) continue;
       var isSel = nm === selName, isHov = nm === state.hoverStation;
       var multi = sp.lines > 1;
-      // 单线站不画点: 线路本身即表示走线, 画点会把线切成虚线段;
-      // 只在换乘站 / 悬停 / 选中时绘制标记。
-      if (!multi && !isSel && !isHov) continue;
-      var r = 3.2;
-      if (isSel || isHov) r += 1.6;
       ctx.beginPath();
-      ctx.arc(sp.p[0], sp.p[1], r, 0, Math.PI * 2);
-      ctx.fillStyle = '#ffffff';
-      ctx.fill();
-      ctx.lineWidth = (isSel || isHov) ? 2.0 : 1.7;
-      ctx.strokeStyle = (isSel || isHov) ? '#2563eb' : '#3f5872';
-      ctx.stroke();
+      if (multi) {
+        // 换乘站: 白底深边, 稍大
+        ctx.arc(sp.p[0], sp.p[1], 3.3, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.fill();
+        ctx.lineWidth = 1.7;
+        ctx.strokeStyle = (isSel || isHov) ? '#2563eb' : '#3f5872';
+        ctx.stroke();
+      } else if (isSel || isHov) {
+        ctx.arc(sp.p[0], sp.p[1], 4.4, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.fill();
+        ctx.lineWidth = 2.0;
+        ctx.strokeStyle = '#2563eb';
+        ctx.stroke();
+      } else {
+        // 普通站: 白底 + 线路色细环。远景缩小并降低不透明度, 避免把线路切成虚线段;
+        // 放大后恢复为清晰的地铁图站点样式。
+        var zr = Math.min(1, Math.max(0, (view.z - 1) / 1.1));
+        var sr = 1.5 + zr * 0.75;
+        ctx.globalAlpha = 0.42 + zr * 0.58;
+        ctx.arc(sp.p[0], sp.p[1], sr, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.fill();
+        ctx.lineWidth = 1.0 + zr * 0.3;
+        ctx.strokeStyle = stationColor(sp.entries[0].line);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
     }
 
     // ---- 站名 ----

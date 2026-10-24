@@ -710,7 +710,17 @@ def build_suzhou():
     }
 
 
-def build_suzhou_tram():
+def station_ref(lines):
+    """站名 -> (经度, 纬度), 用于把有轨电车与地铁的同名站吸附到一起。"""
+    ref = {}
+    for L in lines:
+        for s in L["services"]:
+            for st in s["st"]:
+                ref.setdefault(st[0], (st[1], st[2]))
+    return ref
+
+
+def build_suzhou_tram(snap_ref=None, max_km=1.0):
     p = os.path.join(RAW, "suzhou_tram_stops.json")
     if not os.path.exists(p):
         return None
@@ -724,7 +734,16 @@ def build_suzhou_tram():
         if len(stops) < 3:
             continue
         # 站序已由 tools/order_tram_stops.js 按 OSM 线路几何投影确定
-        use = stops
+        use = []
+        for s in stops:
+            x, y = round(s["lon"], 6), round(s["lat"], 6)
+            r = (snap_ref or {}).get(s["name"])
+            if r:
+                d = haversine((x, y), r)
+                if d <= max_km:
+                    diag.append("  吸附: %s 电车↔地铁相距 %.0fm, 已合并为同一节点" % (s["name"], d * 1000))
+                    x, y = r
+            use.append({"name": s["name"], "lon": x, "lat": y})
         gap = 0.0
         for j in range(1, len(use)):
             gap = max(gap, haversine((use[j - 1]["lon"], use[j - 1]["lat"]),
@@ -732,7 +751,7 @@ def build_suzhou_tram():
         if gap > 4.0:
             diag.append("TRAM %s 站序可疑(最大间距 %.1fkm), 跳过" % (L["name"], gap))
             continue
-        stations = [{"n": s["name"], "x": round(s["lon"], 6), "y": round(s["lat"], 6)} for s in use]
+        stations = [{"n": s["name"], "x": s["lon"], "y": s["lat"]} for s in use]
         svc = make_service("tram-%d" % i, L["name"], stations, 22.0,
                            ["往" + stations[-1]["n"], "往" + stations[0]["n"]],
                            fwd={"first": 6 * 3600, "last": 22 * 3600, "found": False},
@@ -915,7 +934,7 @@ def main():
 
     shanghai = build_shanghai()
     suzhou = build_suzhou()
-    tram = build_suzhou_tram()
+    tram = build_suzhou_tram(station_ref(suzhou["lines"]) if suzhou else None)
     hangzhou = build_hangzhou()
 
     # 有轨电车并入苏州, 作为同城线路一起展示 (no=100+ 排在最后)
